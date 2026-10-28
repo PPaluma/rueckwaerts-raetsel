@@ -3,7 +3,7 @@
 
 const CFG = Object.assign({
   supabaseUrl: "", supabaseKey: "", vapidPublicKey: "", emailDomain: "spieler.rueckwaerts-raetsel.app",
-  appUrl: "", onlineDisabled: false, serviceWorker: true,
+  appUrl: "", onlineDisabled: false, serviceWorker: true, notifyFunction: "notify",
   ttsBases: ["vendor/mespeak/"]
 }, window.RR_CONFIG || {});
 const WORDS = window.RR_WORDS;
@@ -232,7 +232,7 @@ const SB = {
     catch(e){ if(e.code==="offline") throw e; throw new AppErr("upload", e.message); }
   },
   download(path){ return this.req("/storage/v1/object/authenticated/audio/"+path, {blob:true}); },
-  notify(gameId){ return this.req("/functions/v1/notify", {method:"POST", body:{game_id:gameId}}).catch(()=>null); }
+  notify(gameId){ return this.req("/functions/v1/"+CFG.notifyFunction, {method:"POST", body:{game_id:gameId}}).catch(()=>null); }
 };
 
 /* ======================================================================= Texte anwenden */
