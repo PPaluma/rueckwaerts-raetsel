@@ -442,7 +442,9 @@ const TTS = {
           if(!window.meSpeak) throw new Error("no meSpeak");
           this.base = base;
           if(typeof meSpeak.isConfigLoaded==="function" && !meSpeak.isConfigLoaded() && typeof meSpeak.loadConfig==="function"){
-            await new Promise((res,rej)=>{ meSpeak.loadConfig(base+"mespeak_config.json", ok=> ok?res():rej(new Error("config"))); });
+            meSpeak.loadConfig(base+"mespeak_config.json");
+            const t0=Date.now();
+            while(!meSpeak.isConfigLoaded()){ if(Date.now()-t0>20000) throw new Error("config"); await new Promise(r=>setTimeout(r,100)); }
           }
           return;
         }catch(e){ last=e; }
