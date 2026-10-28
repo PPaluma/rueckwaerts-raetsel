@@ -25,12 +25,21 @@ jobs:
       - name: KI-Stimme (meSpeak) einbinden
         continue-on-error: true
         run: |
+          set -e
           mkdir -p site/vendor/mespeak
-          npm pack mespeak --silent
+          npm pack mespeak@2.0.2 --silent
           tar -xzf mespeak-*.tgz
-          cp -r package/* site/vendor/mespeak/
-          echo "meSpeak-Dateien:"; find site/vendor/mespeak -maxdepth 3 | sort | head -80
-          cat package/package.json | head -20
+          cp -r package/voices site/vendor/mespeak/
+          cp package/src/mespeak_config.json site/vendor/mespeak/
+          # CommonJS-Paket als Browser-Skript verpacken (window.meSpeak)
+          {
+            echo 'window.meSpeak=(function(){var __ESpeak=(function(){var module={exports:{}},exports=module.exports;'
+            cat package/src/ESpeak.js
+            echo ';return module.exports;})();var module={exports:{}},exports=module.exports;var require=function(p){if(/ESpeak/.test(p))return __ESpeak;throw new Error("require "+p);};'
+            cat package/src/index.js
+            echo ';return module.exports;})();'
+          } > site/vendor/mespeak/mespeak.js
+          ls -la site/vendor/mespeak site/vendor/mespeak/voices | head -40
       - name: App bauen
         run: python3 tools/build.py
       - uses: actions/configure-pages@v5

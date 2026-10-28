@@ -4,7 +4,7 @@
 const CFG = Object.assign({
   supabaseUrl: "", supabaseKey: "", vapidPublicKey: "", emailDomain: "spieler.rueckwaerts-raetsel.app",
   appUrl: "", onlineDisabled: false, serviceWorker: true,
-  ttsBases: ["vendor/mespeak/", "https://cdn.jsdelivr.net/npm/mespeak/"]
+  ttsBases: ["vendor/mespeak/"]
 }, window.RR_CONFIG || {});
 const WORDS = window.RR_WORDS;
 const ONLINE = !!(CFG.supabaseUrl && CFG.supabaseKey) && !CFG.onlineDisabled;

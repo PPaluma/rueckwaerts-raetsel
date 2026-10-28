@@ -106,5 +106,5 @@ def build_single(name, extra):
 if __name__ == "__main__":
     b = build_site()
     build_single("single.html", {"onlineDisabled": True, "ttsBases": [], "serviceWorker": False})
-    build_single("apk-index.html", {"onlineDisabled": True, "serviceWorker": False, "ttsBases": ["https://cdn.jsdelivr.net/npm/mespeak/"]})
+    build_single("apk-index.html", {"onlineDisabled": True, "serviceWorker": False, "ttsBases": ["https://ppaluma.github.io/rueckwaerts-raetsel/vendor/mespeak/"]})
     print("built", b, "->", OUT)
