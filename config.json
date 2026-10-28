@@ -1,0 +1,7 @@
+{
+  "supabaseUrl": "https://xrgusbwpyxztjmxsefla.supabase.co",
+  "supabaseKey": "sb_publishable_cwpZv_eXc5Ut8yEv8GQcRA_52Q6HXR8",
+  "vapidPublicKey": "BP89n0wDNgLIq-ETz_nr7Fvmms-a1qA0b6ybts48mArNy4Qy_AM72IkfERu4R3AxjbrEWnsy7P9CjaEKKJ9dCcQ",
+  "emailDomain": "spieler.rueckwaerts-raetsel.app",
+  "appUrl": "https://ppaluma.github.io/rueckwaerts-raetsel/"
+}

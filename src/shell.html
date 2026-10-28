@@ -1,0 +1,262 @@
+__HEAD__
+<style>
+__CSS__
+</style>
+
+<canvas id="confetti"></canvas>
+<div class="app" id="app">
+
+  <!-- START -->
+  <section class="screen" id="s-home">
+    <div class="row" style="justify-content:space-between;align-items:flex-start">
+      <div class="stack" style="gap:10px;padding-top:6px">
+        <span class="eyebrow" data-t="tagline"></span>
+        <h1 id="title"></h1>
+      </div>
+      <button class="iconbtn" id="bSettings" aria-label="">__I_GEAR__</button>
+    </div>
+    <div class="cassette fwd" data-cas>__CASSETTE__</div>
+    <p class="lead" data-t="intro"></p>
+    <div class="modecards">
+      <button class="modecard hot" id="bOnline">
+        <span class="ic">__I_ONLINE__</span>
+        <span><b data-t="onlineTitle"></b><span class="sub" id="onlineSub"></span></span>
+        <span class="badge" id="turnBadge" hidden>0</span>
+      </button>
+      <button class="modecard" id="bLocal">
+        <span class="ic">__I_LOCAL__</span>
+        <span><b data-t="localTitle"></b><span class="sub" id="localSub"></span></span>
+        <span class="arrow">›</span>
+      </button>
+    </div>
+    <div class="spacer"></div>
+  </section>
+
+  <!-- EINSTELLUNGEN -->
+  <section class="screen" id="s-settings" hidden>
+    <div class="topbar"><span class="eyebrow" data-t="settings"></span></div>
+    <h2 data-t="language"></h2>
+    <div class="seg">
+      <label><input type="radio" name="lang" value="de" id="l-de"><span>Deutsch</span></label>
+      <label><input type="radio" name="lang" value="en" id="l-en"><span>English</span></label>
+    </div>
+    <div class="stack" id="accountBox" hidden>
+      <h2 data-t="account"></h2>
+      <div class="banner"><p id="accName"></p><button class="btn slim" id="bLogout" data-t="logout"></button></div>
+      <div class="banner" id="notifRow"><p id="notifText"></p><button class="btn slim" id="bNotif" data-t="pushOn"></button></div>
+    </div>
+    <h2 data-t="localSec"></h2>
+    <div class="modes">
+      <label class="mode"><input type="radio" name="mode" value="easy" id="m-easy"><span class="radio"></span><span><b>Easy Mode</b><span class="ex" data-t="exEasy"></span></span><span class="meter" data-l="1"><i></i><i></i><i></i></span></label>
+      <label class="mode"><input type="radio" name="mode" value="hard" id="m-hard"><span class="radio"></span><span><b>Hard Mode</b><span class="ex" data-t="exHard"></span></span><span class="meter" data-l="2"><i></i><i></i><i></i></span></label>
+      <label class="mode"><input type="radio" name="mode" value="extreme" id="m-extreme"><span class="radio"></span><span><b>Extreme Mode</b><span class="ex" data-t="exExtreme"></span></span><span class="meter" data-l="3"><i></i><i></i><i></i></span></label>
+    </div>
+    <div class="names">
+      <label class="field"><span data-t="p1"></span><input type="text" id="n1" maxlength="16" autocomplete="off"></label>
+      <label class="field"><span data-t="p2"></span><input type="text" id="n2" maxlength="16" autocomplete="off"></label>
+    </div>
+    <button class="btn ghost" id="bReset" data-t="reset"></button>
+    <div class="spacer"></div>
+    <button class="btn primary" id="bBack" data-t="back"></button>
+  </section>
+
+  <!-- ANMELDEN -->
+  <section class="screen" id="s-auth" hidden>
+    <div class="topbar"><button data-home data-t="back"></button><span></span></div>
+    <h2 data-t="authTitle"></h2>
+    <p class="lead" data-t="authLead"></p>
+    <div class="seg">
+      <label><input type="radio" name="authmode" value="register" id="a-register" checked><span data-t="register"></span></label>
+      <label><input type="radio" name="authmode" value="login" id="a-login"><span data-t="login"></span></label>
+    </div>
+    <form id="authForm" class="stack" novalidate>
+      <label class="field"><span data-t="username"></span><input type="text" id="uName" maxlength="16" autocomplete="username" autocapitalize="none" spellcheck="false"></label>
+      <span class="small" id="uHint" data-t="userHint"></span>
+      <label class="field"><span data-t="password"></span><input type="password" id="uPw" autocomplete="new-password"></label>
+      <span class="small" id="pwHint" data-t="pwHint"></span>
+      <span class="err" id="authErr"></span>
+      <button class="btn primary" type="submit" id="bAuth"></button>
+    </form>
+  </section>
+
+  <!-- LOBBY -->
+  <section class="screen" id="s-lobby" hidden>
+    <div class="me">
+      <button class="iconbtn" data-home aria-label="">__I_BACK__</button>
+      <span class="avatar" id="meAvatar"></span>
+      <div class="grow"><b id="meName"></b><span class="small" id="meStats"></span></div>
+      <button class="iconbtn" id="bSettings2" aria-label="">__I_GEAR__</button>
+    </div>
+    <div class="banner" id="pushBanner" hidden><p id="pushText"></p><button class="btn primary" id="bPush" data-t="pushOn"></button></div>
+    <div class="banner" id="installBanner" hidden><p id="installText"></p><button class="btn" id="bInstall" data-t="installBtn"></button></div>
+    <button class="btn primary" id="bNew" data-t="newDuel"></button>
+    <div id="lobbyList" class="stack" style="gap:14px"></div>
+  </section>
+
+  <!-- NEUES DUELL -->
+  <section class="screen" id="s-new" hidden>
+    <div class="topbar"><button data-lobby data-t="back"></button><span></span></div>
+    <h2 data-t="newTitle"></h2>
+    <div class="seg">
+      <label><input type="radio" name="nlang" value="de" id="nl-de"><span>Deutsch</span></label>
+      <label><input type="radio" name="nlang" value="en" id="nl-en"><span>English</span></label>
+    </div>
+    <div class="modes" id="newModes">
+      <label class="mode"><input type="radio" name="nmode" value="easy" id="nm-easy"><span class="radio"></span><span><b>Easy</b><span class="ex" data-t="exEasy"></span></span><span class="meter" data-l="1"><i></i><i></i><i></i></span></label>
+      <label class="mode"><input type="radio" name="nmode" value="hard" id="nm-hard"><span class="radio"></span><span><b>Hard</b><span class="ex" data-t="exHard"></span></span><span class="meter" data-l="2"><i></i><i></i><i></i></span></label>
+      <label class="mode"><input type="radio" name="nmode" value="extreme" id="nm-extreme"><span class="radio"></span><span><b>Extreme</b><span class="ex" data-t="exExtreme"></span></span><span class="meter" data-l="3"><i></i><i></i><i></i></span></label>
+    </div>
+    <form id="friendForm" class="stack" novalidate>
+      <label class="field"><span data-t="vsFriend"></span><input type="text" id="friendName" maxlength="16" autocomplete="off" autocapitalize="none" spellcheck="false"></label>
+      <div class="sugg" id="sugg"></div>
+      <button class="btn primary" type="submit" id="bChallenge" data-t="challenge"></button>
+    </form>
+    <div class="or" data-t="orText"></div>
+    <button class="btn" id="bRandom" data-t="randomBtn"></button>
+    <span class="err" id="newErr"></span>
+  </section>
+
+  <!-- DUELL-ANSICHT -->
+  <section class="screen" id="s-game" hidden>
+    <div class="topbar"><button data-lobby data-t="back"></button><span id="gMeta"></span></div>
+    <div class="versus">
+      <div class="side"><span class="avatar lg" id="gMeAv"></span><b id="gMeName"></b></div>
+      <div class="big" id="gScore"></div>
+      <div class="side"><span class="avatar lg" id="gOppAv"></span><b id="gOppName"></b></div>
+    </div>
+    <p class="status" id="gStatus"></p>
+    <div class="legend"><span id="lgMe"></span><span></span><span id="lgOpp"></span></div>
+    <div class="rounds" id="gRounds"></div>
+    <p class="small center" data-t="tapToHear"></p>
+    <div class="spacer"></div>
+    <div class="stack" id="gActions">
+      <button class="btn primary" id="bPlay" hidden></button>
+      <button class="btn primary" id="bClaim" data-t="claimBtn" hidden></button>
+      <button class="btn primary" id="bRematch" data-t="rematch" hidden></button>
+      <button class="btn ghost" id="bGiveUpDuel" hidden></button>
+      <div class="confirm" id="giveUpBox" hidden>
+        <p id="giveUpQ"></p>
+        <div class="row"><button class="btn slim danger grow" id="bGiveUpYes" data-t="giveUpYes"></button><button class="btn slim grow" id="bGiveUpNo" data-t="cancel"></button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÜBERGABE (lokal) -->
+  <section class="screen" id="s-hand" hidden>
+    <div class="topbar"><span class="mb"></span><button data-quit data-t="menu"></button></div>
+    <div class="handoff">
+      <div class="phone">__PHONE__</div>
+      <span class="eyebrow" id="hEyebrow"></span>
+      <div class="big" id="hBig"></div>
+      <p class="lead" id="hLead"></p>
+    </div>
+    <button class="btn primary" id="bHandGo"></button>
+  </section>
+
+  <!-- SPRECHER nimmt auf -->
+  <section class="screen" id="s-speak" hidden>
+    <div class="topbar"><span class="mb"></span><button data-quit data-t="menu"></button></div>
+    <div class="steps"><i class="on"></i><i></i><i></i></div>
+    <p class="note" id="speakNote" hidden></p>
+    <div class="label"><span class="side" data-t="sideA"></span><span class="word" id="theWord"></span></div>
+    <button class="btn ghost" id="bSkip">__SKIP__ <span data-t="skip"></span></button>
+    <div class="recwrap">
+      <button class="recbtn" id="recA"><span class="ring"></span><span class="dot"></span></button>
+      <span class="timer" id="tA"></span>
+    </div>
+    <div class="tape" id="tapeA" hidden><canvas id="cA"></canvas><div class="cap"><span data-t="yourRec"></span><span id="dA"></span></div></div>
+    <div class="spacer"></div>
+    <div class="stack" id="afterA" hidden>
+      <button class="btn" id="bTestA">__REV__ <span data-t="testRev"></span></button>
+      <button class="btn primary" id="bDoneA"></button>
+    </div>
+  </section>
+
+  <!-- RATER: anhören + nachsprechen -->
+  <section class="screen" id="s-imitate" hidden>
+    <div class="topbar"><span class="mb"></span><button data-quit data-t="menu"></button></div>
+    <div class="steps"><i class="on"></i><i class="on"></i><i></i></div>
+    <span class="eyebrow" data-t="jokersTitle"></span>
+    <div class="jokers" id="jokers">
+      <button class="joker" data-j="ai">__I_AI__<span data-t="jAi"></span></button>
+      <button class="joker" data-j="again">__I_AGAIN__<span data-t="jAgain"></span></button>
+      <button class="joker" data-j="letters">__I_LETTERS__<span data-t="jLetters"></span></button>
+    </div>
+    <div class="hint" id="hintBox" hidden></div>
+    <p class="note ai" id="aiNote" hidden>__I_AI__<span id="aiNoteText"></span></p>
+    <span class="eyebrow" data-t="step1"></span>
+    <div class="tape"><canvas id="cRA"></canvas><div class="cap"><span id="sideBLabel"></span><span id="dRA"></span></div></div>
+    <div class="playrow">
+      <button class="btn" id="bPlayRA">__PLAY__ <span data-t="playRev"></span></button>
+      <button class="speed" id="bSpeed" aria-pressed="false"><span class="sv">1×</span><span class="sl" data-t="speed"></span></button>
+    </div>
+    <span class="eyebrow" data-t="step2"></span>
+    <div class="recwrap">
+      <button class="recbtn" id="recB"><span class="ring"></span><span class="dot"></span></button>
+      <span class="timer" id="tB"></span>
+    </div>
+    <div class="spacer"></div>
+    <button class="btn primary" id="bFlipB" hidden>__REV__ <span data-t="flip"></span></button>
+  </section>
+
+  <!-- RATER: eigenes rückwärts hören + raten -->
+  <section class="screen" id="s-guess" hidden>
+    <div class="topbar"><span class="mb"></span><button data-quit data-t="menu"></button></div>
+    <div class="steps"><i class="on"></i><i class="on"></i><i class="on"></i></div>
+    <div class="cassette small" data-cas>__CASSETTE__</div>
+    <span class="eyebrow" data-t="step3"></span>
+    <div class="tape"><canvas id="cRB"></canvas><div class="cap"><span data-t="youRev"></span><span id="dRB"></span></div></div>
+    <div class="stack" style="gap:10px">
+      <button class="btn" id="bPlayRB">__PLAY__ <span data-t="again"></span></button>
+      <button class="btn ghost" id="bReRec" data-t="reRec"></button>
+    </div>
+    <div class="hint" id="hintBox2" hidden></div>
+    <form id="guessForm" class="stack">
+      <label class="field"><span data-t="whichWord"></span><input type="text" id="guess" autocomplete="off" autocapitalize="sentences" spellcheck="false"></label>
+      <button class="btn primary" type="submit" id="bCheck" data-t="check"></button>
+      <button class="btn ghost" type="button" id="bGiveUp" data-t="giveUp"></button>
+    </form>
+  </section>
+
+  <!-- ERGEBNIS -->
+  <section class="screen" id="s-result" hidden>
+    <div class="topbar"><span class="mb"></span><button data-quit data-t="menu"></button></div>
+    <div class="result" id="resBox">
+      <span class="verdict" id="resVerdict"></span>
+      <span class="sub" id="resGuess"></span>
+      <span class="sol" id="resWord"></span>
+    </div>
+    <button class="btn" id="bOverride" hidden data-t="override"></button>
+    <div class="score" id="resScore"></div>
+    <button class="btn" id="bPlayOrig">__PLAY__ <span data-t="origFwd"></span></button>
+    <div class="spacer"></div>
+    <button class="btn primary" id="bNext"></button>
+  </section>
+
+  <!-- GESENDET (online) -->
+  <section class="screen" id="s-sent" hidden>
+    <div class="handoff">
+      <div class="phone">__I_SENT__</div>
+      <span class="eyebrow" id="sentEyebrow"></span>
+      <div class="big" data-t="sent"></div>
+      <p class="lead" id="sentLead"></p>
+    </div>
+    <div class="banner" id="sentPush" hidden><p data-t="pushAsk"></p><button class="btn primary" id="bPush2" data-t="pushOn"></button></div>
+    <button class="btn primary" data-lobby data-t="toLobby"></button>
+  </section>
+
+  <!-- SPIELENDE (lokal) -->
+  <section class="screen" id="s-final" hidden>
+    <div class="handoff">
+      <span class="eyebrow" data-t="matchOver"></span>
+      <div class="big" id="finalBig"></div>
+      <div class="score" id="finalScore"></div>
+    </div>
+    <button class="btn primary" id="bNewMatch" data-t="newMatch"></button>
+    <button class="btn ghost" data-home data-t="menu"></button>
+  </section>
+
+  <input type="file" id="fileIn" accept="audio/*" capture hidden>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+__SCRIPTS__
