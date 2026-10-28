@@ -19,7 +19,7 @@ self.addEventListener("fetch", e => {
     })));
     return;
   }
-  e.respondWith(fetch(req, {cache: "no-cache"}).then(res => {  // sonst: immer die neueste Version, offline aus dem Speicher
+  e.respondWith(fetch(req.mode === "navigate" ? req.url : req, {cache: "no-cache"}).then(res => {  // sonst: immer die neueste Version, offline aus dem Speicher
     if (res.ok) { const copy = res.clone(); caches.open(CACHE).then(c => c.put(req, copy)); }
     return res;
   }).catch(() => caches.match(req, {ignoreSearch: true}).then(hit => hit || caches.match("index.html"))));
