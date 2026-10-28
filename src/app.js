@@ -9,7 +9,7 @@ const CFG = Object.assign({
 const WORDS = window.RR_WORDS;
 const ONLINE = !!(CFG.supabaseUrl && CFG.supabaseKey) && !CFG.onlineDisabled;
 const $ = id => document.getElementById(id);
-const MODE_LABEL = {easy:"Easy Mode", hard:"Hard Mode", extreme:"Extreme Mode"};
+const MODE_LABEL = {easy:"Easy Mode", hard:"Hard Mode", extreme:"Extreme Mode", story:"Story Mode"};
 const MODE_LVL = {easy:1, hard:2, extreme:3};
 const IN_APP = /; wv\)/.test(navigator.userAgent);
 const IS_IOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
@@ -77,7 +77,20 @@ de:{
   sendTo:"An {n} senden", sendRandom:"Wort abschicken", sent:"Gesendet!", sentLead:"{n} ist jetzt dran. Du bekommst Bescheid, sobald {n} gespielt hat.",
   sentLeadRandom:"Sobald ein zufälliger Gegner gefunden ist, geht's los. Du bekommst Bescheid.", sentAgain:"{n} spricht das Wort nochmal ein. Du bekommst Bescheid.",
   toLobby:"Zur Übersicht", nextSpeak:"Weiter: dein Wort einsprechen", finalWin:"Duell gewonnen! {a}:{b}", finalLose:"Duell verloren. {a}:{b}", finalDraw:"Unentschieden! {a}:{b}",
-  loading:"Lädt…", uploading:"Wird gesendet…"
+  loading:"Lädt…", uploading:"Wird gesendet…",
+  exStory:"Eine Geschichte, Wort für Wort rückwärts nachgesprochen", jLater:"nach dem Umdrehen", jLettersNow:"Buchstaben-Joker: Anfang + Länge",
+  storyEyebrow:"Geschichte", storyListen:"Geschichte anhören", storyPerform:"Vortragen (rückwärts nachgesprochen)", storyOriginals:"Original-Aufnahmen",
+  storyNew:"Neue Geschichte", storySpeakNote:"„{t}“: Sprich dein Wort {k} von {m} deutlich ein.", storyImitNote:"„{t}“: Wort {k} von {m}. Hör es rückwärts und sprich genau so nach.",
+  storyNext:"Weiter", storyDoneBtn:"Fertig", storyHandSpeak:" spricht Wörter ein", storyHandSpeakLead:"{n} darf nicht hinschauen. Du sprichst {c} Wörter der Geschichte ein.",
+  storyHandImit:" spricht nach", storyHandImitLead:"Du hörst {c} Wörter rückwärts und sprichst sie genau so nach.", storyAllDone:"Die Geschichte ist fertig!",
+  storyProgress:"{a} von {n} Wörtern nachgesprochen", storyMasked:"Die Wörter deines Gegners siehst du erst am Ende.",
+  st_story:"Story: du bist dran", st_storyWait:"Story: {n} ist dran", st_storyDone:"Geschichte fertig", g_story:"Du bist dran: Wörter nachsprechen und einsprechen",
+  g_storyWait:"{n} ist dran", g_storyDone:"Fertig! Hör dir eure Geschichte an.", play_story:"Weiterspielen", storyLoading:"Aufnahmen werden geladen…",
+  e_story_needs_friend:"Eine Geschichte geht nur mit einem Freund, nicht mit zufälligen Gegnern.", storyOnlyFriend:"Story-Modus: Fordere einen Freund heraus.",
+  st_review:"Prüfe eine Antwort", reviewQ:"{n} hat für dein Wort „{w}“ getippt:", reviewYes:"Zählt auch", reviewNo:"Nein",
+  resNoteWrong:"{n} kann deine Antwort noch gelten lassen.", report:"{n} hat genuschelt: melden", reported:"Gemeldet. {n} bekommt einen Sticker.",
+  overrideBy:"{n}: Zählt auch (Punkt geben)", sticker:"RED MAL GESCHEID!", stickerFrom:"von {n} · antippen zum Abziehen", stickerFromWord:"von {n} für „{w}“ · antippen zum Abziehen",
+  tapToHearImit:"Tippe auf ein erledigtes Wort: Du hörst die Nachsprache wieder umgedreht."
 },
 en:{
   tagline:"A party game for two", title:'Back<br><span class="mir">words</span>',
@@ -138,7 +151,20 @@ en:{
   sendTo:"Send to {n}", sendRandom:"Send word", sent:"Sent!", sentLead:"It's {n}'s turn now. You'll get notified when {n} has played.",
   sentLeadRandom:"As soon as a random opponent is found, the game starts. You'll get notified.", sentAgain:"{n} is recording the word again. You'll get notified.",
   toLobby:"Back to overview", nextSpeak:"Next: record your word", finalWin:"Duel won! {a}:{b}", finalLose:"Duel lost. {a}:{b}", finalDraw:"Draw! {a}:{b}",
-  loading:"Loading…", uploading:"Sending…"
+  loading:"Loading…", uploading:"Sending…",
+  exStory:"A story, copied backwards word by word", jLater:"after flipping", jLettersNow:"Letters joker: first letter + length",
+  storyEyebrow:"Story", storyListen:"Listen to the story", storyPerform:"Perform (backwards copies)", storyOriginals:"Original recordings",
+  storyNew:"New story", storySpeakNote:"“{t}”: say your word {k} of {m} clearly.", storyImitNote:"“{t}”: word {k} of {m}. Listen backwards and copy it exactly.",
+  storyNext:"Next", storyDoneBtn:"Done", storyHandSpeak:" records words", storyHandSpeakLead:"{n}, no peeking. You'll record {c} words of the story.",
+  storyHandImit:" copies", storyHandImitLead:"You'll hear {c} words backwards and copy them exactly.", storyAllDone:"The story is finished!",
+  storyProgress:"{a} of {n} words copied", storyMasked:"You'll see your opponent's words at the end.",
+  st_story:"Story: your turn", st_storyWait:"Story: {n}'s turn", st_storyDone:"Story finished", g_story:"Your turn: copy words and record yours",
+  g_storyWait:"{n}'s turn", g_storyDone:"Done! Listen to your story.", play_story:"Continue", storyLoading:"Loading recordings…",
+  e_story_needs_friend:"Stories only work with a friend, not with random opponents.", storyOnlyFriend:"Story mode: challenge a friend.",
+  st_review:"Review an answer", reviewQ:"{n} typed for your word “{w}”:", reviewYes:"Count it", reviewNo:"No",
+  resNoteWrong:"{n} can still accept your answer.", report:"{n} mumbled: report", reported:"Reported. {n} gets a sticker.",
+  overrideBy:"{n}: count it (give point)", sticker:"SPEAK PROPERLY!", stickerFrom:"from {n} · tap to peel off", stickerFromWord:"from {n} for “{w}” · tap to peel off",
+  tapToHearImit:"Tap a finished word: you'll hear the copy flipped back."
 }};
 
 /* ======================================================================= Zustand */
@@ -151,7 +177,8 @@ const S = Object.assign({lang:navLang, mode:"easy", names:null, scores:[0,0], ro
 if(!S.names) S.names=[TXT[S.lang].p1, TXT[S.lang].p2];
 if(!(S.round>=1 && S.round<=LOCAL_WORDS+1)) { S.round=1; S.scores=[0,0]; S.speaker=0; }
 if(!Array.isArray(S.lj)) S.lj=[[],[]];
-const save = () => store.set("rr-state", {lang:S.lang,mode:S.mode,names:S.names,scores:S.scores,round:S.round,speaker:S.speaker,slow:S.slow,lj:S.lj});
+if(!Array.isArray(S.stk)) S.stk=[[],[]];
+const save = () => store.set("rr-state", {lang:S.lang,mode:S.mode,names:S.names,scores:S.scores,round:S.round,speaker:S.speaker,slow:S.slow,lj:S.lj,stk:S.stk});
 const t = (k, vars={}) => (TXT[S.lang][k] ?? TXT.de[k] ?? k).replace(/\{(\w)\}/g,(_,v)=>vars[v]??"");
 const used = {};
 let R = {};            // aktuelle Runde
@@ -165,6 +192,7 @@ function busy(btn, on, label){
   if(on){ btn.dataset.html = btn.innerHTML; btn.classList.add("busy"); btn.innerHTML = '<span class="spin"></span>' + (label ? " "+esc(label) : ""); }
   else if(btn.dataset.html!==undefined){ btn.classList.remove("busy"); btn.innerHTML = btn.dataset.html; delete btn.dataset.html; }
 }
+function resetBusy(){ document.querySelectorAll(".busy").forEach(b=>busy(b,false)); }
 function esc(s){ return String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 function hue(name){ let h=0; for(const c of String(name||"?")) h=(h*31+c.charCodeAt(0))>>>0; return h%360; }
 function avatar(el, name){ el.textContent=(name||"?").trim().charAt(0)||"?"; el.style.background=`hsl(${hue(name)} 80% 72%)`; }
@@ -179,7 +207,7 @@ function errText(e){
   const map = {user_already_exists:"e_user_taken","User already registered":"e_user_taken",invalid_credentials:"e_login",invalid_grant:"e_login",
     "Invalid login credentials":"e_login",weak_password:"e_pw",offline:"e_offline",user_not_found:"e_user_not_found",cannot_play_self:"e_cannot_play_self",
     not_your_turn:"e_not_your_turn",joker_used:"e_joker_used",game_not_found:"e_game_not_found",game_finished:"e_game_finished",confirm:"e_confirm",
-    over_request_rate_limit:"e_rate",http_429:"e_rate",upload:"e_upload",session:"e_session",refresh_token_not_found:"e_session"};
+    over_request_rate_limit:"e_rate",http_429:"e_rate",upload:"e_upload",session:"e_session",refresh_token_not_found:"e_session",story_needs_friend:"e_story_needs_friend"};
   const k = map[c] || map[m];
   return k ? t(k) : t("e_generic",{m: m || c});
 }
@@ -259,10 +287,10 @@ function pickWord(lang, mode){
 }
 
 /* ======================================================================= Bildschirme */
-const screens = ["home","settings","auth","lobby","new","game","hand","speak","imitate","guess","result","sent","final"];
+const screens = ["home","settings","auth","lobby","new","game","hand","speak","imitate","guess","result","sent","final","story"];
 let current = "home";
 function show(name){
-  stopPlayback(); stopRecording(true);
+  stopPlayback(); stopRecording(true); resetBusy(); stopSequence();
   current = name;
   screens.forEach(s => $("s-"+s).hidden = s!==name);
   window.scrollTo(0,0);
@@ -272,7 +300,9 @@ function show(name){
 }
 function paintMeta(){
   let txt;
-  if(CTX.kind==="online" && CTX.game){
+  if(R && R.story && SR){
+    txt = [t("storyEyebrow"), ` · ${SR.title}`];
+  } else if(CTX.kind==="online" && CTX.game){
     const g=CTX.game; const r = Math.min(g.rounds, Math.max(1, Math.ceil((g.history.filter(h=>h.state==="done").length+1)/2)));
     txt = [`${t("round")} ${r}/${g.rounds}`, ` · ${g.my_score}:${g.opp_score} · ${g.opponent_name||t("randomOpp")}`];
   } else {
@@ -300,7 +330,10 @@ function renderScore(el, names, scores, turnIdx){
     if(k===0){ const v=document.createElement("span"); v.className="vs"; v.textContent=":"; el.append(v); }
   });
 }
-function showHand({eyebrow, name, rest, lead, btn, go}){
+function showHand({eyebrow, name, rest, lead, btn, go, player}){
+  const box=$("stickerBox2");
+  if(player===0 || player===1) renderStickers(box, (S.stk[player]||[]).map((x,i)=>({...x, i})), st=>{ S.stk[player].splice(S.stk[player].indexOf(S.stk[player].find(y=>y.word===st.word && y.from===st.from)),1); save(); });
+  else box.innerHTML="";
   $("hEyebrow").textContent = eyebrow; const b=$("hBig"); b.innerHTML=""; const e=document.createElement("em"); e.textContent=name; b.append(e, rest);
   $("hLead").textContent = lead; $("bHandGo").textContent = btn; $("bHandGo").onclick = go; show("hand");
 }
@@ -506,10 +539,11 @@ document.querySelectorAll("[data-quit]").forEach(b=>b.onclick=()=> CTX.kind==="o
 function resetLocal(){ S.scores=[0,0]; S.round=1; S.speaker=0; S.lj=[[],[]]; save(); }
 function startLocal(){
   CTX={kind:"local"};
+  if(S.mode==="story"){ startLocalStory(); return; }
   if(S.round>LOCAL_WORDS){ showFinal(); return; }
   R = {};
   const sp=S.names[S.speaker], gu=S.names[1-S.speaker];
-  showHand({eyebrow:`${t("round")} ${Math.ceil(S.round/2)}/6`, name:sp, rest:t("speaks"), lead:t("lookAway",{n:gu}), btn:t("showWord"),
+  showHand({eyebrow:`${t("round")} ${Math.ceil(S.round/2)}/6`, name:sp, rest:t("speaks"), lead:t("lookAway",{n:gu}), btn:t("showWord"), player:S.speaker,
     go:()=>{ newWord(); openSpeak("local"); }});
 }
 function showFinal(){
@@ -526,6 +560,7 @@ function newWord(){
   R.word = pickWord(lang, mode); R.orig=null; R.revA=null;
 }
 function openSpeak(kind){
+  resetBusy();
   R.speakKind = kind; // local | local-re | online | online-re
   const re = kind.endsWith("-re");
   $("theWord").textContent = R.word; $("theWord").classList.toggle("long", R.word.length>18);
@@ -545,6 +580,7 @@ $("recA").onclick = ()=> recToggle($("recA"), $("tA"), buf=>{
 $("bTestA").onclick = ()=> play(R.revA, $("cA"));
 $("bDoneA").onclick = async ()=>{
   const k = R.speakKind;
+  if(k==="story"){ storySpeakDone(); return; }
   if(k==="local"){
     showHand({eyebrow:t("passPhone"), name:S.names[1-S.speaker], rest:t("turn"), lead:t("hand2lead"), btn:t("go"), go:()=>openImitate()});
     return;
@@ -578,20 +614,24 @@ function jokerUsed(kind){
   return CTX.kind==="online" ? (CTX.game.my_jokers||[]).includes(kind) : (S.lj[1-S.speaker]||[]).includes(kind);
 }
 function paintJokers(){
-  document.querySelectorAll("#jokers .joker").forEach(b=>{
+  const story = !!R.story;
+  $("jokers").hidden = story; $("jokersTitle").hidden = story; $("jokers2").hidden = story;
+  document.querySelectorAll("#jokers .joker, #jokers2 .joker").forEach(b=>{
     const k=b.dataset.j, usedNow = jokerUsed(k);
-    b.disabled = usedNow || (k==="ai" && !TTS.available());
+    const inImitate = b.closest("#jokers")!==null;
+    b.disabled = usedNow || (k==="ai" && !TTS.available()) || (k==="letters" && inImitate) || (inImitate && !!R.flipped);
     b.classList.toggle("active", (k==="letters" && !!R.hint) || (k==="ai" && !!R.ai));
     b.title = (k==="ai" && !TTS.available()) ? t("aiOnlyApp") : "";
   });
   $("hintBox").hidden = !R.hint; $("hintBox").textContent = R.hint||"";
   $("hintBox2").hidden = !R.hint; $("hintBox2").textContent = R.hint||"";
-  $("aiNote").hidden = !R.ai; $("aiNoteText").textContent = t("aiNote");
+  $("aiNote").hidden = !R.ai; $("aiNoteText").textContent = t("aiNote"); $("aiNote").querySelector("svg").style.display="";
   $("sideBLabel").textContent = R.ai ? t("sideBai") : t("sideB");
 }
 function paintSpeed(){ $("bSpeed").setAttribute("aria-pressed", S.slow?"true":"false"); $("bSpeed").querySelector(".sv").textContent = S.slow ? "0"+t("dec")+"75×" : "1×"; }
 function openImitate(){
-  R.imit=null; R.revB=null; $("bFlipB").hidden=true; $("tB").textContent=t("recStartB"); paintSpeed();
+  R.imit=null; R.revB=null; R.flipped=false;
+  $("bFlipB").querySelector("span").textContent = t("flip"); $("bFlipB").hidden=true; $("tB").textContent=t("recStartB"); paintSpeed();
   show("imitate"); paintJokers(); drawWave($("cRA"),R.revA); $("dRA").textContent=fmt(R.revA.duration);
 }
 $("bSpeed").onclick = ()=>{ S.slow=!S.slow; save(); paintSpeed(); if(playing && playing.canvas===$("cRA")) play(R.revA,$("cRA"),"rev",S.slow?0.75:1); };
@@ -601,14 +641,15 @@ $("recB").onclick = ()=> recToggle($("recB"), $("tB"), buf=>{
   $("tB").textContent=t("savedB",{d:fmt(R.imit.duration)}); $("bFlipB").hidden=false;
 });
 $("bFlipB").onclick = ()=>{
+  if(R.story){ storyImitDone(); return; }
+  R.flipped = true;
   $("guess").value=""; show("guess"); paintJokers(); drawWave($("cRB"),R.revB); $("dRB").textContent=fmt(R.revB.duration);
   play(R.revB,$("cRB"));
 };
 $("bPlayRB").onclick = ()=> play(R.revB, $("cRB"));
-$("bReRec").onclick = ()=> openImitate();
 
 /* Joker */
-document.querySelectorAll("#jokers .joker").forEach(b=> b.onclick = ()=> useJoker(b.dataset.j, b));
+document.querySelectorAll("#jokers .joker, #jokers2 .joker").forEach(b=> b.onclick = ()=> useJoker(b.dataset.j, b));
 async function useJoker(kind, btn){
   if(jokerUsed(kind) || btn.classList.contains("busy")) return;
   stopPlayback(); stopRecording(true);
@@ -662,15 +703,17 @@ async function finishGuess(guess){
   if(CTX.kind==="online"){
     const btn=$("bCheck"); busy(btn,true);
     try{
-      const r = await SB.rpc("submit_guess",{p_game:CTX.game.id, p_guess:R.guess});
-      CTX.game = r.game; R.word = r.word; R.ok = r.correct;
+      let imitPath = null;
+      if(R.imit){ try{ const path=`${CTX.game.id}/${uuid()}-imit.wav`; await SB.upload(path, await toWav(R.imit)); imitPath=path; }catch(e){} }
+      const r = await SB.rpc("submit_guess",{p_game:CTX.game.id, p_guess:R.guess, p_imit_path:imitPath});
+      CTX.game = r.game; R.word = r.word; R.ok = r.correct; R.round = r.round; R.reported = false;
       if(CTX.game.status==="finished" || CTX.game.next_action!=="speak") SB.notify(CTX.game.id);
       busy(btn,false); showResult();
     }catch(e){ busy(btn,false); toast(errText(e)); }
     return;
   }
   const guesser = 1-S.speaker;
-  R.ok = isCorrect(guess, R.word); R.guesser = guesser; R.overridden=false;
+  R.ok = isCorrect(guess, R.word); R.guesser = guesser; R.overridden=false; R.reported=false;
   if(R.ok) S.scores[guesser]++;
   save(); showResult();
 }
@@ -681,7 +724,13 @@ function showResult(){
   $("resVerdict").textContent = R.overridden ? t("counts",{n}) : R.ok ? (online ? t("correctYou") : t("correct",{n})) : (R.guess ? t("wrong") : t("gaveUp"));
   $("resGuess").textContent = R.guess ? t("typed",{g:R.guess}) : t("wordWas");
   $("resWord").textContent = R.word;
+  const spk = online ? CTX.game.opponent_name : S.names[S.speaker];
   $("bOverride").hidden = online || R.ok;
+  $("bOverride").textContent = t("overrideBy",{n:spk});
+  $("resNote").hidden = !(online && !R.ok && R.guess);
+  $("resNote").textContent = t("resNoteWrong",{n:spk});
+  $("bReport").hidden = !!R.reported;
+  $("bReport").textContent = t("report",{n:spk});
   if(online){
     const g=CTX.game;
     renderScore($("resScore"), [t("you"), g.opponent_name], [g.my_score, g.opp_score], -1);
@@ -697,6 +746,19 @@ function showResult(){
   show("result");
   if(R.ok){ confetti(); vib([40,60,40]); }
 }
+$("bReport").onclick = async ()=>{
+  if(R.reported) return;
+  const online = CTX.kind==="online", spk = online ? CTX.game.opponent_name : S.names[S.speaker];
+  if(online){
+    const btn=$("bReport"); busy(btn,true);
+    try{ await SB.rpc("report_move",{p_game:CTX.game.id, p_round:R.round}); }
+    catch(e){ busy(btn,false); toast(errText(e)); return; }
+    busy(btn,false);
+  } else {
+    S.stk = S.stk || [[],[]]; S.stk[S.speaker].push({from:S.names[1-S.speaker], word:R.word}); save();
+  }
+  R.reported = true; $("bReport").hidden = true; toast(t("reported",{n:spk})); vib(30);
+};
 $("bOverride").onclick = ()=>{
   if(R.ok) return; R.ok=true; R.overridden=true; S.scores[R.guesser]++; save(); showResult();
 };
@@ -750,8 +812,9 @@ async function openLobby(){
 }
 async function loadLobby(){
   try{
-    const [games, stats] = await Promise.all([SB.rpc("my_games"), SB.rpc("my_stats")]);
+    const [games, stats, stickers] = await Promise.all([SB.rpc("my_games"), SB.rpc("my_stats"), SB.rpc("my_stickers").catch(()=>[])]);
     LOBBY = games || [];
+    renderStickers($("stickerBox"), (stickers||[]).map(x=>({id:x.id, from:x.from||"?", word:x.word})), async st=>{ try{ await SB.rpc("remove_sticker",{p_id:st.id}); }catch(e){} });
     $("meStats").textContent = t("statsLine",{w:stats.won, l:stats.lost, d:stats.draw});
     if(current==="lobby") renderLobby();
     if(current==="home") paintHome();
@@ -766,17 +829,25 @@ function statusLine(g){
   if(g.status==="finished"){
     if(g.end_reason==="gave_up") return g.gave_up_by_me ? t("st_gaveupMe") : t("st_gaveupOpp",{n});
     if(g.end_reason==="timeout") return t("st_timeout");
+    if(g.end_reason==="story") return t("st_storyDone");
+    if(g.reviews>0) return t("st_review");
     return g.draw ? t("st_draw") : g.won ? t("st_won") : t("st_lost");
   }
+  if(g.mode==="story"){
+    if(g.status==="finished") return t("st_storyDone");
+    return g.my_turn ? t("st_story") : t("st_storyWait",{n});
+  }
   if(g.my_turn) return g.next_action==="guess" ? t("st_guess",{n}) : g.next_action==="rerecord" ? t("st_rerecord") : t("st_speak");
+  if(g.reviews>0) return t("st_review");
   if(g.can_claim_timeout) return t("st_claim",{n});
   return g.opp_action==="rerecord" ? t("st_waitRe",{n}) : t("st_wait",{n});
 }
 function renderLobby(){
   const list=$("lobbyList"); list.innerHTML="";
-  const groups = [["secTurn", LOBBY.filter(g=>g.status!=="finished" && g.my_turn)],
-                  ["secWait", LOBBY.filter(g=>g.status!=="finished" && !g.my_turn)],
-                  ["secDone", LOBBY.filter(g=>g.status==="finished")]];
+  const act = g => (g.status!=="finished" && g.my_turn) || g.reviews>0;
+  const groups = [["secTurn", LOBBY.filter(act)],
+                  ["secWait", LOBBY.filter(g=>g.status!=="finished" && !act(g))],
+                  ["secDone", LOBBY.filter(g=>g.status==="finished" && !act(g))]];
   if(!LOBBY.length){ list.innerHTML = `<div class="empty">${esc(t("emptyLobby"))}</div>`; return; }
   for(const [title, arr] of groups){
     if(!arr.length) continue;
@@ -785,14 +856,14 @@ function renderLobby(){
     if(title==="secTurn"){ const b=document.createElement("span"); b.className="badge"; b.textContent=arr.length; h.append(b); }
     sec.append(h);
     for(const g of arr){
-      const c=document.createElement("button"); c.className="gcard"+(g.my_turn && g.status!=="finished" ? " turn":"");
+      const c=document.createElement("button"); c.className="gcard"+(act(g) ? " turn":"");
       const av=document.createElement("span"); av.className="avatar"; avatar(av, g.opponent_name || "?");
       const mid=document.createElement("span"); mid.className="mid";
-      const b=document.createElement("b"); b.textContent=(g.opponent_name || t("randomOpp")) + " "; const lt=document.createElement("span"); lt.className="ltag"; lt.textContent=g.lang.toUpperCase()+" · "+g.mode; b.append(lt);
+      const b=document.createElement("b"); b.textContent=(g.opponent_name || t("randomOpp")) + " "; const lt=document.createElement("span"); lt.className="ltag"; lt.textContent=g.lang.toUpperCase()+" · "+(g.mode==="story" ? (g.story_title||"story") : g.mode); b.append(lt);
       const st=document.createElement("span"); st.className="st"; st.textContent=statusLine(g);
       mid.append(b,st);
       const sc=document.createElement("span"); sc.className="sc"+(g.status==="finished" && !g.draw ? (g.won?" won":" lost") : "");
-      sc.textContent = `${g.my_score}:${g.opp_score}`;
+      if(g.mode==="story"){ sc.innerHTML = SVG_BOOK; } else sc.textContent = `${g.my_score}:${g.opp_score}`;
       c.append(av, mid, sc);
       c.onclick = ()=> openGame(g.id);
       sec.append(c);
@@ -819,10 +890,16 @@ function paintBanners(){
 $("bInstall").onclick = async ()=>{ if(!installEvt) return; installEvt.prompt(); try{ await installEvt.userChoice; }catch(e){} installEvt=null; paintBanners(); };
 
 /* ======================================================================= Online: neues Duell */
+function paintNewMode(){
+  const story = newChoice().mode==="story";
+  $("bRandom").hidden = story; $("orRow").hidden = story;
+  $("newErr").textContent = story ? t("storyOnlyFriend") : "";
+}
+document.querySelectorAll('input[name=nmode]').forEach(r=>r.addEventListener("change", paintNewMode));
 function openNew(){
   $("nl-"+S.lang).checked=true; $("nm-"+S.mode).checked=true; $("friendName").value=""; $("newErr").textContent="";
   renderSugg((LOBBY||[]).map(g=>g.opponent_name).filter(Boolean).filter((n,i,a)=>a.indexOf(n)===i).slice(0,6));
-  show("new");
+  show("new"); paintNewMode();
 }
 function renderSugg(names){
   const box=$("sugg"); box.innerHTML="";
@@ -842,7 +919,9 @@ $("friendForm").addEventListener("submit", async e=>{
   const btn=$("bChallenge"); busy(btn,true); $("newErr").textContent="";
   try{
     const {lang,mode}=newChoice();
-    const id = await SB.rpc("create_game",{p_opponent:n, p_lang:lang, p_mode:mode});
+    const id = mode==="story"
+      ? await SB.rpc("create_story_game",{p_opponent:n, p_lang:lang, p_story:makeStory(lang)})
+      : await SB.rpc("create_game",{p_opponent:n, p_lang:lang, p_mode:mode});
     busy(btn,false); await startOnlineTurn(id);
   }catch(err){ busy(btn,false); $("newErr").textContent=errText(err); }
 });
@@ -886,10 +965,19 @@ function renderGame(){
   }
   else if(g.my_turn) st.textContent = t("g_"+g.next_action,{n:opp});
   else st.textContent = g.opp_action==="rerecord" ? t("g_waitRe",{n:opp}) : t("g_wait",{n:opp});
+  if(g.mode==="story" && g.status==="finished") st.textContent = t("g_storyDone");
+  else if(g.mode==="story" && !g.my_turn && g.status!=="finished") st.textContent = t("g_storyWait",{n:opp});
   $("lgMe").textContent = t("legendMe"); $("lgOpp").textContent = t("legendOpp",{n:opp});
+  const isStory = g.mode==="story";
+  $("gLegend").hidden = isStory; $("gRounds").hidden = isStory; $("storyBox").hidden = !isStory;
+  $("tapHint").hidden = isStory; $("tapHint").textContent = t("tapToHearImit");
+  $("gScore").hidden = isStory;
+  $("bStoryPlay").hidden = !(isStory && g.status==="finished");
+  if(isStory) renderStoryBox(g);
+  renderReviews(g);
 
   const box=$("gRounds"); box.innerHTML="";
-  for(let r=1;r<=g.rounds;r++){
+  for(let r=1;r<=(isStory?0:g.rounds);r++){
     const row=document.createElement("div"); row.className="rrow";
     const mine = g.history.find(h=>!h.by_me && h.round===r);   // ich rate
     const theirs = g.history.find(h=>h.by_me && h.round===r);  // Gegner rät mein Wort
@@ -901,6 +989,7 @@ function renderGame(){
   if(g.my_turn) $("bPlay").textContent = t("play_"+g.next_action);
   $("bClaim").hidden = !g.can_claim_timeout;
   $("bRematch").hidden = !(g.status==="finished" && g.opponent_name);
+  if(isStory && g.my_turn) $("bPlay").textContent = t("play_story");
   $("bGiveUpDuel").hidden = g.status==="finished";
   $("bGiveUpDuel").textContent = g.status==="open" ? t("cancelSearch") : t("giveUpDuel");
   $("giveUpBox").hidden = true;
@@ -911,7 +1000,8 @@ function cell(h, right, g){
   if(!h){ c.disabled=true; w.textContent=""; mk.textContent=""; c.style.opacity=".55"; }
   else if(h.state==="done"){
     c.classList.add(h.correct?"ok":"bad"); mk.textContent = h.correct ? "✓" : "✗"; w.textContent = h.word || "";
-    if(h.audio_path){ c.classList.add("playable"); c.onclick = async ()=>{ try{ play(await fetchAudio(h.audio_path), null, "fwd"); }catch(e){ toast(errText(e)); } }; }
+    const src = h.imit_path || h.audio_path;
+    if(src){ c.classList.add("playable"); c.onclick = async ()=>{ try{ const b = await fetchAudio(src); play(h.imit_path ? reverseBuffer(b) : b, null, h.imit_path ? "rev" : "fwd"); }catch(e){ toast(errText(e)); } }; }
     else c.disabled=true;
   } else {
     const now = !right && g.my_turn && g.next_action==="guess";
@@ -927,7 +1017,11 @@ $("bPlay").onclick = ()=> startOnlineTurn(CTX.game.id, CTX.game);
 $("bClaim").onclick = async ()=>{ try{ CTX.game = await SB.rpc("claim_timeout",{p_game:CTX.game.id}); renderGame(); confetti(); }catch(e){ toast(errText(e)); } };
 $("bRematch").onclick = async ()=>{
   const g=CTX.game, btn=$("bRematch"); busy(btn,true);
-  try{ const id = await SB.rpc("create_game",{p_opponent:g.opponent_name, p_lang:g.lang, p_mode:g.mode}); busy(btn,false); await startOnlineTurn(id); }
+  try{
+    const id = g.mode==="story"
+      ? await SB.rpc("create_story_game",{p_opponent:g.opponent_name, p_lang:g.lang, p_story:makeStory(g.lang)})
+      : await SB.rpc("create_game",{p_opponent:g.opponent_name, p_lang:g.lang, p_mode:g.mode});
+    busy(btn,false); await startOnlineTurn(id); }
   catch(e){ busy(btn,false); toast(errText(e)); }
 };
 $("bGiveUpDuel").onclick = ()=>{
@@ -950,6 +1044,7 @@ async function startOnlineTurn(id, view){
     if(!view) view = await SB.rpc("get_game",{p_game:id});
     CTX={kind:"online", game:view}; R={};
     if(!view.my_turn){ openGame(id, view); return; }
+    if(view.mode==="story"){ startStoryOnline(view); return; }
     if(view.next_action==="speak"){ newWord(); openSpeak("online"); return; }
     if(view.next_action==="rerecord"){ R.word = view.pending.word; openSpeak("online-re"); return; }
     // raten
@@ -961,6 +1056,212 @@ async function startOnlineTurn(id, view){
     openImitate();
   }catch(e){ $("toast").hidden=true; toast(errText(e)); openLobby(); }
 }
+
+
+/* ======================================================================= Sticker */
+const SVG_BOOK = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4.5 4 8 4 12 6c4-2 7.5-2 10-.5V19c-2.5-1.5-6-1.5-10 .5-4-2-7.5-2-10-.5z"/><path d="M12 6v13.5"/></svg>';
+function renderStickers(box, list, onRemove){
+  box.innerHTML="";
+  list.forEach((st,i)=>{
+    const b=document.createElement("button"); b.type="button"; b.className="sticker";
+    b.style.setProperty("--rot", ((i%2?1:-1)*(2+((st.id||i)*7)%5))+"deg");
+    const big=document.createElement("span"); big.textContent=t("sticker");
+    const sm=document.createElement("small"); sm.textContent = st.word ? t("stickerFromWord",{n:st.from, w:st.word}) : t("stickerFrom",{n:st.from});
+    b.append(big, sm);
+    b.onclick = ()=>{ b.classList.add("peel"); vib(20); setTimeout(()=>b.remove(), 260); onRemove(st); };
+    box.append(b);
+  });
+}
+
+/* ======================================================================= Antworten prüfen (Sprecher lässt gelten) */
+function renderReviews(g){
+  const box=$("reviewBox"); box.innerHTML="";
+  if(g.mode==="story") return;
+  for(const h of g.history.filter(h=>h.needs_review)){
+    const card=document.createElement("div"); card.className="review";
+    const p=document.createElement("p"); p.textContent = t("reviewQ",{n:g.opponent_name, w:h.word})+" ";
+    const q=document.createElement("q"); q.textContent=h.guess; p.append(q);
+    const row=document.createElement("div"); row.className="row";
+    const yes=document.createElement("button"); yes.className="btn slim primary grow"; yes.textContent=t("reviewYes");
+    const no=document.createElement("button"); no.className="btn slim grow"; no.textContent=t("reviewNo");
+    const act = async (accept, btn)=>{ busy(btn,true); try{ CTX.game = await SB.rpc("review_guess",{p_game:g.id, p_round:h.round, p_accept:accept}); renderGame(); if(accept) vib(30); }catch(e){ busy(btn,false); toast(errText(e)); } };
+    yes.onclick=()=>act(true, yes); no.onclick=()=>act(false, no);
+    if(h.imit_path){ const lis=document.createElement("button"); lis.className="btn slim listen"; lis.innerHTML = PLAY_ICON; lis.title=t("again");
+      lis.onclick=async()=>{ try{ play(reverseBuffer(await fetchAudio(h.imit_path)), null, "rev"); }catch(e){ toast(errText(e)); } }; row.append(lis); }
+    row.append(yes, no); card.append(p, row); box.append(card);
+  }
+}
+const PLAY_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12-7.5a1 1 0 0 0 0-1.72l-12-7.5A1 1 0 0 0 7 4.5z"/></svg>';
+
+/* ======================================================================= Story-Modus */
+function storyWords(token){ return token.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, ""); }
+function makeStory(lang){
+  const list = (window.RR_STORIES||{})[lang] || [];
+  const key = "story"+lang, u = used[key] || (used[key]=new Set());
+  if(u.size >= list.length) u.clear();
+  let i; do{ i=Math.floor(Math.random()*list.length); }while(u.has(i)); u.add(i);
+  const st = list[i];
+  const tokens = st.text.split(/\s+/).filter(Boolean);
+  const words = tokens.map(storyWords).map((w,j)=>w||tokens[j]);
+  const n = tokens.length, half = Math.floor(n/2) + (Math.random()<0.5 ? n%2 : 0);
+  const assign = Array.from({length:n}, (_,j)=> j<half ? 0 : 1);
+  for(let j=n-1;j>0;j--){ const k=Math.floor(Math.random()*(j+1)); [assign[j],assign[k]]=[assign[k],assign[j]]; }
+  return {title:st.title, tokens, words, assign};
+}
+function renderStoryText(el, tokens, mine, cur=-1){
+  el.innerHTML="";
+  tokens.forEach((tk,i)=>{
+    const sp=document.createElement("span"); sp.dataset.i=i;
+    if(tk==null){ sp.textContent="•••"; sp.className="mask"; } else { sp.textContent=tk; if(mine && mine[i]) sp.className="mine"; }
+    if(i===cur) sp.classList.add("cur");
+    el.append(sp, document.createTextNode(" "));
+  });
+}
+function renderStoryBox(g){
+  const st=g.story;
+  $("sbTitle").textContent = st.title;
+  renderStoryText($("sbText"), st.tokens, g.status==="finished" ? null : st.mine);
+  $("sbProgress").textContent = t("storyProgress",{a:st.imitated, n:st.n}) + (g.status==="finished" ? "" : " · " + t("storyMasked"));
+}
+
+/* Ein gemeinsamer Ablauf für lokal und online: Schritte nacheinander abarbeiten */
+let SR = null; // {steps, i, kind:'local'|'online', title, n, onDone}
+function runStory(){
+  const step = SR.steps[SR.i];
+  if(!step){ SR.onDone(); return; }
+  if(step.type==="hand"){ showHand({eyebrow:SR.title, name:step.name, rest:step.rest, lead:step.lead, btn:t("go"), player:step.player, go:()=>{ SR.i++; runStory(); }}); return; }
+  if(step.type==="speak"){ openStorySpeak(step); return; }
+  if(step.type==="imitate"){ openStoryImitate(step); return; }
+}
+function stepCount(type, player){ return SR.steps.filter(s=>s.type===type && (player===undefined || s.player===player)); }
+function openStorySpeak(step){
+  resetBusy();
+  R = {story:true, step, word:step.word};
+  const mine = SR.steps.filter(s=>s.type==="speak" && s.block===step.block);
+  const k = mine.indexOf(step)+1, m = mine.length;
+  $("theWord").textContent = step.word; $("theWord").classList.toggle("long", step.word.length>18);
+  $("tapeA").hidden=true; $("afterA").hidden=true; $("bSkip").hidden=true; $("tA").textContent=t("recStartA");
+  $("speakNote").hidden=false; $("speakNote").textContent = t("storySpeakNote",{t:SR.title, k, m});
+  $("bDoneA").textContent = k<m ? t("storyNext") : t("storyDoneBtn");
+  R.speakKind = "story";
+  show("speak");
+}
+async function openStoryImitate(step){
+  R = {story:true, step};
+  if(!step.buf){
+    toast(t("loading"), 15000);
+    try{ step.buf = await fetchAudio(step.audio_path); }catch(e){ $("toast").hidden=true; toast(errText(e)); openGame(CTX.game.id); return; }
+    $("toast").hidden=true;
+  }
+  R.orig = step.buf; R.revA = reverseBuffer(step.buf);
+  const mine = SR.steps.filter(s=>s.type==="imitate" && s.block===step.block);
+  const k = mine.indexOf(step)+1, m = mine.length;
+  openImitate();
+  $("aiNote").hidden=false; $("aiNote").querySelector("svg").style.display="none";
+  $("aiNoteText").textContent = t("storyImitNote",{t:SR.title, k, m});
+  $("bFlipB").querySelector("span").textContent = (k<m ? t("storyNext") : t("storyDoneBtn"));
+}
+async function storySpeakDone(){
+  const step=R.step, btn=$("bDoneA");
+  if(SR.kind==="online"){
+    busy(btn,true,t("uploading"));
+    try{
+      const path=`${CTX.game.id}/${uuid()}.wav`;
+      await SB.upload(path, await toWav(R.orig));
+      CTX.game = await SB.rpc("story_speak",{p_game:CTX.game.id, p_idx:step.idx, p_path:path});
+    }catch(e){ busy(btn,false); toast(errText(e)); return; }
+  } else LS.clips[step.idx].orig = R.orig;
+  SR.i++; runStory();
+}
+async function storyImitDone(){
+  const step=R.step, btn=$("bFlipB");
+  if(SR.kind==="online"){
+    busy(btn,true,t("uploading"));
+    try{
+      const path=`${CTX.game.id}/${uuid()}-imit.wav`;
+      await SB.upload(path, await toWav(R.imit));
+      CTX.game = await SB.rpc("story_imitate",{p_game:CTX.game.id, p_idx:step.idx, p_path:path});
+    }catch(e){ busy(btn,false); toast(errText(e)); return; }
+  } else LS.clips[step.idx].imit = R.imit;
+  SR.i++; runStory();
+}
+
+/* online */
+function startStoryOnline(view){
+  const st=view.story;
+  const steps = [
+    ...st.todo_imitate.map(x=>({type:"imitate", idx:x.idx, audio_path:x.audio_path, block:"i"})),
+    ...st.todo_speak.map(x=>({type:"speak", idx:x.idx, word:x.word, block:"s"}))];
+  SR = {kind:"online", steps, i:0, title:st.title, onDone: ()=>{
+    SB.notify(CTX.game.id);
+    if(CTX.game.status==="finished"){ toast(t("storyAllDone"), 4000); openStoryPlayer(); }
+    else showSent(t("sentLead",{n:CTX.game.opponent_name}));
+  }};
+  runStory();
+}
+
+/* lokal: Spieler 1 spricht seine Wörter, Spieler 2 spricht nach + spricht eigene, Spieler 1 spricht nach */
+let LS = null;
+function startLocalStory(){
+  const st = makeStory(S.lang);
+  LS = {title:st.title, tokens:st.tokens, words:st.words, assign:st.assign, clips:st.tokens.map(()=>({}))};
+  const idx = p => st.assign.map((a,i)=>a===p?i:-1).filter(i=>i>=0);
+  const [w0, w1] = [idx(0), idx(1)];
+  const n0=S.names[0], n1=S.names[1];
+  const steps = [
+    {type:"hand", player:0, name:n0, rest:t("storyHandSpeak"), lead:t("storyHandSpeakLead",{n:n1, c:w0.length})},
+    ...w0.map(i=>({type:"speak", idx:i, word:st.words[i], player:0, block:"s0"})),
+    {type:"hand", player:1, name:n1, rest:t("storyHandImit"), lead:t("storyHandImitLead",{c:w0.length})},
+    ...w0.map(i=>({type:"imitate", idx:i, player:1, block:"i1"})),
+    {type:"hand", player:1, name:n1, rest:t("storyHandSpeak"), lead:t("storyHandSpeakLead",{n:n0, c:w1.length})},
+    ...w1.map(i=>({type:"speak", idx:i, word:st.words[i], player:1, block:"s1"})),
+    {type:"hand", player:0, name:n0, rest:t("storyHandImit"), lead:t("storyHandImitLead",{c:w1.length})},
+    ...w1.map(i=>({type:"imitate", idx:i, player:0, block:"i0"}))];
+  // Aufnahmen für das Nachsprechen aus dem Speicher holen
+  steps.forEach(s=>{ if(s.type==="imitate") Object.defineProperty(s, "buf", {get:()=>LS.clips[s.idx].orig, configurable:true}); });
+  SR = {kind:"local", steps, i:0, title:st.title, onDone: ()=>{ toast(t("storyAllDone"), 3000); openStoryPlayer(); }};
+  runStory();
+}
+
+/* Vortrag */
+let SEQ = null;
+function stopSequence(){ if(SEQ){ SEQ.stop=true; try{ SEQ.src && SEQ.src.stop(); }catch(e){} SEQ=null; document.querySelectorAll("#stText span.cur").forEach(x=>x.classList.remove("cur")); } }
+async function openStoryPlayer(){
+  let title, tokens, clips;
+  if(CTX.kind==="online"){
+    const g = CTX.game; title=g.story.title; tokens=g.story.tokens;
+    toast(t("storyLoading"), 30000);
+    try{
+      clips = await Promise.all(g.story.clips.map(async c=>({orig: await fetchAudio(c.audio_path), imit: await fetchAudio(c.imit_path)})));
+    }catch(e){ $("toast").hidden=true; toast(errText(e)); return; }
+    $("toast").hidden=true;
+    $("bStoryNew").hidden = true;
+  } else {
+    title=LS.title; tokens=LS.tokens; clips=LS.clips; $("bStoryNew").hidden=false;
+  }
+  SR = Object.assign(SR||{}, {player:{title, tokens, clips}});
+  $("stTitle").textContent = title; renderStoryText($("stText"), tokens, null);
+  show("story"); confetti();
+}
+async function playSequence(mode){
+  stopSequence(); stopPlayback();
+  const {tokens, clips} = SR.player; const me = SEQ = {stop:false};
+  const spans = [...$("stText").querySelectorAll("span[data-i]")];
+  for(let i=0;i<clips.length;i++){
+    if(me.stop) return;
+    const c=clips[i]; const buf = mode==="perform" ? (c.imit ? reverseBuffer(c.imit) : null) : c.orig;
+    spans.forEach(x=>x.classList.toggle("cur", +x.dataset.i===i));
+    if(!buf) continue;
+    await new Promise(res=>{ const ctx2=audio(); const src=ctx2.createBufferSource(); src.buffer=buf; src.connect(ctx2.destination); src.onended=res; src.start(); me.src=src; reels(mode==="perform"?"rev":"fwd"); });
+    await new Promise(r=>setTimeout(r, 90));
+  }
+  if(SEQ===me){ SEQ=null; reels(null); spans.forEach(x=>x.classList.remove("cur")); }
+}
+$("bPerform").onclick = ()=> playSequence("perform");
+$("bOriginals").onclick = ()=> playSequence("orig");
+$("bStoryNew").onclick = ()=>{ stopSequence(); startLocalStory(); };
+$("bStoryBack").onclick = ()=>{ stopSequence(); CTX.kind==="online" ? openGame(CTX.game.id) : show("home"); };
+$("bStoryPlay").onclick = ()=> openStoryPlayer();
 
 /* ======================================================================= Push-Benachrichtigungen */
 function b64uToBytes(s){ const p="=".repeat((4-s.length%4)%4); const b=atob((s+p).replace(/-/g,"+").replace(/_/g,"/")); return Uint8Array.from(b, c=>c.charCodeAt(0)); }

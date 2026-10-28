@@ -96,6 +96,9 @@ const TEXT: Record<string, Record<string, (n: string, a: number, b: number) => [
     rerecord:  (n) => [`${n} will's nochmal hören`, "Sprich dein Wort bitte noch einmal ein."],
     finished:  (n, a, b) => [`Duell gegen ${n} beendet`, `Endstand ${a}:${b}. Schau dir das Ergebnis an.`],
     gaveup:    (n) => [`${n} hat aufgegeben`, "Du gewinnst das Duell!"],
+    storyStart:(n) => [`${n} startet eine Geschichte!`, "Hör dir die Rückwärts-Wörter an und sprich sie nach."],
+    story:     (n) => [`${n} hat gespielt`, "Du bist dran in eurer Rückwärts-Geschichte."],
+    storyDone: (n) => [`Eure Geschichte ist fertig!`, `${n} hat das letzte Wort nachgesprochen. Hör sie dir an.`],
   },
   en: {
     challenge: (n) => [`${n} challenges you!`, "New Backwords duel: listen to the first word."],
@@ -103,6 +106,9 @@ const TEXT: Record<string, Record<string, (n: string, a: number, b: number) => [
     rerecord:  (n) => [`${n} wants to hear it again`, "Please record your word one more time."],
     finished:  (n, a, b) => [`Duel with ${n} is over`, `Final score ${a}:${b}. Check the result.`],
     gaveup:    (n) => [`${n} gave up`, "You win the duel!"],
+    storyStart:(n) => [`${n} started a story!`, "Listen to the backwards words and copy them."],
+    story:     (n) => [`${n} played`, "Your turn in your backwards story."],
+    storyDone: (n) => [`Your story is finished!`, `${n} copied the last word. Listen to it now.`],
   },
 };
 
@@ -137,13 +143,18 @@ export async function handle(req: Request, fetchFn: typeof fetch = fetch): Promi
     const { game_id } = await req.json();
     if (typeof game_id !== "string" || !/^[0-9a-f-]{36}$/i.test(game_id)) return json({ error: "bad_request" }, 400);
 
-    const g = (await rest(`games?id=eq.${game_id}&select=id,p1,p2,turn,status,lang,next_action,score1,score2,end_reason,gave_up_by`))[0];
+    const g = (await rest(`games?id=eq.${game_id}&select=id,p1,p2,turn,status,lang,mode,next_action,score1,score2,end_reason,gave_up_by`))[0];
     if (!g || (me !== g.p1 && me !== g.p2)) return json({ error: "not_found" }, 404);
     const opp = me === g.p1 ? g.p2 : g.p1;
     if (!opp) return json({ sent: 0 });
 
     let kind = "";
-    if (g.status === "active" && g.turn === opp) {
+    if (g.status === "active" && g.turn === opp && g.mode === "story") {
+      const done = await rest(`moves?game_id=eq.${game_id}&imit_path=not.is.null&select=id`);
+      kind = done.length === 0 ? "storyStart" : "story";
+    } else if (g.status === "finished" && g.end_reason === "story") {
+      kind = "storyDone";
+    } else if (g.status === "active" && g.turn === opp) {
       kind = g.next_action === "rerecord" ? "rerecord" : "guess";
       if (kind === "guess") {
         const moves = await rest(`moves?game_id=eq.${game_id}&select=id`);

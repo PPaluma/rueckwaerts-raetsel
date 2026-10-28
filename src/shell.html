@@ -50,6 +50,7 @@ __CSS__
       <label class="mode"><input type="radio" name="mode" value="easy" id="m-easy"><span class="radio"></span><span><b>Easy Mode</b><span class="ex" data-t="exEasy"></span></span><span class="meter" data-l="1"><i></i><i></i><i></i></span></label>
       <label class="mode"><input type="radio" name="mode" value="hard" id="m-hard"><span class="radio"></span><span><b>Hard Mode</b><span class="ex" data-t="exHard"></span></span><span class="meter" data-l="2"><i></i><i></i><i></i></span></label>
       <label class="mode"><input type="radio" name="mode" value="extreme" id="m-extreme"><span class="radio"></span><span><b>Extreme Mode</b><span class="ex" data-t="exExtreme"></span></span><span class="meter" data-l="3"><i></i><i></i><i></i></span></label>
+      <label class="mode"><input type="radio" name="mode" value="story" id="m-story"><span class="radio"></span><span><b>Story Mode</b><span class="ex" data-t="exStory"></span></span><span class="storyic">__I_BOOK__</span></label>
     </div>
     <div class="names">
       <label class="field"><span data-t="p1"></span><input type="text" id="n1" maxlength="16" autocomplete="off"></label>
@@ -87,6 +88,7 @@ __CSS__
       <div class="grow"><b id="meName"></b><span class="small" id="meStats"></span></div>
       <button class="iconbtn" id="bSettings2" aria-label="">__I_GEAR__</button>
     </div>
+    <div class="stickers" id="stickerBox"></div>
     <div class="banner" id="pushBanner" hidden><p id="pushText"></p><button class="btn primary" id="bPush" data-t="pushOn"></button></div>
     <div class="banner" id="installBanner" hidden><p id="installText"></p><button class="btn" id="bInstall" data-t="installBtn"></button></div>
     <button class="btn primary" id="bNew" data-t="newDuel"></button>
@@ -105,13 +107,14 @@ __CSS__
       <label class="mode"><input type="radio" name="nmode" value="easy" id="nm-easy"><span class="radio"></span><span><b>Easy</b><span class="ex" data-t="exEasy"></span></span><span class="meter" data-l="1"><i></i><i></i><i></i></span></label>
       <label class="mode"><input type="radio" name="nmode" value="hard" id="nm-hard"><span class="radio"></span><span><b>Hard</b><span class="ex" data-t="exHard"></span></span><span class="meter" data-l="2"><i></i><i></i><i></i></span></label>
       <label class="mode"><input type="radio" name="nmode" value="extreme" id="nm-extreme"><span class="radio"></span><span><b>Extreme</b><span class="ex" data-t="exExtreme"></span></span><span class="meter" data-l="3"><i></i><i></i><i></i></span></label>
+      <label class="mode"><input type="radio" name="nmode" value="story" id="nm-story"><span class="radio"></span><span><b>Story</b><span class="ex" data-t="exStory"></span></span><span class="storyic">__I_BOOK__</span></label>
     </div>
     <form id="friendForm" class="stack" novalidate>
       <label class="field"><span data-t="vsFriend"></span><input type="text" id="friendName" maxlength="16" autocomplete="off" autocapitalize="none" spellcheck="false"></label>
       <div class="sugg" id="sugg"></div>
       <button class="btn primary" type="submit" id="bChallenge" data-t="challenge"></button>
     </form>
-    <div class="or" data-t="orText"></div>
+    <div class="or" id="orRow" data-t="orText"></div>
     <button class="btn" id="bRandom" data-t="randomBtn"></button>
     <span class="err" id="newErr"></span>
   </section>
@@ -125,12 +128,20 @@ __CSS__
       <div class="side"><span class="avatar lg" id="gOppAv"></span><b id="gOppName"></b></div>
     </div>
     <p class="status" id="gStatus"></p>
-    <div class="legend"><span id="lgMe"></span><span></span><span id="lgOpp"></span></div>
+    <div class="stack" id="reviewBox"></div>
+    <div class="storybox" id="storyBox" hidden>
+      <span class="eyebrow" data-t="storyEyebrow"></span>
+      <b id="sbTitle"></b>
+      <p class="storytext" id="sbText"></p>
+      <span class="small" id="sbProgress"></span>
+    </div>
+    <div class="legend" id="gLegend"><span id="lgMe"></span><span></span><span id="lgOpp"></span></div>
     <div class="rounds" id="gRounds"></div>
-    <p class="small center" data-t="tapToHear"></p>
+    <p class="small center" id="tapHint" data-t="tapToHear"></p>
     <div class="spacer"></div>
     <div class="stack" id="gActions">
       <button class="btn primary" id="bPlay" hidden></button>
+      <button class="btn primary" id="bStoryPlay" data-t="storyListen" hidden></button>
       <button class="btn primary" id="bClaim" data-t="claimBtn" hidden></button>
       <button class="btn primary" id="bRematch" data-t="rematch" hidden></button>
       <button class="btn ghost" id="bGiveUpDuel" hidden></button>
@@ -149,6 +160,7 @@ __CSS__
       <span class="eyebrow" id="hEyebrow"></span>
       <div class="big" id="hBig"></div>
       <p class="lead" id="hLead"></p>
+      <div class="stickers" id="stickerBox2"></div>
     </div>
     <button class="btn primary" id="bHandGo"></button>
   </section>
@@ -176,11 +188,11 @@ __CSS__
   <section class="screen" id="s-imitate" hidden>
     <div class="topbar"><span class="mb"></span><button data-quit data-t="menu"></button></div>
     <div class="steps"><i class="on"></i><i class="on"></i><i></i></div>
-    <span class="eyebrow" data-t="jokersTitle"></span>
+    <span class="eyebrow" id="jokersTitle" data-t="jokersTitle"></span>
     <div class="jokers" id="jokers">
       <button class="joker" data-j="ai">__I_AI__<span data-t="jAi"></span></button>
       <button class="joker" data-j="again">__I_AGAIN__<span data-t="jAgain"></span></button>
-      <button class="joker" data-j="letters">__I_LETTERS__<span data-t="jLetters"></span></button>
+      <button class="joker" data-j="letters">__I_LETTERS__<span data-t="jLetters"></span><small data-t="jLater"></small></button>
     </div>
     <div class="hint" id="hintBox" hidden></div>
     <p class="note ai" id="aiNote" hidden>__I_AI__<span id="aiNoteText"></span></p>
@@ -206,9 +218,9 @@ __CSS__
     <div class="cassette small" data-cas>__CASSETTE__</div>
     <span class="eyebrow" data-t="step3"></span>
     <div class="tape"><canvas id="cRB"></canvas><div class="cap"><span data-t="youRev"></span><span id="dRB"></span></div></div>
-    <div class="stack" style="gap:10px">
-      <button class="btn" id="bPlayRB">__PLAY__ <span data-t="again"></span></button>
-      <button class="btn ghost" id="bReRec" data-t="reRec"></button>
+    <button class="btn" id="bPlayRB">__PLAY__ <span data-t="again"></span></button>
+    <div class="jokers one" id="jokers2">
+      <button class="joker wide" data-j="letters">__I_LETTERS__<span data-t="jLettersNow"></span></button>
     </div>
     <div class="hint" id="hintBox2" hidden></div>
     <form id="guessForm" class="stack">
@@ -226,7 +238,9 @@ __CSS__
       <span class="sub" id="resGuess"></span>
       <span class="sol" id="resWord"></span>
     </div>
-    <button class="btn" id="bOverride" hidden data-t="override"></button>
+    <p class="note" id="resNote" hidden></p>
+    <button class="btn" id="bOverride" hidden></button>
+    <button class="btn ghost" id="bReport" hidden></button>
     <div class="score" id="resScore"></div>
     <button class="btn" id="bPlayOrig">__PLAY__ <span data-t="origFwd"></span></button>
     <div class="spacer"></div>
@@ -243,6 +257,20 @@ __CSS__
     </div>
     <div class="banner" id="sentPush" hidden><p data-t="pushAsk"></p><button class="btn primary" id="bPush2" data-t="pushOn"></button></div>
     <button class="btn primary" data-lobby data-t="toLobby"></button>
+  </section>
+
+  <!-- GESCHICHTE -->
+  <section class="screen" id="s-story" hidden>
+    <div class="topbar"><button id="bStoryBack" data-t="back"></button><span class="eyebrow" data-t="storyEyebrow"></span></div>
+    <h2 id="stTitle"></h2>
+    <div class="cassette small" data-cas>__CASSETTE__</div>
+    <p class="storytext big" id="stText"></p>
+    <div class="spacer"></div>
+    <div class="stack">
+      <button class="btn primary" id="bPerform">__PLAY__ <span data-t="storyPerform"></span></button>
+      <button class="btn" id="bOriginals">__PLAY__ <span data-t="storyOriginals"></span></button>
+      <button class="btn ghost" id="bStoryNew" data-t="storyNew" hidden></button>
+    </div>
   </section>
 
   <!-- SPIELENDE (lokal) -->

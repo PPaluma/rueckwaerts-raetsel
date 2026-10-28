@@ -39,13 +39,16 @@ SVG = {
  "I_AI": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="3"/><path d="M12 7V4"/><circle cx="12" cy="3" r="1"/><circle cx="9" cy="12.5" r="1.3" fill="currentColor"/><circle cx="15" cy="12.5" r="1.3" fill="currentColor"/><path d="M9.5 16h5"/><path d="M2 11v4M22 11v4"/></svg>',
  "I_AGAIN": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="10" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 11.6 4"/><path d="M12 17.5V21"/><path d="M18.5 11.5V15h-3.5"/></svg>',
  "I_LETTERS": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16l3.5-9 3.5 9"/><path d="M4.3 13h4.4"/><path d="M13 17h3M18 17h3"/></svg>',
+ "I_BOOK": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4.5 4 8 4 12 6c4-2 7.5-2 10-.5V19c-2.5-1.5-6-1.5-10 .5-4-2-7.5-2-10-.5z"/><path d="M12 6v13.5"/></svg>',
  "I_SENT": '<svg viewBox="0 0 24 24" fill="none" stroke="#FFB547" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>',
 }
 
 def words_js():
     w = {"de": json.load(open(os.path.join(SRC, "words_de.json"), encoding="utf8")),
          "en": json.load(open(os.path.join(SRC, "words_en.json"), encoding="utf8"))}
-    return "window.RR_WORDS=" + json.dumps(w, ensure_ascii=False, separators=(",", ":")) + ";"
+    st = json.load(open(os.path.join(SRC, "stories.json"), encoding="utf8"))
+    return ("window.RR_WORDS=" + json.dumps(w, ensure_ascii=False, separators=(",", ":")) + ";\n"
+            "window.RR_STORIES=" + json.dumps(st, ensure_ascii=False, separators=(",", ":")) + ";")
 
 def config_js(extra):
     c = dict(CONFIG); c.update(extra)

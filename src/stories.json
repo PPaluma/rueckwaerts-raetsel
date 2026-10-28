@@ -1,0 +1,30 @@
+{
+  "de": [
+    {"title": "Der Igel im Supermarkt", "text": "Ein kleiner Igel ging in den Supermarkt. Er kaufte zwölf Bananen und einen Regenschirm. An der Kasse fing er laut an zu singen."},
+    {"title": "Omas Motorrad", "text": "Meine Oma fährt jeden Sonntag mit dem Motorrad zum Bäcker. Dort bestellt sie immer drei Brezeln und eine Gurke."},
+    {"title": "Der müde Pirat", "text": "Der Pirat war so müde, dass er auf seinem Schatz einschlief. Am Morgen klebte eine Goldmünze an seiner Nase."},
+    {"title": "Die tanzende Kuh", "text": "Auf der Wiese tanzte eine Kuh im rosa Kleid. Alle Hühner klatschten, nur der Hahn war ein bisschen neidisch."},
+    {"title": "Das Raumschiff aus Käse", "text": "Ein Astronaut baute ein Raumschiff aus Käse. Leider hatte eine Maus großen Hunger und das Raumschiff hatte plötzlich Löcher."},
+    {"title": "Der Hund mit Brille", "text": "Unser Hund trägt seit gestern eine Brille. Jetzt liest er jeden Abend die Zeitung und schimpft über das Wetter."},
+    {"title": "Pizza im Schwimmbad", "text": "Im Schwimmbad schwamm plötzlich eine riesige Pizza vorbei. Der Bademeister pfiff und alle Kinder sprangen hinterher."},
+    {"title": "Der singende Kühlschrank", "text": "Jede Nacht um drei singt unser Kühlschrank ein Lied. Die Butter tanzt dazu und der Käse holt die Gitarre."},
+    {"title": "Die Schnecke im Urlaub", "text": "Die Schnecke wollte nach Italien reisen. Nach zehn Jahren kam sie endlich an und bestellte sofort ein Eis."},
+    {"title": "Opa und der Drache", "text": "Opa hat im Keller einen Drachen gefunden. Jetzt grillen wir jeden Freitag Würstchen, ohne Streichhölzer zu benutzen."},
+    {"title": "Die verliebte Giraffe", "text": "Eine Giraffe verliebte sich in eine Laterne. Jeden Abend brachte sie ihr Blumen, doch die Laterne blieb ganz still."},
+    {"title": "Chaos in der Schule", "text": "Heute kam ein Pinguin in unsere Klasse. Er konnte besser rechnen als die Lehrerin und aß dann alle Fischstäbchen."}
+  ],
+  "en": [
+    {"title": "The Hedgehog at the Store", "text": "A tiny hedgehog went to the supermarket. He bought twelve bananas and an umbrella. At the checkout he started singing very loudly."},
+    {"title": "Grandma's Motorbike", "text": "Every Sunday my grandma rides her motorbike to the bakery. She always orders three pretzels and a pickle."},
+    {"title": "The Sleepy Pirate", "text": "The pirate was so tired that he fell asleep on his treasure. In the morning a gold coin was stuck to his nose."},
+    {"title": "The Dancing Cow", "text": "In the meadow a cow was dancing in a pink dress. All the chickens clapped, but the rooster was a little jealous."},
+    {"title": "The Cheese Rocket", "text": "An astronaut built a rocket out of cheese. Sadly a hungry mouse came along and suddenly the rocket was full of holes."},
+    {"title": "The Dog with Glasses", "text": "Since yesterday our dog wears glasses. Now he reads the newspaper every evening and complains about the weather."},
+    {"title": "Pizza in the Pool", "text": "Suddenly a giant pizza floated through the swimming pool. The lifeguard whistled and all the kids jumped after it."},
+    {"title": "The Singing Fridge", "text": "Every night at three our fridge sings a song. The butter dances along and the cheese grabs the guitar."},
+    {"title": "The Snail on Vacation", "text": "The snail wanted to travel to Italy. After ten years it finally arrived and ordered an ice cream right away."},
+    {"title": "Grandpa and the Dragon", "text": "Grandpa found a dragon in the basement. Now we grill sausages every Friday without using any matches."},
+    {"title": "The Giraffe in Love", "text": "A giraffe fell in love with a street lamp. Every evening she brought it flowers, but the lamp stayed completely quiet."},
+    {"title": "Chaos at School", "text": "Today a penguin came into our classroom. He was better at math than the teacher and then ate all the fish sticks."}
+  ]
+}

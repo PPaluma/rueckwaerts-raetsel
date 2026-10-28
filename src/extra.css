@@ -107,3 +107,33 @@ input[type=text]:focus,input[type=password]:focus{border-color:var(--amber);outl
 .busy{pointer-events:none;opacity:.7}
 @media (prefers-reduced-motion: reduce){.spin{animation-duration:2s}}
 .ltag{font:500 .66rem var(--f-mono);letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin-left:4px;vertical-align:1px}
+
+/* ---------- v2: Sticker, Story, Prüfen */
+.stickers{display:flex;flex-wrap:wrap;gap:10px}
+.stickers:empty{display:none}
+.sticker{appearance:none;border:0;cursor:pointer;position:relative;padding:10px 14px 8px;border-radius:10px;background:#FFE14D;color:#2A1A00;
+  font:800 1.05rem/1 var(--f-display);letter-spacing:.02em;transform:rotate(var(--rot,-3deg));box-shadow:0 6px 0 rgba(0,0,0,.25),0 0 0 3px #fff inset;
+  display:flex;flex-direction:column;align-items:flex-start;gap:3px;transition:transform .25s,opacity .25s}
+.sticker small{font:600 .68rem var(--f-body);opacity:.75;letter-spacing:0}
+.sticker:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.sticker.peel{transform:rotate(25deg) translate(40px,-20px) scale(.6);opacity:0}
+.storyic{color:var(--amber)} .storyic svg{width:22px;height:22px}
+.storybox{background:var(--surface);border-radius:16px;padding:14px 16px;box-shadow:inset 0 0 0 1.5px var(--line);display:flex;flex-direction:column;gap:6px}
+.storybox b{font-family:var(--f-display);font-size:1.15rem}
+.storytext{line-height:1.7;margin:0;color:var(--ink)}
+.storytext span{border-radius:6px;padding:1px 3px;transition:background .15s,color .15s}
+.storytext span.mask{color:var(--muted);letter-spacing:.1em}
+.storytext span.mine{color:var(--amber)}
+.storytext span.cur{background:var(--amber);color:#2A1A00}
+.storytext.big{font:600 1.25rem/1.75 var(--f-body);background:var(--label);color:var(--label-ink);border-radius:14px;padding:14px 16px}
+.storytext.big span.cur{background:var(--pink);color:#fff}
+.review{background:var(--surface2);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px;box-shadow:inset 0 0 0 2px var(--amber)}
+.review p{font-size:.95rem}
+.review q{font-weight:800;color:var(--amber);quotes:"„" "“"}
+.jokers.one{grid-template-columns:1fr}
+.joker.wide{flex-direction:row;justify-content:center;gap:10px;padding:12px;font-size:.92rem}
+.joker small{font:600 .62rem var(--f-body);opacity:.8}
+.joker:not([disabled]) small{display:none}
+.review .row .btn.listen{flex:none;width:52px;padding:0}
+.review .row .grow{flex:1;min-width:0}
+.review .btn.slim{font-size:.9rem}
