@@ -4,5 +4,5 @@
 <rect x="480" y="0" width="22" height="14" fill="#f6d58e" stroke="#6a8aa0"/><text x="510" y="12" font-size="12">Zuschnitt (Zahl = Maß in cm)</text><rect x="0" y="70" width="22" height="14" fill="#d9cdb8" stroke="#6a8aa0"/><text x="30" y="82" font-size="12">ganze Bodenfliese</text>
 <line x1="740" y1="7" x2="770" y2="7" stroke="#1f4e79" stroke-width="2.5"/><text x="778" y="12" font-size="12">Fliesenkante 2,21 m ab FFB</text>
 <text x="0" y="40" font-size="11.5" fill="#444">Fugen 3 mm · Reihenhöhen von unten: 26,6 / 6× 30 / 12,3 cm (bis 2,21 ab FFB = 2,35 ab RFB) → Fuge genau auf Fensterbank (0,875) · Maße aus Plan „03A Dachgeschoss“, auf der Baustelle nachmessen!</text>
-<text x="0" y="58" font-size="11.5" fill="#444">Decke/Dachschräge vereinfacht als 2,70 m dargestellt. Ansichten jeweils „vom Raum aus auf die Wand geschaut“. Lage und Form der Badewanne wie Werkplan.</text>
+<text x="0" y="58" font-size="11.5" fill="#444">Decke/Dachschräge vereinfacht als 2,70 m dargestellt. Ansichten jeweils „vom Raum aus auf die Wand geschaut“. Badewanne freistehend, linke Längsseite parallel zur Wand, 10 cm vor der Vorwand.</text>
 </g></svg>

@@ -157,11 +157,11 @@ Eface(WALL_E,0,1.215,0,CH,RW); Eface(WALL_E,2.11,RD,0,CH,RW); Eface(WALL_E,1.215
 // door leaf closed (hinge south, handle north)
 box(.04,2.0,.86,RW+.03,1.0,(1.215+2.11)/2,white);
 const chrome=new THREE.MeshStandardMaterial({color:0xd0d4d8,metalness:.55,roughness:.22});
-box(.14,.02,.02,RW-.04,1.05,2.03,chrome);
+box(.14,.02,.02,RW-.04,1.05,1.30,chrome);
 // door frame
 box(.06,2.04,.04,RW-.02,1.02,1.215,white); box(.06,2.04,.04,RW-.02,1.02,2.11,white); box(.06,.04,.94,RW-.02,2.03,1.66,white);
 // switch (double) at z 1.09 h 1.05
-box(.012,.085,.16,RW-.006,1.05,2.26,white);
+box(.012,.085,.16,RW-.006,1.05,1.09,white);
 // HKV cover
 box(.01,.66,.75,RW-.005,.33,.59,new THREE.MeshStandardMaterial({color:0xf3f1ec,roughness:.6}));
 // ceiling
@@ -210,7 +210,7 @@ function hull(circles,n=96){const pts=[];for(const [cx,cz,r] of circles)for(let 
  const lo=[],up=[]; for(const p of pts){while(lo.length>=2&&cr(lo[lo.length-2],lo[lo.length-1],p)<=0)lo.pop();lo.push(p);}
  for(const p of pts.slice().reverse()){while(up.length>=2&&cr(up[up.length-2],up[up.length-1],p)<=0)up.pop();up.push(p);} return lo.slice(0,-1).concat(up.slice(0,-1));}
 {
- const outer=hull([[.507,.800,.30],[.507,1.870,.35]]), inner=hull([[.507,.820,.24],[.507,1.830,.29]]);
+ const outer=hull([[.532,.800,.30],[.582,1.870,.35]]), inner=hull([[.532,.820,.24],[.582,1.830,.29]]);
  const sh=new THREE.Shape(outer.map(([x,z])=>new THREE.Vector2(x,-z))); const hole=new THREE.Path(inner.map(([x,z])=>new THREE.Vector2(x,-z)).reverse()); sh.holes.push(hole);
  const g=new THREE.ExtrudeGeometry(sh,{depth:.58,bevelEnabled:true,bevelThickness:.015,bevelSize:.015,bevelSegments:4,curveSegments:48});
  g.rotateX(-Math.PI/2); const m=new THREE.Mesh(g,ceramic); m.castShadow=true; m.receiveShadow=true; scene.add(m);
@@ -230,7 +230,7 @@ function hull(circles,n=96){const pts=[];for(const [cx,cz,r] of circles)for(let 
  box(.6,.03,.06,1.96,1.95,RD-.04,new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xfff3dd,emissiveIntensity:2.2}),false);}
 // sockets
 for(const [x] of [[1.31],[2.61]]) box(.08,.08,.01,x,1.25,RD-.006,white,false);
-box(.01,.08,.08,.006,2.45,.157,white,false);
+box(.01,.08,.08,.006,2.45,.232,white,false);
 // ---------- fittings shower ----------
 {const X0=2.473;
  // thermostat plate
@@ -264,8 +264,8 @@ box(.01,.08,.08,.006,2.45,.157,white,false);
  const st=new THREE.Mesh(new THREE.CylinderGeometry(.016,.016,.23,24),chrome); st.position.set(X+.04,.735,1.74); scene.add(st);
 }
 // towel heater (optional) x .332..832 y .5..1.7 z ~.04
-{const zc=.045; for(const x of [.267,.747]){const t=new THREE.Mesh(new THREE.CylinderGeometry(.014,.014,1.2,16),chrome); t.position.set(x,1.1,zc); scene.add(t);}
- for(let i=0;i<9;i++){const y=.56+i*.135; const r=new THREE.Mesh(new THREE.CylinderGeometry(.01,.01,.48,16),chrome); r.rotation.z=Math.PI/2; r.position.set(.507,y,zc); scene.add(r);}}
+{const zc=.045; for(const x of [.342,.822]){const t=new THREE.Mesh(new THREE.CylinderGeometry(.014,.014,1.2,16),chrome); t.position.set(x,1.1,zc); scene.add(t);}
+ for(let i=0;i<9;i++){const y=.56+i*.135; const r=new THREE.Mesh(new THREE.CylinderGeometry(.01,.01,.48,16),chrome); r.rotation.z=Math.PI/2; r.position.set(.582,y,zc); scene.add(r);}}
 // ceiling light
 {const l=new THREE.Mesh(new THREE.CylinderGeometry(.18,.18,.04,48),new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xfff4e0,emissiveIntensity:1.6})); l.position.set(1.875,CH-.02,1.37); l.userData.cut=true; scene.add(l);}
 // ---------- lights ----------
