@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1058" height="800" viewBox="0 0 1058 800" font-family="Helvetica, Arial, sans-serif"><defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1a7f8e"/></marker><marker id="arrw" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#fff"/></marker></defs><rect width="100%" height="100%" fill="white"/><g transform="translate(0,0)">
 <text x="60" y="24" font-size="17" font-weight="bold" fill="#111">4 · Wand Waschbecken (Süden)</text>
-<text x="60" y="44" font-size="11.5" fill="#444">Blick nach Süden · Fliesen nur auf der Vorwand (bis 1,175 m) und oben auf der Ablage, darüber Putz · die ersten 1,00 m an der Tür-Seite nur Sockel</text>
+<text x="60" y="44" font-size="11.5" fill="#444">Blick nach Süden · Fliesen nur auf der Vorwand (bis 1,125 m) und oben auf der Ablage, darüber Putz · die ersten 1,00 m an der Tür-Seite nur Sockel</text>
 <rect x="60" y="70" width="937.5" height="675.0" fill="#f3efe9" stroke="#222" stroke-width="2"/>
 <rect x="310.0" y="678.5" width="150.0" height="66.5" fill="#e2edf4" stroke="#6a8aa0" stroke-width="0.8"/>
 <rect x="460.8" y="678.5" width="150.0" height="66.5" fill="#e2edf4" stroke="#6a8aa0" stroke-width="0.8"/>
@@ -20,40 +20,40 @@
 <rect x="762.2" y="527.0" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
 <rect x="913.0" y="527.0" width="80.8" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
 <text x="953.4" y="568.2" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">32,3</text>
-<rect x="310.0" y="451.2" width="80.0" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="350.0" y="492.5" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">32,0</text>
-<rect x="390.8" y="451.2" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="541.5" y="451.2" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="692.2" y="451.2" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="843.0" y="451.2" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="908.8" y="70.0" width="3.8" height="381.2" fill="#cfc8bd" stroke="#777" stroke-width="0.8"/>
+<rect x="310.0" y="463.8" width="80.0" height="62.5" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
+<text x="350.0" y="498.8" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">32,0</text>
+<rect x="390.8" y="463.8" width="150.0" height="62.5" fill="#e2edf4" stroke="#6a8aa0" stroke-width="0.8"/>
+<rect x="541.5" y="463.8" width="150.0" height="62.5" fill="#e2edf4" stroke="#6a8aa0" stroke-width="0.8"/>
+<rect x="692.2" y="463.8" width="150.0" height="62.5" fill="#e2edf4" stroke="#6a8aa0" stroke-width="0.8"/>
+<rect x="843.0" y="463.8" width="150.0" height="62.5" fill="#e2edf4" stroke="#6a8aa0" stroke-width="0.8"/>
+<rect x="908.8" y="70.0" width="3.8" height="393.8" fill="#cfc8bd" stroke="#777" stroke-width="0.8"/>
 <rect x="60.0" y="727.0" width="250.0" height="18.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
 <rect x="912.5" y="70.0" width="85.0" height="675.0" fill="none" stroke="#333" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="955.0" y="107.5" font-size="9" text-anchor="middle" fill="#333" font-weight="bold">Schacht (steht 15 vor)</text>
-<line x1="310.0" y1="451.2" x2="912.5" y2="451.2" stroke="#333" stroke-width="2"/>
-<text x="335.0" y="443.8" font-size="9" text-anchor="start" fill="#b03a2e" font-weight="bold">Vorwand-Ablage → 1,175 (statt 1,125)</text>
+<line x1="310.0" y1="463.8" x2="912.5" y2="463.8" stroke="#333" stroke-width="2"/>
+<text x="335.0" y="456.2" font-size="9" text-anchor="start" fill="#333" font-weight="bold">Vorwand-Ablage 1,125 ab FFB (= VM 1,265 ab RFB lt. Werkplan)</text>
 <rect x="395.0" y="525.0" width="225.0" height="45.0" fill="none" stroke="#555" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="507.5" y="550.0" font-size="10" text-anchor="middle" fill="#555" font-weight="bold">Waschbecken 90</text>
-<rect x="407.5" y="257.5" width="200.0" height="175.0" fill="#eef6fb" stroke="#2c7fb8" stroke-width="1.6" stroke-dasharray="5 3"/>
-<text x="507.5" y="382.5" font-size="10" text-anchor="middle" fill="#2c7fb8" font-weight="bold">Spiegel (ca. 80 × 70)</text>
-<circle cx="507.5" cy="282.5" r="12.0" fill="#fff" stroke="#2c7fb8" stroke-width="1.6"/><circle cx="503.5" cy="282.5" r="1.3" fill="#2c7fb8"/><circle cx="511.5" cy="282.5" r="1.3" fill="#2c7fb8"/>
-<text x="522.5" y="278.8" font-size="9" text-anchor="start" fill="#2c7fb8" font-weight="bold">Anschluss Spiegel</text>
-<text x="522.5" y="290.2" font-size="9" text-anchor="start" fill="#2c7fb8" font-weight="bold">(hinter Spiegel)</text>
-<circle cx="670.0" cy="413.0" r="12.0" fill="#fff" stroke="#b03a2e" stroke-width="1.6"/><circle cx="666.0" cy="413.0" r="1.3" fill="#b03a2e"/><circle cx="674.0" cy="413.0" r="1.3" fill="#b03a2e"/>
-<text x="655.0" y="409.2" font-size="9" text-anchor="end" fill="#b03a2e" font-weight="bold">SD</text>
-<text x="655.0" y="420.8" font-size="9" text-anchor="end" fill="#b03a2e" font-weight="bold">1,33</text>
-<circle cx="345.0" cy="413.0" r="12.0" fill="#fff" stroke="#b03a2e" stroke-width="1.6"/><circle cx="341.0" cy="413.0" r="1.3" fill="#b03a2e"/><circle cx="349.0" cy="413.0" r="1.3" fill="#b03a2e"/>
-<text x="360.0" y="409.2" font-size="9" text-anchor="start" fill="#b03a2e" font-weight="bold">SD</text>
-<text x="360.0" y="420.8" font-size="9" text-anchor="start" fill="#b03a2e" font-weight="bold">1,33</text>
+<rect x="407.5" y="270.0" width="200.0" height="175.0" fill="#eef6fb" stroke="#2c7fb8" stroke-width="1.6" stroke-dasharray="5 3"/>
+<text x="507.5" y="395.0" font-size="10" text-anchor="middle" fill="#2c7fb8" font-weight="bold">Spiegel (ca. 80 × 70)</text>
+<circle cx="507.5" cy="295.0" r="12.0" fill="#fff" stroke="#2c7fb8" stroke-width="1.6"/><circle cx="503.5" cy="295.0" r="1.3" fill="#2c7fb8"/><circle cx="511.5" cy="295.0" r="1.3" fill="#2c7fb8"/>
+<text x="522.5" y="291.2" font-size="9" text-anchor="start" fill="#2c7fb8" font-weight="bold">Anschluss Spiegel</text>
+<text x="522.5" y="302.8" font-size="9" text-anchor="start" fill="#2c7fb8" font-weight="bold">(hinter Spiegel)</text>
+<circle cx="670.0" cy="432.5" r="12.0" fill="#fff" stroke="#b03a2e" stroke-width="1.6"/><circle cx="666.0" cy="432.5" r="1.3" fill="#b03a2e"/><circle cx="674.0" cy="432.5" r="1.3" fill="#b03a2e"/>
+<text x="655.0" y="428.8" font-size="9" text-anchor="end" fill="#b03a2e" font-weight="bold">SD</text>
+<text x="655.0" y="440.2" font-size="9" text-anchor="end" fill="#b03a2e" font-weight="bold">1,25</text>
+<circle cx="345.0" cy="432.5" r="12.0" fill="#fff" stroke="#b03a2e" stroke-width="1.6"/><circle cx="341.0" cy="432.5" r="1.3" fill="#b03a2e"/><circle cx="349.0" cy="432.5" r="1.3" fill="#b03a2e"/>
+<text x="360.0" y="428.8" font-size="9" text-anchor="start" fill="#b03a2e" font-weight="bold">SD</text>
+<text x="360.0" y="440.2" font-size="9" text-anchor="start" fill="#b03a2e" font-weight="bold">1,25</text>
 <text x="185.0" y="717.5" font-size="8" text-anchor="middle" fill="#7a4a00" font-weight="normal">Sockel 7 cm</text>
 <text x="185.0" y="320.0" font-size="12" text-anchor="middle" fill="#8a7a66" font-weight="bold">nicht gefliest (Putz)</text>
-<line x1="310.0" y1="745.0" x2="310.0" y2="451.2" stroke="#1f4e79" stroke-width="2.5"/>
+<line x1="310.0" y1="745.0" x2="310.0" y2="463.8" stroke="#1f4e79" stroke-width="2.5"/>
 <text x="315.0" y="132.5" font-size="9" text-anchor="start" fill="#1f4e79" font-weight="normal">Abschlussschiene</text>
 <line x1="60.0" y1="120.0" x2="310.0" y2="120.0" stroke="#c0392b" stroke-width="1"/>
 <line x1="60.0" y1="135.0" x2="60.0" y2="105.0" stroke="#c0392b" stroke-width="1"/>
 <line x1="310.0" y1="135.0" x2="310.0" y2="105.0" stroke="#c0392b" stroke-width="1"/>
 <text x="185.0" y="110.0" font-size="10" text-anchor="middle" fill="#c0392b" font-weight="normal">1,00</text>
-<line x1="310.0" y1="451.2" x2="997.5" y2="451.2" stroke="#1f4e79" stroke-width="2.2"/>
+<line x1="310.0" y1="463.8" x2="997.5" y2="463.8" stroke="#1f4e79" stroke-width="2.2"/>
 <line x1="45" y1="745.0" x2="1012.5" y2="745.0" stroke="#222" stroke-width="3"/>
 <text x="60" y="773.0" font-size="11" fill="#555">◀ Ost (Tür-Wand)</text>
 <text x="997.5" y="773.0" font-size="11" fill="#555" text-anchor="end">West (Wannen-Ecke) ▶</text>

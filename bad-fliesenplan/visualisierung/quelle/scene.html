@@ -19,7 +19,7 @@ const pmrem=new THREE.PMREMGenerator(renderer);
 scene.environment=pmrem.fromScene(new RoomEnvironment(),0.04).texture;
 
 // ---------- parameters (meters) ----------
-const RW=3.75, RD=2.735, CH=2.70, TH=2.35;
+const RW=3.75, RD=2.735, CH=2.70, TH=2.21;
 const ROWS=[[0,.266]]; {let y=.269; while(y+.300<TH-.001){ROWS.push([y,y+.3]); y+=.303;} ROWS.push([y,TH]);}
 const PX=500, J=.003, M=.603;
 const SAND='#d6c3a2', GROUT='#ab9f88', PLASTER='#f1ede6';
@@ -88,7 +88,7 @@ const WALL_W=wallCanvas(RD,(ctx,Hc)=>{ if(VAR==='1') drawTiles(ctx,Hc,0,RD,mm(33
   else if(VAR==='2') drawTiles(ctx,Hc,0,RD,mm(331),mm(29.5),TH,stairRR);
   else drawTiles(ctx,Hc,0,RD,mm(331),mm(29.5)); });
 const WALL_N=wallCanvas(RW,(ctx,Hc)=>{drawTiles(ctx,Hc,0,2.485,mm(437),mm(135.5)); sockel(ctx,Hc,2.75,RW);});
-const WALL_S=wallCanvas(RW,(ctx,Hc)=>{drawTiles(ctx,Hc,1.0,RW,mm(394),mm(114),VAR==='1'?1.175:TH); sockel(ctx,Hc,0,1.0);});
+const WALL_S=wallCanvas(RW,(ctx,Hc)=>{drawTiles(ctx,Hc,1.0,RW,mm(394),mm(114),VAR==='1'?1.125:TH); sockel(ctx,Hc,0,1.0);});
 const WALL_E=wallCanvas(RD,(ctx,Hc)=>{sockel(ctx,Hc,0.15,1.215); sockel(ctx,Hc,2.11,RD);});
 const WALL_P=wallCanvas(0.95,(ctx,Hc)=>drawTiles(ctx,Hc,0,0.95,mm(318),mm(615)));
 const PLAIN=wallCanvas(3,(ctx,Hc)=>{});
@@ -148,20 +148,20 @@ box(.34,CH,.162,.17,CH/2,RD-.081,plasterMat);
 Sface(WALL_S,RW-.34,RW,0,CH,2.573-.001);
 Wface(WALL_W,0,.162,0,CH,.341);
 // S Vorwand x .34..2.75 z 2.573..2.735 h 1.175
-box(2.41,1.175,.162,(0.34+2.75)/2,1.175/2,RD-.081,revMat);
-Sface(WALL_S,1.0,RW-.34,0,1.175,2.573-.001);
-topTiles(.34,2.75,2.573,RD,1.1755);
-face(TILEGEN,0,.162,0,1.175,new THREE.Vector3(2.7505,1.175/2,RD-.081),Math.PI/2);
+box(2.41,1.125,.162,(0.34+2.75)/2,1.125/2,RD-.081,revMat);
+Sface(WALL_S,1.0,RW-.34,0,1.125,2.573-.001);
+topTiles(.34,2.75,2.573,RD,1.1255);
+face(TILEGEN,0,.162,0,1.125,new THREE.Vector3(2.7505,1.125/2,RD-.081),Math.PI/2);
 // East wall x=RW with door opening z 1.215..2.11 h 2.01
 Eface(WALL_E,0,1.215,0,CH,RW); Eface(WALL_E,2.11,RD,0,CH,RW); Eface(WALL_E,1.215,2.11,2.01,CH,RW);
 // door leaf closed (hinge south, handle north)
 box(.04,2.0,.86,RW+.03,1.0,(1.215+2.11)/2,white);
 const chrome=new THREE.MeshStandardMaterial({color:0xd0d4d8,metalness:.55,roughness:.22});
-box(.14,.02,.02,RW-.04,1.05,1.30,chrome);
+box(.14,.02,.02,RW-.04,1.05,2.03,chrome);
 // door frame
 box(.06,2.04,.04,RW-.02,1.02,1.215,white); box(.06,2.04,.04,RW-.02,1.02,2.11,white); box(.06,.04,.94,RW-.02,2.03,1.66,white);
 // switch (double) at z 1.09 h 1.05
-box(.012,.085,.16,RW-.006,1.05,1.09,white);
+box(.012,.085,.16,RW-.006,1.05,2.26,white);
 // HKV cover
 box(.01,.66,.75,RW-.005,.33,.59,new THREE.MeshStandardMaterial({color:0xf3f1ec,roughness:.6}));
 // ceiling
@@ -210,7 +210,7 @@ function hull(circles,n=96){const pts=[];for(const [cx,cz,r] of circles)for(let 
  const lo=[],up=[]; for(const p of pts){while(lo.length>=2&&cr(lo[lo.length-2],lo[lo.length-1],p)<=0)lo.pop();lo.push(p);}
  for(const p of pts.slice().reverse()){while(up.length>=2&&cr(up[up.length-2],up[up.length-1],p)<=0)up.pop();up.push(p);} return lo.slice(0,-1).concat(up.slice(0,-1));}
 {
- const outer=hull([[.532,.800,.30],[.582,1.870,.35]]), inner=hull([[.532,.820,.24],[.582,1.830,.29]]);
+ const outer=hull([[.507,.800,.30],[.507,1.870,.35]]), inner=hull([[.507,.820,.24],[.507,1.830,.29]]);
  const sh=new THREE.Shape(outer.map(([x,z])=>new THREE.Vector2(x,-z))); const hole=new THREE.Path(inner.map(([x,z])=>new THREE.Vector2(x,-z)).reverse()); sh.holes.push(hole);
  const g=new THREE.ExtrudeGeometry(sh,{depth:.58,bevelEnabled:true,bevelThickness:.015,bevelSize:.015,bevelSegments:4,curveSegments:48});
  g.rotateX(-Math.PI/2); const m=new THREE.Mesh(g,ceramic); m.castShadow=true; m.receiveShadow=true; scene.add(m);
@@ -226,19 +226,19 @@ function hull(circles,n=96){const pts=[];for(const [cx,cz,r] of circles)for(let 
  box(.06,.06,.01,1.96,.95,2.567,chrome);}
 // mirror + light
 {const mir=new THREE.Mesh(new THREE.PlaneGeometry(.8,.7),new THREE.MeshStandardMaterial({color:0xd9e2e6,metalness:.35,roughness:.06}));
- mir.position.set(1.96,1.60,RD-.012); mir.rotation.y=Math.PI; scene.add(mir);
- box(.6,.03,.06,1.96,2.0,RD-.04,new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xfff3dd,emissiveIntensity:2.2}),false);}
+ mir.position.set(1.96,1.55,RD-.012); mir.rotation.y=Math.PI; scene.add(mir);
+ box(.6,.03,.06,1.96,1.95,RD-.04,new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xfff3dd,emissiveIntensity:2.2}),false);}
 // sockets
-for(const [x] of [[1.31],[2.61]]) box(.08,.08,.01,x,1.328,RD-.006,white,false);
-box(.01,.08,.08,.006,2.45,.232,white,false);
+for(const [x] of [[1.31],[2.61]]) box(.08,.08,.01,x,1.25,RD-.006,white,false);
+box(.01,.08,.08,.006,2.45,.157,white,false);
 // ---------- fittings shower ----------
 {const X0=2.473;
  // thermostat plate
  const pl=new THREE.Mesh(new THREE.CylinderGeometry(.075,.075,.012,48),chrome); pl.rotation.z=Math.PI/2; pl.position.set(X0-.006,1.03,.468); scene.add(pl);
  const kn=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,.05,32),chrome); kn.rotation.z=Math.PI/2; kn.position.set(X0-.03,1.03,.468); scene.add(kn);
  // head shower arm + disc
- const arm=new THREE.Mesh(new THREE.CylinderGeometry(.01,.01,.36,16),chrome); arm.rotation.z=Math.PI/2; arm.position.set(X0-.18,2.22,.468); scene.add(arm);
- const disc=new THREE.Mesh(new THREE.CylinderGeometry(.125,.125,.012,64),chrome); disc.position.set(X0-.36,2.205,.468); disc.castShadow=true; scene.add(disc);
+ const arm=new THREE.Mesh(new THREE.CylinderGeometry(.01,.01,.36,16),chrome); arm.rotation.z=Math.PI/2; arm.position.set(X0-.18,2.05,.468); scene.add(arm);
+ const disc=new THREE.Mesh(new THREE.CylinderGeometry(.125,.125,.012,64),chrome); disc.position.set(X0-.36,2.035,.468); disc.castShadow=true; scene.add(disc);
  // hand shower holder + stick at z .77 y 1.33
  box(.03,.05,.04,X0-.015,1.33,.77,chrome);
  const st=new THREE.Mesh(new THREE.CylinderGeometry(.016,.016,.25,24),chrome); st.position.set(X0-.04,1.44,.77); scene.add(st);
@@ -246,12 +246,12 @@ box(.01,.08,.08,.006,2.45,.232,white,false);
  box(.073,.004,.9,2.4365,.002,.462,new THREE.MeshStandardMaterial({color:0x8d9196,metalness:.8,roughness:.35}),false);
  // glass 1.20 x 2.35 z .937
  const gm=new THREE.MeshPhysicalMaterial({color:0xe8f4f4,roughness:.02,metalness:0,transparent:true,opacity:.18,side:THREE.DoubleSide});
- const gl=new THREE.Mesh(new THREE.BoxGeometry(1.2,2.345,.01),gm); gl.position.set(2.473-.6,.005+2.345/2,.937); scene.add(gl);
+ const gl=new THREE.Mesh(new THREE.BoxGeometry(1.2,TH-.01,.01),gm); gl.position.set(2.473-.6,.005+(TH-.01)/2,.937); scene.add(gl);
  const edge=new THREE.LineSegments(new THREE.EdgesGeometry(gl.geometry),new THREE.LineBasicMaterial({color:0xa9c9c9})); edge.position.copy(gl.position); scene.add(edge);
  // wedge strip under glass
  box(1.33,.012,.03,(1.07+2.40)/2,.006,.937,chrome,false);
  // stabilizer bar
- const bar=new THREE.Mesh(new THREE.CylinderGeometry(.009,.009,.937,16),chrome); bar.rotation.x=Math.PI/2; bar.position.set(1.35,2.30,.937/2); scene.add(bar);
+ const bar=new THREE.Mesh(new THREE.CylinderGeometry(.009,.009,.937,16),chrome); bar.rotation.x=Math.PI/2; bar.position.set(1.35,TH-.05,.937/2); scene.add(bar);
 }
 // ---------- fittings tub (on W Vorwand front x=.132) ----------
 {const X=.132;
@@ -264,8 +264,8 @@ box(.01,.08,.08,.006,2.45,.232,white,false);
  const st=new THREE.Mesh(new THREE.CylinderGeometry(.016,.016,.23,24),chrome); st.position.set(X+.04,.735,1.74); scene.add(st);
 }
 // towel heater (optional) x .332..832 y .5..1.7 z ~.04
-{const zc=.045; for(const x of [.342,.822]){const t=new THREE.Mesh(new THREE.CylinderGeometry(.014,.014,1.2,16),chrome); t.position.set(x,1.1,zc); scene.add(t);}
- for(let i=0;i<9;i++){const y=.56+i*.135; const r=new THREE.Mesh(new THREE.CylinderGeometry(.01,.01,.48,16),chrome); r.rotation.z=Math.PI/2; r.position.set(.582,y,zc); scene.add(r);}}
+{const zc=.045; for(const x of [.267,.747]){const t=new THREE.Mesh(new THREE.CylinderGeometry(.014,.014,1.2,16),chrome); t.position.set(x,1.1,zc); scene.add(t);}
+ for(let i=0;i<9;i++){const y=.56+i*.135; const r=new THREE.Mesh(new THREE.CylinderGeometry(.01,.01,.48,16),chrome); r.rotation.z=Math.PI/2; r.position.set(.507,y,zc); scene.add(r);}}
 // ceiling light
 {const l=new THREE.Mesh(new THREE.CylinderGeometry(.18,.18,.04,48),new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xfff4e0,emissiveIntensity:1.6})); l.position.set(1.875,CH-.02,1.37); l.userData.cut=true; scene.add(l);}
 // ---------- lights ----------
