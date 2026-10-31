@@ -31,7 +31,7 @@
 <text x="942.5" y="500.0" font-size="8" fill="#8a7a66" text-anchor="middle" font-weight="normal">(Wände nicht gefliest)</text>
 <rect x="397.5" y="250.0" width="353.8" height="229.5" fill="#e8f4f8" stroke="#1a7f8e" stroke-width="0.8" stroke-dasharray="4 3"/>
 <text x="575.0" y="357.5" font-size="11" fill="#1a7f8e" text-anchor="middle" font-weight="bold">Dusche 140 × 90</text>
-<text x="575.0" y="390.0" font-size="9" fill="#1a7f8e" text-anchor="middle" font-weight="normal">Gefälle ↑ zur Rinne, Glaslinie waagerecht</text>
+<text x="575.0" y="390.0" font-size="9" fill="#1a7f8e" text-anchor="middle" font-weight="normal">Gefälle 1,40 m → zur Rinne</text>
 <rect x="744.8" y="479.2" width="6.5" height="10.0" fill="#666" stroke="#333"/>
 <rect x="451.2" y="483.0" width="300.0" height="2.5" fill="#7cc4cf" stroke="#1a7f8e" stroke-width="1.2"/>
 <text x="588.8" y="511.8" font-size="9.5" fill="#1a7f8e" text-anchor="middle" font-weight="bold">Glas 120 × 235 (10 mm ESG)</text>
@@ -44,11 +44,10 @@
 <text x="179.2" y="750.0" font-size="8" fill="#c0392b" text-anchor="middle" font-weight="normal" transform="rotate(-90 179.2 750.0)">10 cm ∥ Wand</text>
 <line x1="341.5" y1="484.2" x2="451.2" y2="484.2" stroke="#c0392b" stroke-width="1"/>
 <text x="390.0" y="514.2" font-size="8.5" fill="#c0392b" text-anchor="middle" font-weight="normal">≈ 44 cm</text>
-<rect x="398.2" y="253.0" width="350.0" height="17.5" fill="#444" stroke="#111"/>
-<text x="430.0" y="265.5" font-size="7.5" fill="#fff" text-anchor="start" font-weight="normal">Wandrinne 140</text>
-<circle cx="730.0" cy="261.8" r="6" fill="#fff" stroke="#c0392b" stroke-width="2"/>
-<path d="M455.0,261.8 L705.0,261.8" stroke="#fff" stroke-width="1.2" marker-end="url(#arrw)"/>
-<text x="555.0" y="297.5" font-size="7.5" fill="#c0392b" text-anchor="middle" font-weight="bold">Rinne fällt zum Ablauf an der Trennwand →</text>
+<rect x="730.0" y="253.0" width="18.2" height="225.0" fill="#444" stroke="#111"/>
+<text x="712.5" y="370.0" font-size="8" fill="#111" text-anchor="middle" font-weight="normal" transform="rotate(-90 712.5 370.0)">Duschrinne 90</text>
+<line x1="400.0" y1="478.0" x2="730.0" y2="478.0" stroke="#c0392b" stroke-width="2.5"/>
+<text x="505.0" y="465.0" font-size="7.5" fill="#c0392b" text-anchor="middle" font-weight="bold">Gefällekeil entlang Glaslinie</text>
 <rect x="213.0" y="250.0" width="125.0" height="22.5" fill="#f3e5f5" stroke="#8e44ad" stroke-width="1.4" stroke-dasharray="5 3"/>
 <text x="275.5" y="300.0" font-size="8" fill="#8e44ad" text-anchor="middle" font-weight="normal">Handtuch-HK (opt.)</text>
 <circle cx="188.0" cy="256.2" r="5" fill="#fff" stroke="#b03a2e" stroke-width="1.6"/>
@@ -109,16 +108,14 @@
 </g>
 <g transform="translate(0,1091.25)">
 <text x="60" y="119" font-size="17" font-weight="bold" fill="#111">0a · Boden – Fliesen längs (Ost–West), 30 cm versetzt</text>
-<text x="60" y="139" font-size="11.5" fill="#444">60×30 · ca. 9,0 m² · ganze Reihen an der Duschwand · Streifen 13,7 cm unter der Waschtisch-Vorwand · Wandrinne 140 cm an der Rückwand (Ablauf bei der Trennwand), Gefälle nur in der Dusche (endet vor dem Glas)</text>
+<text x="60" y="139" font-size="11.5" fill="#444">60×30 · ca. 9,0 m² · ganze Reihen an der Duschwand · Streifen 13,7 cm unter der Waschtisch-Vorwand · Duschrinne 90 cm an der Trennwand, Gefälle über 1,40 m · Gefällekeil an der Glaslinie</text>
 <rect x="70.0" y="190.0" width="1057.5" height="803.8" fill="#e8b4b0" stroke="#222" stroke-width="1.5"/>
 <rect x="130.0" y="250.0" width="937.5" height="683.8" fill="#f3efe9" stroke="#222" stroke-width="1.5"/>
 <polygon points="313.0,328.0 313.0,253.0 163.0,253.0 163.0,328.0 313.0,328.0" fill="#d9cdb8" stroke="#6a8aa0" stroke-width="0.7"/>
-<polygon points="313.8,328.0 463.8,328.0 463.8,270.5 398.2,270.5 398.2,253.0 313.8,253.0 313.8,328.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.7"/>
-<text x="384.0" y="300.0" font-size="7.5" fill="#7a4a00" text-anchor="middle" font-weight="normal">30</text>
-<polygon points="464.5,328.0 614.5,328.0 614.5,270.5 464.5,270.5 464.5,328.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.7"/>
-<text x="539.5" y="305.5" font-size="7.5" fill="#7a4a00" text-anchor="middle" font-weight="normal">23</text>
-<polygon points="615.2,328.0 748.2,328.0 748.2,270.5 615.2,270.5 615.2,328.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.7"/>
-<text x="681.8" y="305.5" font-size="7.5" fill="#7a4a00" text-anchor="middle" font-weight="normal">53</text>
+<polygon points="313.8,328.0 463.8,328.0 463.8,253.0 313.8,253.0 313.8,328.0" fill="#d9cdb8" stroke="#6a8aa0" stroke-width="0.7"/>
+<polygon points="464.5,328.0 614.5,328.0 614.5,253.0 464.5,253.0 464.5,328.0" fill="#d9cdb8" stroke="#6a8aa0" stroke-width="0.7"/>
+<polygon points="615.2,328.0 730.0,328.0 730.0,253.0 615.2,253.0 615.2,328.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.7"/>
+<text x="672.6" y="296.8" font-size="7.5" fill="#7a4a00" text-anchor="middle" font-weight="normal">46</text>
 <polygon points="916.0,328.0 916.0,287.5 817.5,287.5 817.5,328.0 916.0,328.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.7"/>
 <text x="866.8" y="314.0" font-size="7.5" fill="#7a4a00" text-anchor="middle" font-weight="normal">39</text>
 <polygon points="916.8,328.0 1066.8,328.0 1066.8,287.5 916.8,287.5 916.8,328.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.7"/>
@@ -130,16 +127,16 @@
 <polygon points="539.9,328.8 539.9,403.8 689.9,403.8 689.9,328.8 539.9,328.8" fill="#d9cdb8" stroke="#6a8aa0" stroke-width="0.7"/>
 <polygon points="840.6,403.8 840.6,328.8 817.5,328.8 817.5,403.8 840.6,403.8" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.7"/>
 <text x="829.1" y="372.5" font-size="7.5" fill="#7a4a00" text-anchor="middle" font-weight="normal">9</text>
-<polygon points="690.6,328.8 690.6,403.8 748.2,403.8 748.2,328.8 690.6,328.8" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.7"/>
-<text x="719.4" y="372.5" font-size="7.5" fill="#7a4a00" text-anchor="middle" font-weight="normal">23</text>
+<polygon points="690.6,328.8 690.6,403.8 730.0,403.8 730.0,328.8 690.6,328.8" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.7"/>
+<text x="710.3" y="372.5" font-size="7.5" fill="#7a4a00" text-anchor="middle" font-weight="normal">16</text>
 <polygon points="841.4,328.8 841.4,403.8 991.4,403.8 991.4,328.8 841.4,328.8" fill="#d9cdb8" stroke="#6a8aa0" stroke-width="0.7"/>
 <polygon points="992.1,328.8 992.1,403.8 1067.5,403.8 1067.5,328.8 992.1,328.8" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.7"/>
 <text x="1029.8" y="372.5" font-size="7.5" fill="#7a4a00" text-anchor="middle" font-weight="normal">30</text>
 <polygon points="313.0,479.5 313.0,404.5 163.0,404.5 163.0,479.5 313.0,479.5" fill="#d9cdb8" stroke="#6a8aa0" stroke-width="0.7"/>
 <polygon points="313.8,404.5 313.8,479.5 463.8,479.5 463.8,404.5 313.8,404.5" fill="#d9cdb8" stroke="#6a8aa0" stroke-width="0.7"/>
 <polygon points="464.5,404.5 464.5,479.5 614.5,479.5 614.5,404.5 464.5,404.5" fill="#d9cdb8" stroke="#6a8aa0" stroke-width="0.7"/>
-<polygon points="615.2,404.5 615.2,479.5 748.2,479.5 748.2,404.5 615.2,404.5" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.7"/>
-<text x="681.8" y="448.2" font-size="7.5" fill="#7a4a00" text-anchor="middle" font-weight="normal">53</text>
+<polygon points="615.2,404.5 615.2,479.5 730.0,479.5 730.0,404.5 615.2,404.5" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.7"/>
+<text x="672.6" y="448.2" font-size="7.5" fill="#7a4a00" text-anchor="middle" font-weight="normal">46</text>
 <polygon points="916.0,479.5 916.0,404.5 817.5,404.5 817.5,479.5 916.0,479.5" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.7"/>
 <text x="866.8" y="448.2" font-size="7.5" fill="#7a4a00" text-anchor="middle" font-weight="normal">39</text>
 <polygon points="916.8,404.5 916.8,479.5 1066.8,479.5 1066.8,404.5 916.8,404.5" fill="#d9cdb8" stroke="#6a8aa0" stroke-width="0.7"/>
@@ -209,14 +206,12 @@
 <ellipse cx="942.5" cy="352.5" rx="45.0" ry="65.0" fill="#fff" fill-opacity="0.6" stroke="#333" stroke-width="1.3"/>
 <rect x="507.5" y="776.2" width="225.0" height="120.0" rx="10" fill="none" stroke="#333" stroke-width="1.3" stroke-dasharray="5 3"/>
 <rect x="451.2" y="482.8" width="297.0" height="3.0" fill="#7cc4cf" stroke="#1a7f8e" stroke-width="1.2"/>
-<rect x="398.2" y="253.0" width="350.0" height="17.5" fill="#444" stroke="#111"/>
-<text x="430.0" y="265.5" font-size="7.5" fill="#fff" text-anchor="start" font-weight="normal">Wandrinne 140</text>
-<circle cx="730.0" cy="261.8" r="6" fill="#fff" stroke="#c0392b" stroke-width="2"/>
-<path d="M455.0,261.8 L705.0,261.8" stroke="#fff" stroke-width="1.2" marker-end="url(#arrw)"/>
-<text x="555.0" y="297.5" font-size="7.5" fill="#c0392b" text-anchor="middle" font-weight="bold">Rinne fällt zum Ablauf an der Trennwand →</text>
-<line x1="397.5" y1="479.5" x2="748.2" y2="479.5" stroke="#1a7f8e" stroke-width="1.5" stroke-dasharray="6 3"/>
-<path d="M555.0,450.0 L555.0,300.0" stroke="#1a7f8e" stroke-width="1.5" marker-end="url(#arr)"/>
-<text x="570.0" y="380.0" font-size="9" fill="#1a7f8e" text-anchor="start" font-weight="normal">Gefälle zur Rinne</text>
+<rect x="730.0" y="253.0" width="18.2" height="225.0" fill="#444" stroke="#111"/>
+<text x="712.5" y="370.0" font-size="8" fill="#111" text-anchor="middle" font-weight="normal" transform="rotate(-90 712.5 370.0)">Duschrinne 90</text>
+<line x1="400.0" y1="478.0" x2="730.0" y2="478.0" stroke="#c0392b" stroke-width="2.5"/>
+<text x="505.0" y="465.0" font-size="7.5" fill="#c0392b" text-anchor="middle" font-weight="bold">Gefällekeil entlang Glaslinie</text>
+<path d="M417.5,370.0 L712.5,370.0" stroke="#1a7f8e" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="555.0" y="357.5" font-size="9" fill="#1a7f8e" text-anchor="middle" font-weight="normal">Gefälle 1,40 m zur Rinne</text>
 </g>
 <g transform="translate(0,2140.0)">
 <text x="60" y="24" font-size="17" font-weight="bold" fill="#111">1 · Wand Badewanne / Fenster (Westen)</text>
@@ -360,7 +355,6 @@
 <rect x="60.0" y="526.2" width="30.0" height="218.8" fill="#e9e4dc" stroke="#777" stroke-width="1"/>
 <text x="75.0" y="637.5" font-size="9" text-anchor="middle" fill="#555" font-weight="normal">VW</text>
 <rect x="681.2" y="157.5" width="66.2" height="587.5" fill="#b9b2a8" stroke="#222" stroke-width="1.5"/>
-<rect x="328.2" y="735.0" width="350.0" height="10.0" fill="#444" stroke="#111"/>
 <rect x="747.5" y="727.0" width="250.0" height="18.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
 <text x="714.2" y="370.0" font-size="10" text-anchor="middle" fill="#222" font-weight="normal" transform="rotate(-90 714.2 370.0)">Trennwand</text>
 <rect x="381.2" y="157.5" width="300.0" height="586.2" fill="none" stroke="#1a7f8e" stroke-width="1.6" stroke-dasharray="6 4"/>
@@ -382,7 +376,6 @@
 <circle cx="118.0" cy="132.5" r="12.0" fill="#fff" stroke="#b03a2e" stroke-width="1.6"/><circle cx="114.0" cy="132.5" r="1.3" fill="#b03a2e"/><circle cx="122.0" cy="132.5" r="1.3" fill="#b03a2e"/>
 <text x="133.0" y="128.8" font-size="9" text-anchor="start" fill="#b03a2e" font-weight="bold">Steckdose HK 2,45 m</text>
 <text x="133.0" y="140.2" font-size="9" text-anchor="start" fill="#b03a2e" font-weight="bold">(über Schutzbereich 2,25)</text>
-<text x="503.2" y="722.5" font-size="9" text-anchor="middle" fill="#111" font-weight="normal">Wandrinne 140 cm · Ablauf am Ende bei der Trennwand →</text>
 <text x="872.5" y="717.5" font-size="8" text-anchor="middle" fill="#7a4a00" font-weight="normal">Sockel 7 cm</text>
 <line x1="327.5" y1="120.0" x2="681.2" y2="120.0" stroke="#c0392b" stroke-width="1"/>
 <line x1="327.5" y1="135.0" x2="327.5" y2="105.0" stroke="#c0392b" stroke-width="1"/>
@@ -433,7 +426,8 @@
 <rect x="140.2" y="299.8" width="73.5" height="150.8" fill="#5d6d7e" stroke="#222" stroke-width="1.5"/>
 <rect x="145.2" y="304.8" width="63.5" height="140.8" fill="#85929e" stroke="none"/>
 <rect x="140.2" y="373.0" width="73.5" height="5.0" fill="#d5dbdb" stroke="#222"/>
-<rect x="230.0" y="466.2" width="45.0" height="45.0" fill="#fde2c8" stroke="#d35400" stroke-width="1.5"/>
+<rect x="63.0" y="735.0" width="225.0" height="10.0" fill="#444" stroke="#111"/>
+<rect x="154.5" y="466.2" width="45.0" height="45.0" fill="#fde2c8" stroke="#d35400" stroke-width="1.5"/>
 <text x="178.8" y="85.0" font-size="10" text-anchor="middle" fill="#555" font-weight="normal">Trennwand endet bei 2,35 m</text>
 <text x="392.5" y="107.5" font-size="10" text-anchor="middle" fill="#555" font-weight="normal">offenes Wandende (Stirnseite)</text>
 <text x="310.0" y="495.0" font-size="10" text-anchor="start" fill="#1a7f8e" font-weight="normal">← Glasscheibe 120 cm (zeigt auf dich)</text>
@@ -442,14 +436,18 @@
 <text x="307.5" y="195.0" font-size="9" text-anchor="start" fill="#333" font-weight="normal">Wandprofil + Glas bis 2,35 m</text>
 <text x="177.0" y="345.0" font-size="9" text-anchor="middle" fill="#fff" font-weight="bold">Nische</text>
 <text x="177.0" y="420.0" font-size="9" text-anchor="middle" fill="#fff" font-weight="normal">30×60</text>
-<line x1="252.5" y1="488.8" x2="252.5" y2="190.5" stroke="#d35400" stroke-width="2" stroke-dasharray="5 3"/>
-<text x="252.5" y="485.0" font-size="8" text-anchor="middle" fill="#d35400" font-weight="bold">Ther-</text>
-<text x="252.5" y="501.2" font-size="8" text-anchor="middle" fill="#d35400" font-weight="bold">mostat</text>
-<text x="310.0" y="495.0" font-size="9" text-anchor="start" fill="#d35400" font-weight="normal">Thermostat ca. 1,03 m (Fliesenmitte)</text>
-<circle cx="252.5" cy="190.5" r="12.0" fill="#fff" stroke="#d35400" stroke-width="1.6"/><circle cx="248.5" cy="190.5" r="1.3" fill="#d35400"/><circle cx="256.5" cy="190.5" r="1.3" fill="#d35400"/>
-<text x="310.0" y="186.8" font-size="9" text-anchor="start" fill="#d35400" font-weight="bold">Kopfbrause-Anschluss ca. 2,22 m</text>
-<text x="310.0" y="345.0" font-size="9" text-anchor="start" fill="#d35400" font-weight="normal">Leitung läuft neben</text>
-<text x="310.0" y="365.0" font-size="9" text-anchor="start" fill="#d35400" font-weight="normal">der Nische hoch</text>
+<polyline points="177.0,467.5 177.0,462.5 235.0,462.5 235.0,287.5 177.0,287.5 177.0,200.0" fill="none" stroke="#d35400" stroke-width="2" stroke-dasharray="5 3"/>
+<line x1="177.0" y1="745.0" x2="177.0" y2="157.5" stroke="#8e44ad" stroke-width="0.8" stroke-dasharray="2 4"/>
+<text x="177.0" y="172.5" font-size="8" text-anchor="middle" fill="#8e44ad" font-weight="normal">Mitte</text>
+<text x="175.5" y="726.2" font-size="9" text-anchor="middle" fill="#111" font-weight="normal">Duschrinne 90 cm (davor im Boden)</text>
+<text x="177.0" y="485.0" font-size="8" text-anchor="middle" fill="#d35400" font-weight="bold">Ther-</text>
+<text x="177.0" y="501.2" font-size="8" text-anchor="middle" fill="#d35400" font-weight="bold">mostat</text>
+<text x="310.0" y="545.0" font-size="9" text-anchor="start" fill="#d35400" font-weight="normal">Thermostat ca. 1,03 m, mittig</text>
+<circle cx="177.0" cy="190.5" r="12.0" fill="#fff" stroke="#d35400" stroke-width="1.6"/><circle cx="173.0" cy="190.5" r="1.3" fill="#d35400"/><circle cx="181.0" cy="190.5" r="1.3" fill="#d35400"/>
+<text x="194.5" y="186.8" font-size="9" text-anchor="start" fill="#d35400" font-weight="bold"></text>
+<text x="310.0" y="270.0" font-size="9" text-anchor="start" fill="#d35400" font-weight="bold">Kopfbrause-Anschluss ca. 2,22 m, mittig</text>
+<text x="310.0" y="345.0" font-size="9" text-anchor="start" fill="#d35400" font-weight="normal">Leitung macht in der Vorwand</text>
+<text x="310.0" y="365.0" font-size="9" text-anchor="start" fill="#d35400" font-weight="normal">einen Bogen um die Nische</text>
 <line x1="60.0" y1="157.5" x2="297.5" y2="157.5" stroke="#1f4e79" stroke-width="2.2"/>
 <line x1="60.0" y1="120.0" x2="297.5" y2="120.0" stroke="#c0392b" stroke-width="1"/>
 <line x1="60.0" y1="135.0" x2="60.0" y2="105.0" stroke="#c0392b" stroke-width="1"/>
