@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1278" height="7170" viewBox="0 0 1278 7170" font-family="Helvetica, Arial, sans-serif"><defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1a7f8e"/></marker></defs><rect width="100%" height="100%" fill="white"/><text x="60" y="34" font-size="22" font-weight="bold">Bad DG – Fliesenplan Wände + Boden (Fliesen 60×30, 30 cm versetzt)</text><g transform="translate(0,60)">
+<svg xmlns="http://www.w3.org/2000/svg" width="1278" height="6350" viewBox="0 0 1278 6350" font-family="Helvetica, Arial, sans-serif"><defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1a7f8e"/></marker></defs><rect width="100%" height="100%" fill="white"/><text x="60" y="34" font-size="22" font-weight="bold">Bad DG – Fliesenplan Wände + Boden (Fliesen 60×30, 30 cm versetzt)</text><g transform="translate(0,60)">
 <text x="60" y="24" font-size="17" font-weight="bold" fill="#111">0 · Draufsicht Bad (Grundriss)</text>
 <text x="60" y="44" font-size="11.5" fill="#444">Norden oben · blau = gefliest bis 2,35 m · orange = Fliesensockel 7 cm · SD = Steckdose · Maße Rohbau lt. Plan</text>
 <rect x="70.0" y="190.0" width="1057.5" height="803.8" fill="#e8b4b0" stroke="#222" stroke-width="1.5"/>
@@ -37,25 +37,37 @@
 <text x="588.8" y="511.8" font-size="9.5" fill="#1a7f8e" text-anchor="middle" font-weight="bold">Glas 120 × 235 (10 mm ESG)</text>
 <line x1="467.5" y1="483.0" x2="467.5" y2="250.0" stroke="#1a7f8e" stroke-width="2" stroke-dasharray="6 3"/>
 <text x="477.5" y="440.0" font-size="8" fill="#1a7f8e" text-anchor="start" font-weight="normal">Stabi-Stange oben (90°)</text>
-<path d="M176.2,450.0 L176.3,446.1 L176.7,442.1 L177.2,438.3 L177.9,434.4 L178.8,430.6 L179.9,426.8 L181.2,423.1 L182.7,419.5 L184.4,415.9 L186.3,412.5 L188.3,409.1 L190.6,405.9 L193.0,402.8 L195.5,399.8 L198.2,397.0 L201.1,394.3 L204.1,391.7 L207.2,389.3 L210.4,387.1 L213.8,385.1 L217.2,383.2 L220.8,381.5 L224.4,380.0 L228.1,378.7 L231.8,377.6 L235.7,376.6 L239.5,375.9 L243.4,375.4 L247.3,375.1 L251.2,375.0 L255.2,375.1 L259.1,375.4 L263.0,375.9 L266.9,376.6 L270.6,377.6 L274.4,378.7 L278.1,380.0 L281.8,381.5 L285.3,383.2 L288.8,385.1 L292.1,387.1 L295.3,389.3 L298.4,391.7 L301.4,394.3 L304.3,397.0 L307.0,399.8 L309.5,402.8 L311.9,405.9 L314.1,409.1 L316.2,412.5 L318.1,415.9 L319.8,419.5 L321.3,423.1 L322.6,426.8 L323.7,430.6 L324.6,434.4 L325.3,438.3 L325.9,442.1 L350.8,708.4 L351.1,712.9 L351.2,717.5 L351.1,722.1 L350.8,726.6 L350.2,731.2 L349.4,735.7 L348.3,740.1 L347.0,744.5 L345.4,748.9 L343.7,753.1 L341.7,757.2 L339.5,761.2 L337.1,765.1 L334.6,768.9 L331.8,772.6 L328.8,776.0 L325.6,779.4 L322.3,782.5 L318.8,785.5 L315.2,788.3 L311.4,790.9 L307.5,793.3 L303.5,795.5 L299.4,797.4 L295.1,799.2 L290.8,800.7 L286.4,802.0 L281.9,803.1 L277.4,803.9 L272.9,804.5 L268.3,804.9 L263.8,805.0 L259.2,804.9 L254.6,804.5 L250.1,803.9 L245.6,803.1 L241.1,802.0 L236.7,800.7 L232.4,799.2 L228.2,797.4 L224.0,795.5 L220.0,793.3 L216.1,790.9 L212.3,788.3 L208.7,785.5 L205.2,782.5 L201.9,779.4 L198.7,776.0 L195.8,772.6 L192.9,768.9 L190.4,765.1 L188.0,761.2 L185.8,757.2 L183.8,753.1 L182.1,748.9 L180.5,744.5 L179.2,740.1 L178.2,735.7 L177.3,731.2 L176.7,726.6 L176.4,722.1 L176.2,717.5 Z" fill="#fff" stroke="#333" stroke-width="1.8"/>
-<path d="M196.2,455.0 L196.3,452.1 L196.6,449.2 L196.9,446.4 L197.4,443.6 L198.1,440.8 L198.9,438.0 L199.9,435.3 L201.0,432.6 L202.2,430.0 L203.6,427.5 L205.1,425.1 L206.8,422.7 L208.5,420.4 L210.4,418.2 L212.3,416.1 L214.4,414.1 L216.6,412.2 L218.9,410.5 L221.3,408.9 L223.8,407.4 L226.3,406.0 L228.9,404.8 L231.6,403.6 L234.2,402.7 L237.0,401.9 L239.8,401.2 L242.7,400.7 L245.5,400.3 L248.4,400.1 L251.2,400.0 L254.1,400.1 L257.0,400.3 L259.9,400.7 L262.7,401.2 L265.5,401.9 L268.2,402.7 L270.9,403.6 L273.6,404.8 L276.2,406.0 L278.8,407.4 L281.2,408.9 L283.6,410.5 L285.9,412.2 L288.1,414.1 L290.1,416.1 L292.1,418.2 L294.0,420.4 L295.8,422.7 L297.4,425.1 L298.9,427.5 L300.2,430.0 L301.5,432.6 L302.6,435.3 L303.6,438.0 L304.4,440.8 L305.1,443.6 L305.6,446.4 L305.9,449.2 L330.9,700.5 L331.1,704.0 L331.2,707.5 L331.1,711.0 L330.9,714.5 L330.4,718.0 L329.8,721.5 L328.9,725.0 L327.9,728.4 L326.8,731.7 L325.4,735.0 L323.9,738.1 L322.2,741.2 L320.4,744.3 L318.4,747.2 L316.2,750.0 L313.9,752.7 L311.5,755.2 L308.9,757.6 L306.2,760.0 L303.4,762.1 L300.5,764.1 L297.5,766.0 L294.4,767.6 L291.2,769.2 L287.9,770.5 L284.6,771.7 L281.2,772.7 L277.8,773.5 L274.3,774.2 L270.8,774.6 L267.3,774.9 L263.8,775.0 L260.2,774.9 L256.7,774.6 L253.2,774.2 L249.7,773.5 L246.3,772.7 L242.9,771.7 L239.6,770.5 L236.3,769.2 L233.1,767.6 L230.0,766.0 L227.0,764.1 L224.1,762.1 L221.3,760.0 L218.6,757.6 L216.0,755.2 L213.6,752.7 L211.3,750.0 L209.2,747.2 L207.2,744.3 L205.3,741.2 L203.6,738.1 L202.1,735.0 L200.7,731.7 L199.6,728.4 L198.6,725.0 L197.7,721.5 L197.1,718.0 L196.6,714.5 L196.3,711.0 L196.2,707.5 Z" fill="#f4f8fb" stroke="#777" stroke-width="1"/>
-<text x="255.0" y="587.5" font-size="10" fill="#222" text-anchor="middle" font-weight="bold" transform="rotate(-90 255.0 587.5)">Badewanne freistehend</text>
-<line x1="176.2" y1="375.0" x2="176.2" y2="805.0" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="3 2"/>
-<text x="167.5" y="625.0" font-size="8" fill="#c0392b" text-anchor="middle" font-weight="normal" transform="rotate(-90 167.5 625.0)">∥ Wand</text>
-<line x1="330.0" y1="484.2" x2="451.2" y2="484.2" stroke="#c0392b" stroke-width="1"/>
-<text x="390.0" y="514.2" font-size="8.5" fill="#c0392b" text-anchor="middle" font-weight="normal">≈ 49 cm</text>
+<path d="M188.0,450.0 L188.1,446.1 L188.4,442.1 L188.9,438.3 L189.7,434.4 L190.6,430.6 L191.7,426.8 L193.0,423.1 L194.5,419.5 L196.2,415.9 L198.1,412.5 L200.1,409.1 L202.3,405.9 L204.7,402.8 L207.3,399.8 L210.0,397.0 L212.8,394.3 L215.8,391.7 L218.9,389.3 L222.2,387.1 L225.5,385.1 L228.9,383.2 L232.5,381.5 L236.1,380.0 L239.8,378.7 L243.6,377.6 L247.4,376.6 L251.3,375.9 L255.2,375.4 L259.1,375.1 L263.0,375.0 L266.9,375.1 L270.9,375.4 L274.7,375.9 L278.6,376.6 L282.4,377.6 L286.2,378.7 L289.9,380.0 L293.5,381.5 L297.1,383.2 L300.5,385.1 L303.9,387.1 L307.1,389.3 L310.2,391.7 L313.2,394.3 L316.0,397.0 L318.7,399.8 L321.3,402.8 L323.7,405.9 L325.9,409.1 L327.9,412.5 L329.8,415.9 L331.5,419.5 L333.0,423.1 L334.3,426.8 L335.4,430.6 L336.4,434.4 L337.1,438.3 L337.6,442.1 L362.5,708.4 L362.9,712.9 L363.0,717.5 L362.9,722.1 L362.5,726.6 L361.9,731.2 L361.1,735.7 L360.0,740.1 L358.7,744.5 L357.2,748.9 L355.4,753.1 L353.5,757.2 L351.3,761.2 L348.9,765.1 L346.3,768.9 L343.5,772.6 L340.5,776.0 L337.4,779.4 L334.1,782.5 L330.6,785.5 L326.9,788.3 L323.1,790.9 L319.2,793.3 L315.2,795.5 L311.1,797.4 L306.9,799.2 L302.6,800.7 L298.1,802.0 L293.7,803.1 L289.2,803.9 L284.6,804.5 L280.1,804.9 L275.5,805.0 L270.9,804.9 L266.4,804.5 L261.8,803.9 L257.3,803.1 L252.8,802.0 L248.4,800.7 L244.2,799.2 L239.9,797.4 L235.8,795.5 L231.8,793.3 L227.8,790.9 L224.1,788.3 L220.4,785.5 L216.9,782.5 L213.6,779.4 L210.5,776.0 L207.5,772.6 L204.7,768.9 L202.1,765.1 L199.7,761.2 L197.5,757.2 L195.6,753.1 L193.8,748.9 L192.3,744.5 L191.0,740.1 L189.9,735.7 L189.1,731.2 L188.5,726.6 L188.1,722.1 L188.0,717.5 Z" fill="#fff" stroke="#333" stroke-width="1.8"/>
+<path d="M208.0,455.0 L208.1,452.1 L208.3,449.2 L208.7,446.4 L209.2,443.6 L209.9,440.8 L210.7,438.0 L211.7,435.3 L212.8,432.6 L214.0,430.0 L215.4,427.5 L216.9,425.1 L218.5,422.7 L220.2,420.4 L222.1,418.2 L224.1,416.1 L226.2,414.1 L228.4,412.2 L230.7,410.5 L233.1,408.9 L235.5,407.4 L238.0,406.0 L240.6,404.8 L243.3,403.6 L246.0,402.7 L248.8,401.9 L251.6,401.2 L254.4,400.7 L257.2,400.3 L260.1,400.1 L263.0,400.0 L265.9,400.1 L268.8,400.3 L271.6,400.7 L274.4,401.2 L277.2,401.9 L280.0,402.7 L282.7,403.6 L285.4,404.8 L288.0,406.0 L290.5,407.4 L292.9,408.9 L295.3,410.5 L297.6,412.2 L299.8,414.1 L301.9,416.1 L303.9,418.2 L305.8,420.4 L307.5,422.7 L309.1,425.1 L310.6,427.5 L312.0,430.0 L313.2,432.6 L314.4,435.3 L315.3,438.0 L316.1,440.8 L316.8,443.6 L317.3,446.4 L317.7,449.2 L342.6,700.5 L342.9,704.0 L343.0,707.5 L342.9,711.0 L342.6,714.5 L342.2,718.0 L341.5,721.5 L340.7,725.0 L339.7,728.4 L338.5,731.7 L337.2,735.0 L335.6,738.1 L333.9,741.2 L332.1,744.3 L330.1,747.2 L327.9,750.0 L325.6,752.7 L323.2,755.2 L320.7,757.6 L318.0,760.0 L315.2,762.1 L312.3,764.1 L309.2,766.0 L306.1,767.6 L302.9,769.2 L299.7,770.5 L296.4,771.7 L293.0,772.7 L289.5,773.5 L286.1,774.2 L282.6,774.6 L279.0,774.9 L275.5,775.0 L272.0,774.9 L268.4,774.6 L264.9,774.2 L261.5,773.5 L258.0,772.7 L254.7,771.7 L251.3,770.5 L248.1,769.2 L244.8,767.6 L241.8,766.0 L238.7,764.1 L235.8,762.1 L233.0,760.0 L230.3,757.6 L227.8,755.2 L225.3,752.7 L223.1,750.0 L220.9,747.2 L218.9,744.3 L217.1,741.2 L215.3,738.1 L213.8,735.0 L212.5,731.7 L211.3,728.4 L210.3,725.0 L209.5,721.5 L208.8,718.0 L208.4,714.5 L208.1,711.0 L208.0,707.5 Z" fill="#f4f8fb" stroke="#777" stroke-width="1"/>
+<text x="266.8" y="587.5" font-size="10" fill="#222" text-anchor="middle" font-weight="bold" transform="rotate(-90 266.8 587.5)">Badewanne freistehend</text>
+<line x1="188.0" y1="375.0" x2="188.0" y2="805.0" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="3 2"/>
+<text x="179.2" y="750.0" font-size="8" fill="#c0392b" text-anchor="middle" font-weight="normal" transform="rotate(-90 179.2 750.0)">10 cm ∥ Wand</text>
+<line x1="341.5" y1="484.2" x2="451.2" y2="484.2" stroke="#c0392b" stroke-width="1"/>
+<text x="390.0" y="514.2" font-size="8.5" fill="#c0392b" text-anchor="middle" font-weight="normal">≈ 44 cm</text>
 <rect x="448.2" y="253.0" width="300.0" height="17.5" fill="#444" stroke="#111"/>
 <text x="598.2" y="265.5" font-size="7.5" fill="#fff" text-anchor="middle" font-weight="normal">Wandrinne 120</text>
-<rect x="201.2" y="250.0" width="125.0" height="22.5" fill="#f3e5f5" stroke="#8e44ad" stroke-width="1.4" stroke-dasharray="5 3"/>
-<text x="263.8" y="300.0" font-size="8" fill="#8e44ad" text-anchor="middle" font-weight="normal">Handtuch-HK (opt.)</text>
-<circle cx="176.2" cy="256.2" r="5" fill="#fff" stroke="#b03a2e" stroke-width="1.6"/>
-<text x="176.2" y="293.8" font-size="7.5" fill="#b03a2e" text-anchor="middle" font-weight="bold">SD 2,45</text>
+<rect x="213.0" y="250.0" width="125.0" height="22.5" fill="#f3e5f5" stroke="#8e44ad" stroke-width="1.4" stroke-dasharray="5 3"/>
+<text x="275.5" y="300.0" font-size="8" fill="#8e44ad" text-anchor="middle" font-weight="normal">Handtuch-HK (opt.)</text>
+<circle cx="188.0" cy="256.2" r="5" fill="#fff" stroke="#b03a2e" stroke-width="1.6"/>
+<text x="188.0" y="293.8" font-size="7.5" fill="#b03a2e" text-anchor="middle" font-weight="bold">SD 2,45</text>
 <circle cx="457.5" cy="893.8" r="5" fill="#fff" stroke="#b03a2e" stroke-width="1.6"/>
 <text x="457.5" y="878.8" font-size="7.5" fill="#b03a2e" text-anchor="middle" font-weight="bold">SD</text>
 <circle cx="782.5" cy="893.8" r="5" fill="#fff" stroke="#b03a2e" stroke-width="1.6"/>
 <text x="782.5" y="878.8" font-size="7.5" fill="#b03a2e" text-anchor="middle" font-weight="bold">SD</text>
 <circle cx="620.0" cy="893.8" r="5" fill="#fff" stroke="#2c7fb8" stroke-width="1.6"/>
 <text x="620.0" y="878.8" font-size="7.5" fill="#2c7fb8" text-anchor="middle" font-weight="bold">Spiegel</text>
+<rect x="160.0" y="552.5" width="13.8" height="75.0" fill="#fde2c8" stroke="#d35400" stroke-width="1.4"/>
+<text x="181.2" y="550.0" font-size="7.5" fill="#d35400" text-anchor="start" font-weight="normal">Wannen-</text>
+<text x="181.2" y="572.5" font-size="7.5" fill="#d35400" text-anchor="start" font-weight="normal">armatur</text>
+<circle cx="598.8" cy="592.5" r="15.0" fill="#fff9c4" stroke="#b7950b" stroke-width="1.5"/>
+<line x1="588.2" y1="582.0" x2="609.2" y2="603.0" stroke="#b7950b"/><line x1="588.2" y1="603.0" x2="609.2" y2="582.0" stroke="#b7950b"/>
+<text x="598.8" y="627.5" font-size="8" fill="#7d6608" text-anchor="middle" font-weight="bold">Deckenlicht (Raummitte)</text>
+<circle cx="620.0" cy="868.8" r="15.0" fill="#fff9c4" stroke="#b7950b" stroke-width="1.5"/>
+<line x1="609.5" y1="858.2" x2="630.5" y2="879.2" stroke="#b7950b"/><line x1="609.5" y1="879.2" x2="630.5" y2="858.2" stroke="#b7950b"/>
+<text x="620.0" y="903.8" font-size="8" fill="#7d6608" text-anchor="middle" font-weight="bold"></text>
+<text x="620.0" y="768.8" font-size="8" fill="#7d6608" text-anchor="middle" font-weight="bold">Spiegellicht</text>
+<rect x="1052.5" y="802.5" width="15.0" height="25.0" fill="#fff9c4" stroke="#b7950b" stroke-width="1.5"/>
+<text x="1045.0" y="822.5" font-size="8" fill="#7d6608" text-anchor="end" font-weight="bold">Doppelschalter 1,05</text>
 <line x1="817.5" y1="287.5" x2="1067.5" y2="287.5" stroke="#e0a526" stroke-width="3"/>
 <line x1="817.5" y1="287.5" x2="817.5" y2="487.5" stroke="#e0a526" stroke-width="3"/>
 <line x1="751.2" y1="487.5" x2="817.5" y2="487.5" stroke="#e0a526" stroke-width="3"/>
@@ -189,7 +201,7 @@
 <rect x="1067.5" y="553.8" width="60.0" height="223.8" fill="#fff" stroke="#fff"/>
 <line x1="1067.5" y1="553.8" x2="843.8" y2="553.8" stroke="#333" stroke-width="2.5"/>
 <path d="M843.8,553.8 A223.8,223.8 0 0 0 1067.5,777.5" fill="none" stroke="#555" stroke-dasharray="4 3"/>
-<path d="M176.2,450.0 L176.3,446.1 L176.7,442.1 L177.2,438.3 L177.9,434.4 L178.8,430.6 L179.9,426.8 L181.2,423.1 L182.7,419.5 L184.4,415.9 L186.3,412.5 L188.3,409.1 L190.6,405.9 L193.0,402.8 L195.5,399.8 L198.2,397.0 L201.1,394.3 L204.1,391.7 L207.2,389.3 L210.4,387.1 L213.8,385.1 L217.2,383.2 L220.8,381.5 L224.4,380.0 L228.1,378.7 L231.8,377.6 L235.7,376.6 L239.5,375.9 L243.4,375.4 L247.3,375.1 L251.2,375.0 L255.2,375.1 L259.1,375.4 L263.0,375.9 L266.9,376.6 L270.6,377.6 L274.4,378.7 L278.1,380.0 L281.8,381.5 L285.3,383.2 L288.8,385.1 L292.1,387.1 L295.3,389.3 L298.4,391.7 L301.4,394.3 L304.3,397.0 L307.0,399.8 L309.5,402.8 L311.9,405.9 L314.1,409.1 L316.2,412.5 L318.1,415.9 L319.8,419.5 L321.3,423.1 L322.6,426.8 L323.7,430.6 L324.6,434.4 L325.3,438.3 L325.9,442.1 L350.8,708.4 L351.1,712.9 L351.2,717.5 L351.1,722.1 L350.8,726.6 L350.2,731.2 L349.4,735.7 L348.3,740.1 L347.0,744.5 L345.4,748.9 L343.7,753.1 L341.7,757.2 L339.5,761.2 L337.1,765.1 L334.6,768.9 L331.8,772.6 L328.8,776.0 L325.6,779.4 L322.3,782.5 L318.8,785.5 L315.2,788.3 L311.4,790.9 L307.5,793.3 L303.5,795.5 L299.4,797.4 L295.1,799.2 L290.8,800.7 L286.4,802.0 L281.9,803.1 L277.4,803.9 L272.9,804.5 L268.3,804.9 L263.8,805.0 L259.2,804.9 L254.6,804.5 L250.1,803.9 L245.6,803.1 L241.1,802.0 L236.7,800.7 L232.4,799.2 L228.2,797.4 L224.0,795.5 L220.0,793.3 L216.1,790.9 L212.3,788.3 L208.7,785.5 L205.2,782.5 L201.9,779.4 L198.7,776.0 L195.8,772.6 L192.9,768.9 L190.4,765.1 L188.0,761.2 L185.8,757.2 L183.8,753.1 L182.1,748.9 L180.5,744.5 L179.2,740.1 L178.2,735.7 L177.3,731.2 L176.7,726.6 L176.4,722.1 L176.2,717.5 Z" fill="#ffffff" fill-opacity="0.55" stroke="#333" stroke-width="1.6" stroke-dasharray="6 3"/>
+<path d="M188.0,450.0 L188.1,446.1 L188.4,442.1 L188.9,438.3 L189.7,434.4 L190.6,430.6 L191.7,426.8 L193.0,423.1 L194.5,419.5 L196.2,415.9 L198.1,412.5 L200.1,409.1 L202.3,405.9 L204.7,402.8 L207.3,399.8 L210.0,397.0 L212.8,394.3 L215.8,391.7 L218.9,389.3 L222.2,387.1 L225.5,385.1 L228.9,383.2 L232.5,381.5 L236.1,380.0 L239.8,378.7 L243.6,377.6 L247.4,376.6 L251.3,375.9 L255.2,375.4 L259.1,375.1 L263.0,375.0 L266.9,375.1 L270.9,375.4 L274.7,375.9 L278.6,376.6 L282.4,377.6 L286.2,378.7 L289.9,380.0 L293.5,381.5 L297.1,383.2 L300.5,385.1 L303.9,387.1 L307.1,389.3 L310.2,391.7 L313.2,394.3 L316.0,397.0 L318.7,399.8 L321.3,402.8 L323.7,405.9 L325.9,409.1 L327.9,412.5 L329.8,415.9 L331.5,419.5 L333.0,423.1 L334.3,426.8 L335.4,430.6 L336.4,434.4 L337.1,438.3 L337.6,442.1 L362.5,708.4 L362.9,712.9 L363.0,717.5 L362.9,722.1 L362.5,726.6 L361.9,731.2 L361.1,735.7 L360.0,740.1 L358.7,744.5 L357.2,748.9 L355.4,753.1 L353.5,757.2 L351.3,761.2 L348.9,765.1 L346.3,768.9 L343.5,772.6 L340.5,776.0 L337.4,779.4 L334.1,782.5 L330.6,785.5 L326.9,788.3 L323.1,790.9 L319.2,793.3 L315.2,795.5 L311.1,797.4 L306.9,799.2 L302.6,800.7 L298.1,802.0 L293.7,803.1 L289.2,803.9 L284.6,804.5 L280.1,804.9 L275.5,805.0 L270.9,804.9 L266.4,804.5 L261.8,803.9 L257.3,803.1 L252.8,802.0 L248.4,800.7 L244.2,799.2 L239.9,797.4 L235.8,795.5 L231.8,793.3 L227.8,790.9 L224.1,788.3 L220.4,785.5 L216.9,782.5 L213.6,779.4 L210.5,776.0 L207.5,772.6 L204.7,768.9 L202.1,765.1 L199.7,761.2 L197.5,757.2 L195.6,753.1 L193.8,748.9 L192.3,744.5 L191.0,740.1 L189.9,735.7 L189.1,731.2 L188.5,726.6 L188.1,722.1 L188.0,717.5 Z" fill="#ffffff" fill-opacity="0.55" stroke="#333" stroke-width="1.6" stroke-dasharray="6 3"/>
 <text x="257.5" y="587.5" font-size="10" fill="#222" text-anchor="middle" font-weight="bold" transform="rotate(-90 257.5 587.5)">Wanne freistehend</text>
 <ellipse cx="942.5" cy="352.5" rx="45.0" ry="65.0" fill="#fff" fill-opacity="0.6" stroke="#333" stroke-width="1.3"/>
 <rect x="507.5" y="776.2" width="225.0" height="120.0" rx="10" fill="none" stroke="#333" stroke-width="1.3" stroke-dasharray="5 3"/>
@@ -266,6 +278,11 @@
 <text x="403.8" y="670.0" font-size="10" text-anchor="middle" fill="#333" font-weight="bold">Badewanne freistehend (Höhe angenommen)</text>
 <line x1="97.5" y1="526.2" x2="743.8" y2="526.2" stroke="#555" stroke-width="1.2" stroke-dasharray="3 3"/>
 <text x="713.8" y="518.8" font-size="9" text-anchor="end" fill="#555" font-weight="normal">Vorwand/Ablage 0,875</text>
+<rect x="366.2" y="545.0" width="75.0" height="37.5" fill="#fde2c8" stroke="#d35400" stroke-width="1.6" stroke-dasharray="4 2"/>
+<text x="403.8" y="570.0" font-size="8.5" text-anchor="middle" fill="#d35400" font-weight="bold">Wasserfall</text>
+<circle cx="468.8" cy="564.5" r="12.0" fill="#fff" stroke="#d35400" stroke-width="1.6"/><circle cx="464.8" cy="564.5" r="1.3" fill="#d35400"/><circle cx="472.8" cy="564.5" r="1.3" fill="#d35400"/>
+<text x="483.8" y="560.8" font-size="9" text-anchor="start" fill="#d35400" font-weight="bold">Handbrause</text>
+<text x="483.8" y="572.2" font-size="9" text-anchor="start" fill="#d35400" font-weight="bold">(Modell folgt)</text>
 <line x1="60.0" y1="157.5" x2="743.8" y2="157.5" stroke="#1f4e79" stroke-width="2.2"/>
 <line x1="185.0" y1="120.0" x2="625.0" y2="120.0" stroke="#c0392b" stroke-width="1"/>
 <line x1="185.0" y1="135.0" x2="185.0" y2="105.0" stroke="#c0392b" stroke-width="1"/>
@@ -344,21 +361,21 @@
 <text x="531.2" y="332.5" font-size="10" text-anchor="middle" fill="#1a7f8e" font-weight="bold">Glasscheibe 120 × 235</text>
 <text x="531.2" y="344.0" font-size="10" text-anchor="middle" fill="#1a7f8e" font-weight="bold">(steht davor, am Profil)</text>
 <line x1="360.0" y1="170.0" x2="360.0" y2="170.0" stroke="#000"/>
-<rect x="106.2" y="600.0" width="175.0" height="145.0" fill="none" stroke="#333" stroke-width="1.6" stroke-dasharray="6 4"/>
-<text x="193.8" y="670.0" font-size="10" text-anchor="middle" fill="#333" font-weight="bold">Wanne (freistehend)</text>
+<rect x="118.0" y="600.0" width="175.0" height="145.0" fill="none" stroke="#333" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="205.5" y="670.0" font-size="10" text-anchor="middle" fill="#333" font-weight="bold">Wanne (freistehend)</text>
 <rect x="792.5" y="463.8" width="160.0" height="281.2" fill="none" stroke="#777" stroke-width="1.6" stroke-dasharray="2 3"/>
 <text x="872.5" y="495.0" font-size="10" text-anchor="middle" fill="#777" font-weight="bold">WC-Vorwand</text>
 <text x="872.5" y="320.0" font-size="12" text-anchor="middle" fill="#8a7a66" font-weight="bold">nicht gefliest (Putz)</text>
-<rect x="131.2" y="320.0" width="125.0" height="300.0" fill="#ffffff" stroke="#8e44ad" stroke-width="1.6" stroke-dasharray="6 4"/>
-<text x="193.8" y="432.5" font-size="9" text-anchor="middle" fill="#8e44ad" font-weight="bold">Handtuch-</text>
-<text x="193.8" y="442.9" font-size="9" text-anchor="middle" fill="#8e44ad" font-weight="bold">heizkörper</text>
-<text x="193.8" y="453.2" font-size="9" text-anchor="middle" fill="#8e44ad" font-weight="bold">(optional)</text>
-<text x="193.8" y="463.6" font-size="9" text-anchor="middle" fill="#8e44ad" font-weight="bold">50 × 120</text>
-<line x1="193.8" y1="632.5" x2="193.8" y2="307.5" stroke="#8e44ad" stroke-width="0.8" stroke-dasharray="2 3"/>
-<text x="193.8" y="645.0" font-size="8" text-anchor="middle" fill="#8e44ad" font-weight="normal">Mitte Wanne</text>
-<circle cx="106.2" cy="132.5" r="12.0" fill="#fff" stroke="#b03a2e" stroke-width="1.6"/><circle cx="102.2" cy="132.5" r="1.3" fill="#b03a2e"/><circle cx="110.2" cy="132.5" r="1.3" fill="#b03a2e"/>
-<text x="121.2" y="128.8" font-size="9" text-anchor="start" fill="#b03a2e" font-weight="bold">Steckdose HK 2,45 m</text>
-<text x="121.2" y="140.2" font-size="9" text-anchor="start" fill="#b03a2e" font-weight="bold">(über Schutzbereich 2,25)</text>
+<rect x="143.0" y="320.0" width="125.0" height="300.0" fill="#ffffff" stroke="#8e44ad" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="205.5" y="432.5" font-size="9" text-anchor="middle" fill="#8e44ad" font-weight="bold">Handtuch-</text>
+<text x="205.5" y="442.9" font-size="9" text-anchor="middle" fill="#8e44ad" font-weight="bold">heizkörper</text>
+<text x="205.5" y="453.2" font-size="9" text-anchor="middle" fill="#8e44ad" font-weight="bold">(optional)</text>
+<text x="205.5" y="463.6" font-size="9" text-anchor="middle" fill="#8e44ad" font-weight="bold">50 × 120</text>
+<line x1="205.5" y1="632.5" x2="205.5" y2="307.5" stroke="#8e44ad" stroke-width="0.8" stroke-dasharray="2 3"/>
+<text x="205.5" y="645.0" font-size="8" text-anchor="middle" fill="#8e44ad" font-weight="normal">Mitte Wanne</text>
+<circle cx="118.0" cy="132.5" r="12.0" fill="#fff" stroke="#b03a2e" stroke-width="1.6"/><circle cx="114.0" cy="132.5" r="1.3" fill="#b03a2e"/><circle cx="122.0" cy="132.5" r="1.3" fill="#b03a2e"/>
+<text x="133.0" y="128.8" font-size="9" text-anchor="start" fill="#b03a2e" font-weight="bold">Steckdose HK 2,45 m</text>
+<text x="133.0" y="140.2" font-size="9" text-anchor="start" fill="#b03a2e" font-weight="bold">(über Schutzbereich 2,25)</text>
 <text x="528.2" y="722.5" font-size="9" text-anchor="middle" fill="#111" font-weight="normal">Wandrinne 120 cm</text>
 <text x="872.5" y="717.5" font-size="8" text-anchor="middle" fill="#7a4a00" font-weight="normal">Sockel 7 cm</text>
 <line x1="327.5" y1="120.0" x2="681.2" y2="120.0" stroke="#c0392b" stroke-width="1"/>
@@ -407,12 +424,26 @@
 <rect x="291.0" y="157.5" width="6.5" height="587.5" fill="#9aa5ad" stroke="#333" stroke-width="1"/>
 <rect x="297.5" y="70.0" width="187.5" height="675.0" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
 <rect x="293.2" y="158.8" width="2.0" height="585.0" fill="#7cc4cf" stroke="#1a7f8e" stroke-width="1"/>
+<rect x="140.2" y="299.8" width="73.5" height="150.8" fill="#5d6d7e" stroke="#222" stroke-width="1.5"/>
+<rect x="145.2" y="304.8" width="63.5" height="140.8" fill="#85929e" stroke="none"/>
+<rect x="140.2" y="373.0" width="73.5" height="5.0" fill="#d5dbdb" stroke="#222"/>
+<rect x="230.0" y="466.2" width="45.0" height="45.0" fill="#fde2c8" stroke="#d35400" stroke-width="1.5"/>
 <text x="178.8" y="85.0" font-size="10" text-anchor="middle" fill="#555" font-weight="normal">Trennwand endet bei 2,35 m</text>
 <text x="392.5" y="107.5" font-size="10" text-anchor="middle" fill="#555" font-weight="normal">offenes Wandende (Stirnseite)</text>
 <text x="310.0" y="495.0" font-size="10" text-anchor="start" fill="#1a7f8e" font-weight="normal">← Glasscheibe 120 cm (zeigt auf dich)</text>
 <line x1="295.2" y1="158.8" x2="435.0" y2="158.8" stroke="#1a7f8e" stroke-width="1.5" stroke-dasharray="5 3"/>
 <line x1="295.2" y1="743.8" x2="435.0" y2="743.8" stroke="#1a7f8e" stroke-width="1.5" stroke-dasharray="5 3"/>
 <text x="307.5" y="195.0" font-size="9" text-anchor="start" fill="#333" font-weight="normal">Wandprofil + Glas bis 2,35 m</text>
+<text x="177.0" y="345.0" font-size="9" text-anchor="middle" fill="#fff" font-weight="bold">Nische</text>
+<text x="177.0" y="420.0" font-size="9" text-anchor="middle" fill="#fff" font-weight="normal">30×60</text>
+<line x1="252.5" y1="488.8" x2="252.5" y2="190.5" stroke="#d35400" stroke-width="2" stroke-dasharray="5 3"/>
+<text x="252.5" y="485.0" font-size="8" text-anchor="middle" fill="#d35400" font-weight="bold">Ther-</text>
+<text x="252.5" y="501.2" font-size="8" text-anchor="middle" fill="#d35400" font-weight="bold">mostat</text>
+<text x="310.0" y="495.0" font-size="9" text-anchor="start" fill="#d35400" font-weight="normal">Thermostat ca. 1,03 m (Fliesenmitte)</text>
+<circle cx="252.5" cy="190.5" r="12.0" fill="#fff" stroke="#d35400" stroke-width="1.6"/><circle cx="248.5" cy="190.5" r="1.3" fill="#d35400"/><circle cx="256.5" cy="190.5" r="1.3" fill="#d35400"/>
+<text x="310.0" y="186.8" font-size="9" text-anchor="start" fill="#d35400" font-weight="bold">Kopfbrause-Anschluss ca. 2,22 m</text>
+<text x="310.0" y="345.0" font-size="9" text-anchor="start" fill="#d35400" font-weight="normal">Leitung läuft neben</text>
+<text x="310.0" y="365.0" font-size="9" text-anchor="start" fill="#d35400" font-weight="normal">der Nische hoch</text>
 <line x1="60.0" y1="157.5" x2="297.5" y2="157.5" stroke="#1f4e79" stroke-width="2.2"/>
 <line x1="60.0" y1="120.0" x2="297.5" y2="120.0" stroke="#c0392b" stroke-width="1"/>
 <line x1="60.0" y1="135.0" x2="60.0" y2="105.0" stroke="#c0392b" stroke-width="1"/>
@@ -424,117 +455,6 @@
 <text x="272.5" y="773.0" font-size="11" fill="#555" text-anchor="middle">Trennwand 0,95 m</text>
 </g>
 <g transform="translate(0,4600.0)">
-<text x="60" y="24" font-size="17" font-weight="bold" fill="#111">3b · Nischen-Optionen in der Trennwand (Duschseite)</text>
-<text x="60" y="44" font-size="11.5" fill="#444">Nischenkanten liegen auf Fugen → keine schmalen Streifen · Tiefe 10 cm (Vorwand 15 cm) · Abstand zu Schacht (Ecke) und Glasprofil</text>
-<rect x="60" y="70" width="862.5" height="675.0" fill="#f3efe9" stroke="#222" stroke-width="2"/>
-<rect x="63.8" y="678.5" width="75.8" height="66.5" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="101.6" y="715.5" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="140.2" y="678.5" width="150.0" height="66.5" fill="#e2edf4" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="63.8" y="602.8" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="214.5" y="602.8" width="75.8" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="252.4" y="644.0" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="63.8" y="527.0" width="75.8" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="101.6" y="568.2" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="140.2" y="527.0" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="63.8" y="451.2" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="214.5" y="451.2" width="75.8" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="252.4" y="492.5" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="63.8" y="375.5" width="75.8" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="101.6" y="416.8" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="140.2" y="375.5" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="63.8" y="299.8" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="214.5" y="299.8" width="75.8" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="252.4" y="341.0" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="63.8" y="224.0" width="75.8" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="101.6" y="265.2" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="140.2" y="224.0" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="63.8" y="157.5" width="150.0" height="65.8" fill="#e2edf4" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="214.5" y="157.5" width="75.8" height="65.8" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="252.4" y="194.1" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="291.0" y="157.5" width="6.5" height="587.5" fill="#9aa5ad" stroke="#333" stroke-width="1"/>
-<rect x="60.0" y="157.5" width="37.5" height="587.5" fill="none" stroke="#555" stroke-width="1" stroke-dasharray="3 3"/>
-<rect x="140.2" y="299.8" width="73.5" height="150.8" fill="#5d6d7e" stroke="#222" stroke-width="1.5"/>
-<rect x="145.2" y="304.8" width="63.5" height="140.8" fill="#85929e" stroke="none"/>
-<rect x="140.2" y="373.0" width="73.5" height="5.0" fill="#d5dbdb" stroke="#222"/>
-<rect x="297.5" y="70.0" width="75.0" height="675.0" fill="#ffffff" stroke="#ffffff"/>
-<rect x="376.2" y="678.5" width="75.8" height="66.5" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="414.1" y="715.5" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="452.8" y="678.5" width="150.0" height="66.5" fill="#e2edf4" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="376.2" y="602.8" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="527.0" y="602.8" width="75.8" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="564.9" y="644.0" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="376.2" y="527.0" width="75.8" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="414.1" y="568.2" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="452.8" y="527.0" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="376.2" y="451.2" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="527.0" y="451.2" width="75.8" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="564.9" y="492.5" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="376.2" y="375.5" width="75.8" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="414.1" y="416.8" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="452.8" y="375.5" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="376.2" y="299.8" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="527.0" y="299.8" width="75.8" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="564.9" y="341.0" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="376.2" y="224.0" width="75.8" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="414.1" y="265.2" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="452.8" y="224.0" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="376.2" y="157.5" width="150.0" height="65.8" fill="#e2edf4" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="527.0" y="157.5" width="75.8" height="65.8" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="564.9" y="194.1" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="603.5" y="157.5" width="6.5" height="587.5" fill="#9aa5ad" stroke="#333" stroke-width="1"/>
-<rect x="372.5" y="157.5" width="37.5" height="587.5" fill="none" stroke="#555" stroke-width="1" stroke-dasharray="3 3"/>
-<rect x="452.8" y="375.5" width="111.8" height="75.0" fill="#5d6d7e" stroke="#222" stroke-width="1.5"/>
-<rect x="457.8" y="380.5" width="101.8" height="65.0" fill="#85929e" stroke="none"/>
-<rect x="610.0" y="70.0" width="75.0" height="675.0" fill="#ffffff" stroke="#ffffff"/>
-<rect x="688.8" y="678.5" width="75.8" height="66.5" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="726.6" y="715.5" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="765.2" y="678.5" width="150.0" height="66.5" fill="#e2edf4" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="688.8" y="602.8" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="839.5" y="602.8" width="75.8" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="877.4" y="644.0" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="688.8" y="527.0" width="75.8" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="726.6" y="568.2" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="765.2" y="527.0" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="688.8" y="451.2" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="839.5" y="451.2" width="75.8" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="877.4" y="492.5" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="688.8" y="375.5" width="75.8" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="726.6" y="416.8" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="765.2" y="375.5" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="688.8" y="299.8" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="839.5" y="299.8" width="75.8" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="877.4" y="341.0" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="688.8" y="224.0" width="75.8" height="75.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="726.6" y="265.2" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="765.2" y="224.0" width="150.0" height="75.0" fill="#cfe3f0" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="688.8" y="157.5" width="150.0" height="65.8" fill="#e2edf4" stroke="#6a8aa0" stroke-width="0.8"/>
-<rect x="839.5" y="157.5" width="75.8" height="65.8" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
-<text x="877.4" y="194.1" font-size="9" text-anchor="middle" fill="#7a4a00" font-weight="normal">30,3</text>
-<rect x="916.0" y="157.5" width="6.5" height="587.5" fill="#9aa5ad" stroke="#333" stroke-width="1"/>
-<rect x="685.0" y="157.5" width="37.5" height="587.5" fill="none" stroke="#555" stroke-width="1" stroke-dasharray="3 3"/>
-<rect x="765.2" y="375.5" width="73.5" height="75.0" fill="#5d6d7e" stroke="#222" stroke-width="1.5"/>
-<rect x="770.2" y="380.5" width="63.5" height="65.0" fill="#85929e" stroke="none"/>
-<rect x="60.0" y="70.0" width="862.5" height="87.5" fill="#ffffff" stroke="#ffffff"/>
-<text x="178.8" y="105.0" font-size="10.5" text-anchor="middle" fill="#111" font-weight="bold">Option 1: hoch 30 × 60</text>
-<text x="178.8" y="132.5" font-size="10.5" text-anchor="middle" fill="#111" font-weight="bold">mit Zwischenboden</text>
-<text x="177.0" y="483.0" font-size="9.5" text-anchor="middle" fill="#111" font-weight="bold">29 × 60 cm</text>
-<text x="491.2" y="105.0" font-size="10.5" text-anchor="middle" fill="#111" font-weight="bold">Option 2: quer 45 × 30</text>
-<text x="508.6" y="483.0" font-size="9.5" text-anchor="middle" fill="#111" font-weight="bold">45 × 30 cm</text>
-<text x="803.8" y="105.0" font-size="10.5" text-anchor="middle" fill="#111" font-weight="bold">Option 3: klein 30 × 30</text>
-<text x="802.0" y="483.0" font-size="9.5" text-anchor="middle" fill="#111" font-weight="bold">29 × 30 cm</text>
-<line x1="60.0" y1="157.5" x2="297.5" y2="157.5" stroke="#1f4e79" stroke-width="2"/>
-<text x="78.8" y="195.0" font-size="8" text-anchor="middle" fill="#555" font-weight="normal">Schacht</text>
-<line x1="372.5" y1="157.5" x2="610.0" y2="157.5" stroke="#1f4e79" stroke-width="2"/>
-<text x="391.2" y="195.0" font-size="8" text-anchor="middle" fill="#555" font-weight="normal">Schacht</text>
-<line x1="685.0" y1="157.5" x2="922.5" y2="157.5" stroke="#1f4e79" stroke-width="2"/>
-<text x="703.8" y="195.0" font-size="8" text-anchor="middle" fill="#555" font-weight="normal">Schacht</text>
-<text x="491.2" y="82.5" font-size="10" text-anchor="middle" fill="#444" font-weight="normal">Unterkante Nische 1,18 m = Fuge · Option 1 Oberkante 1,78 m, Zwischenboden 1,48 m</text>
-<line x1="45" y1="745.0" x2="937.5" y2="745.0" stroke="#222" stroke-width="3"/>
-<text x="60" y="773.0" font-size="11" fill="#555">◀ Nord (Ecke)</text>
-<text x="922.5" y="773.0" font-size="11" fill="#555" text-anchor="end">Glasprofil ▶</text>
-<text x="491.2" y="773.0" font-size="11" fill="#555" text-anchor="middle">je 0,95 m breit</text>
-</g>
-<g transform="translate(0,5420.0)">
 <text x="60" y="24" font-size="17" font-weight="bold" fill="#111">4 · Wand Waschbecken (Süden)</text>
 <text x="60" y="44" font-size="11.5" fill="#444">Blick nach Süden · gefliest von der Wannen-Ecke bis 2,75 m (Ende Vorwand) · die ersten 1,00 m an der Tür-Seite nicht gefliest</text>
 <rect x="60" y="70" width="937.5" height="675.0" fill="#f3efe9" stroke="#222" stroke-width="2"/>
@@ -619,7 +539,7 @@
 <text x="997.5" y="773.0" font-size="11" fill="#555" text-anchor="end">West (Wannen-Ecke) ▶</text>
 <text x="528.8" y="773.0" font-size="11" fill="#555" text-anchor="middle">Wandlänge ca. 3,75 m (Rohbau)</text>
 </g>
-<g transform="translate(0,6240.0)">
+<g transform="translate(0,5420.0)">
 <text x="60" y="24" font-size="17" font-weight="bold" fill="#111">5 · Wand mit Tür (Osten)</text>
 <text x="60" y="44" font-size="11.5" fill="#444">Blick nach Osten · nicht gefliest, nur Fliesensockel 7 cm</text>
 <rect x="60" y="70" width="683.8" height="675.0" fill="#f3efe9" stroke="#222" stroke-width="2"/>
@@ -627,17 +547,20 @@
 <rect x="363.8" y="242.5" width="223.8" height="502.5" fill="#fff" stroke="#333" stroke-width="2"/>
 <rect x="97.5" y="727.0" width="266.2" height="18.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
 <rect x="587.5" y="727.0" width="156.2" height="18.0" fill="#f6d58e" stroke="#6a8aa0" stroke-width="0.8"/>
+<rect x="610.0" y="467.5" width="30.0" height="30.0" fill="#fff9c4" stroke="#b7950b" stroke-width="1.5"/>
 <text x="207.5" y="662.5" font-size="9" text-anchor="middle" fill="#555" font-weight="normal">Nische HKV (lt. Plan)</text>
 <text x="475.5" y="470.0" font-size="11" text-anchor="middle" fill="#333" font-weight="normal">Tür 89,5 (Rohbau)</text>
 <rect x="60.0" y="463.8" width="37.5" height="281.2" fill="none" stroke="#999" stroke-width="1.6" stroke-dasharray="2 3"/>
 <text x="78.8" y="432.5" font-size="9" text-anchor="middle" fill="#999" font-weight="bold">WC-VW</text>
 <text x="475.5" y="157.5" font-size="12" text-anchor="middle" fill="#8a7a66" font-weight="bold">nicht gefliest (Putz)</text>
+<text x="655.0" y="475.0" font-size="9" text-anchor="start" fill="#7d6608" font-weight="bold">Doppelschalter</text>
+<text x="655.0" y="497.5" font-size="9" text-anchor="start" fill="#7d6608" font-weight="normal">1,05 m (Griffseite)</text>
 <text x="460.0" y="717.5" font-size="8" text-anchor="middle" fill="#7a4a00" font-weight="normal">Sockel 7 cm</text>
 <line x1="45" y1="745.0" x2="758.8" y2="745.0" stroke="#222" stroke-width="3"/>
 <text x="60" y="773.0" font-size="11" fill="#555">◀ Nord (WC-Ecke)</text>
 <text x="743.8" y="773.0" font-size="11" fill="#555" text-anchor="end">Süd (Waschbecken-Seite) ▶</text>
 <text x="401.9" y="773.0" font-size="11" fill="#555" text-anchor="middle">Wandlänge ca. 2,73 m (Rohbau)</text>
-</g><g transform="translate(60,7060.0)">
+</g><g transform="translate(60,6240.0)">
 <rect x="0" y="0" width="22" height="14" fill="#cfe3f0" stroke="#6a8aa0"/><text x="30" y="12" font-size="12">ganze Fliese 60×30</text>
 <rect x="190" y="0" width="22" height="14" fill="#e2edf4" stroke="#6a8aa0"/><text x="220" y="12" font-size="12">volle Breite, in der Höhe geschnitten</text>
 <rect x="480" y="0" width="22" height="14" fill="#f6d58e" stroke="#6a8aa0"/><text x="510" y="12" font-size="12">Zuschnitt (Zahl = Maß in cm)</text><rect x="0" y="70" width="22" height="14" fill="#d9cdb8" stroke="#6a8aa0"/><text x="30" y="82" font-size="12">ganze Bodenfliese</text>
