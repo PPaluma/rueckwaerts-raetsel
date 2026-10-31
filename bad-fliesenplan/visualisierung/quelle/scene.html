@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0;background:#fff}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+</head><body>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const W=1600,H=1066;
+const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
+renderer.setSize(W,H); renderer.setPixelRatio(1);
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.05;
+renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+document.body.appendChild(renderer.domElement);
+const scene=new THREE.Scene(); scene.background=new THREE.Color(0xffffff);
+const pmrem=new THREE.PMREMGenerator(renderer);
+scene.environment=pmrem.fromScene(new RoomEnvironment(),0.04).texture;
+
+// ---------- parameters (meters) ----------
+const RW=3.75, RD=2.735, CH=2.70, TH=2.35;
+const ROWS=[[0,.266]]; {let y=.269; while(y+.300<TH-.001){ROWS.push([y,y+.3]); y+=.303;} ROWS.push([y,TH]);}
+const PX=500, J=.003, M=.603;
+const SAND='#d6c3a2', GROUT='#ab9f88', PLASTER='#f1ede6';
+let seed=7; const rnd=()=>{seed=(seed*16807)%2147483647; return seed/2147483647;};
+
+function plasterFill(ctx,x,y,w,h){
+  ctx.fillStyle=PLASTER; ctx.fillRect(x,y,w,h);
+  for(let i=0;i<w*h/9000;i++){
+    const cx=x+rnd()*w, cy=y+rnd()*h, r=30+rnd()*140, a=0.025+rnd()*0.04;
+    const g=ctx.createRadialGradient(cx,cy,0,cx,cy,r);
+    const c=rnd()<0.5?'235,230,220':'250,248,244';
+    g.addColorStop(0,`rgba(${c},${a})`); g.addColorStop(1,`rgba(${c},0)`);
+    ctx.fillStyle=g; ctx.fillRect(cx-r,cy-r,2*r,2*r);
+  }
+}
+function tileShade(){const v=(rnd()-.5)*14; const b=[214,195,162].map(c=>Math.round(c+v)); return `rgb(${b})`;}
+// draw tiles for u-range [u0,u1], rows up to TH, anchors (joint start) xA,xB
+function drawTiles(ctx,Hc,u0,u1,xA,xB,yMax=TH){
+  for(let i=0;i<ROWS.length;i++){
+    const [a,b]=ROWS[i]; if(a>=yMax) continue; const bb=Math.min(b,yMax);
+    const x0=(i%2==0)?xA:xB;
+    let k=Math.floor((u0-x0)/M)-1; const joints=[];
+    while(x0+k*M<=u1+M){joints.push(x0+k*M);k++;}
+    // pieces
+    let s=u0; const pcs=[];
+    for(const j of joints){ if(j>u0&&j<u1){pcs.push([s,j]); s=j+J;} }
+    pcs.push([s,u1]);
+    ctx.fillStyle=GROUT; ctx.fillRect(u0*PX,Hc-(bb)*PX,(u1-u0)*PX,(bb-a+J)*PX);
+    for(const [p,q] of pcs){ if(q-p<.001) continue;
+      ctx.fillStyle=tileShade(); ctx.fillRect(p*PX+1,Hc-bb*PX+1,(q-p)*PX-2,(bb-a)*PX-2);
+      // subtle speckle
+      for(let n=0;n<(q-p)*(bb-a)*400;n++){ctx.fillStyle=`rgba(120,100,70,${0.04+rnd()*0.05})`;ctx.fillRect(p*PX+rnd()*(q-p)*PX,Hc-bb*PX+rnd()*(bb-a)*PX,1.5,1.5);}
+    }
+  }
+}
+function sockel(ctx,Hc,u0,u1){ctx.fillStyle=GROUT;ctx.fillRect(u0*PX,Hc-.073*PX,(u1-u0)*PX,.073*PX);ctx.fillStyle=tileShade();ctx.fillRect(u0*PX,Hc-.072*PX,(u1-u0)*PX,.072*PX);}
+function wallCanvas(L,fn){
+  const c=document.createElement('canvas'); c.width=Math.round(L*PX); c.height=Math.round(CH*PX);
+  const ctx=c.getContext('2d'); plasterFill(ctx,0,0,c.width,c.height); fn(ctx,c.height);
+  const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=8; return {tex:t,L};
+}
+const tileMat=(tex)=>new THREE.MeshStandardMaterial({map:tex,roughness:.55,metalness:0});
+// face: rectangle in wall-u/v coords mapped to world. wall: {tex,L, origin, uDir}
+function face(wall,u0,u1,v0,v1,pos,normalRot,mat){
+  const g=new THREE.PlaneGeometry(u1-u0,v1-v0);
+  const uv=g.attributes.uv; for(let i=0;i<uv.count;i++){
+    const U=uv.getX(i)?u1:u0, V=uv.getY(i)?v1:v0; uv.setXY(i,U/wall.L,V/CH);}
+  const m=new THREE.Mesh(g,mat||tileMat(wall.tex)); m.position.copy(pos); m.rotation.y=normalRot; m.receiveShadow=true; scene.add(m); return m;
+}
+// helpers to place a wall-face rect: wall types
+// W wall (x=xw, faces +x): u = RD - z  -> z = RD-u ; rotation +PI/2
+function Wface(wall,u0,u1,v0,v1,x){return face(wall,u0,u1,v0,v1,new THREE.Vector3(x,(v0+v1)/2,RD-(u0+u1)/2),Math.PI/2);}
+// N wall (z=zw faces +z): u = x
+function Nface(wall,u0,u1,v0,v1,z){return face(wall,u0,u1,v0,v1,new THREE.Vector3((u0+u1)/2,(v0+v1)/2,z),0);}
+// E wall (x=xw faces -x): u = z
+function Eface(wall,u0,u1,v0,v1,x){return face(wall,u0,u1,v0,v1,new THREE.Vector3(x,(v0+v1)/2,(u0+u1)/2),-Math.PI/2);}
+// S wall (z=zw faces -z): u = RW - x
+function Sface(wall,u0,u1,v0,v1,z){return face(wall,u0,u1,v0,v1,new THREE.Vector3(RW-(u0+u1)/2,(v0+v1)/2,z),Math.PI);}
+
+const mm=v=>v/1000;
+// ---------- wall canvases ----------
+const WALL_W=wallCanvas(RD,(ctx,Hc)=>drawTiles(ctx,Hc,0,RD,mm(331),mm(29.5)));
+const WALL_N=wallCanvas(RW,(ctx,Hc)=>{drawTiles(ctx,Hc,0,2.485,mm(437),mm(135.5)); sockel(ctx,Hc,2.75,RW);});
+const WALL_S=wallCanvas(RW,(ctx,Hc)=>{drawTiles(ctx,Hc,1.0,RW,mm(394),mm(114)); sockel(ctx,Hc,0,1.0);});
+const WALL_E=wallCanvas(RD,(ctx,Hc)=>{sockel(ctx,Hc,0.15,1.215); sockel(ctx,Hc,2.11,RD);});
+const WALL_P=wallCanvas(0.95,(ctx,Hc)=>drawTiles(ctx,Hc,0,0.95,mm(318),mm(615)));
+const PLAIN=wallCanvas(3,(ctx,Hc)=>{});
+const PLAIN_SOCKEL=wallCanvas(3,(ctx,Hc)=>sockel(ctx,Hc,0,3));
+const TILEGEN=wallCanvas(3,(ctx,Hc)=>drawTiles(ctx,Hc,0,3,0.2,0.5015,CH));
+const plasterMat=new THREE.MeshStandardMaterial({map:PLAIN.tex,roughness:.95});
+
+// ---------- floor ----------
+{
+  const c=document.createElement('canvas'); c.width=RW*PX; c.height=Math.round(RD*PX); const ctx=c.getContext('2d');
+  ctx.fillStyle=GROUT; ctx.fillRect(0,0,c.width,c.height);
+  for(let r=-1;r<12;r++){ const z0=.012+r*.303, z1=z0+.300; const off=(r%2==0||r%2==-0)?0:.3015;
+    for(let k=-2;k<9;k++){ const x0=.132+off+k*M; ctx.fillStyle=tileShade(); ctx.fillRect(x0*PX+1,z0*PX+1,.6*PX-2,.3*PX-2);
+      for(let n=0;n<70;n++){ctx.fillStyle=`rgba(120,100,70,${0.04+rnd()*0.05})`;ctx.fillRect((x0+rnd()*.6)*PX,(z0+rnd()*.3)*PX,1.5,1.5);} } }
+  const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=8;
+  const g=new THREE.PlaneGeometry(RW,RD); const m=new THREE.Mesh(g,new THREE.MeshStandardMaterial({map:t,roughness:.6}));
+  m.rotation.x=-Math.PI/2; m.position.set(RW/2,0,RD/2); m.receiveShadow=true; scene.add(m);
+}
+// ---------- walls ----------
+// North wall z=0
+Nface(WALL_N,0,RW,0,CH,0);
+// West wall x=0 with window opening u: RD-2.235 .. RD-0.475 , v .875..2.09
+const wu0=RD-2.235, wu1=RD-0.475, wv0=.875, wv1=2.09;
+Wface(WALL_W,0,wu0,0,CH,0); Wface(WALL_W,wu1,RD,0,CH,0); Wface(WALL_W,wu0,wu1,0,wv0,0); Wface(WALL_W,wu0,wu1,wv1,CH,0);
+// reveals (tiled generic) depth .2
+const revMat=tileMat(TILEGEN.tex);
+function box(w,h,d,x,y,z,mat,cast=true){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat); m.position.set(x,y,z); m.castShadow=cast; m.receiveShadow=true; scene.add(m); return m;}
+box(.2,.01,1.76,-.1,wv1+.005,(0.475+2.235)/2,revMat,false);
+box(.2,wv1-wv0,.01,-.1,(wv0+wv1)/2,0.475-.005,revMat,false);
+box(.2,wv1-wv0,.01,-.1,(wv0+wv1)/2,2.235+.005,revMat,false);
+// window frame + glass + sky
+const white=new THREE.MeshStandardMaterial({color:0xf7f7f5,roughness:.4});
+const fr=.07, fx=-.16;
+box(.07,fr,1.76,fx,wv0+fr/2,(0.475+2.235)/2,white); box(.07,fr,1.76,fx,wv1-fr/2,(0.475+2.235)/2,white);
+box(.07,wv1-wv0,fr,fx,(wv0+wv1)/2,0.475+fr/2,white); box(.07,wv1-wv0,fr,fx,(wv0+wv1)/2,2.235-fr/2,white);
+box(.07,wv1-wv0,.11,fx,(wv0+wv1)/2,1.355,white);
+const glassWin=new THREE.MeshStandardMaterial({color:0xcfe3f2,roughness:.05,metalness:0,transparent:true,opacity:.25});
+box(.01,wv1-wv0-.1,1.62,fx-.01,(wv0+wv1)/2,1.355,glassWin,false);
+{const c=document.createElement('canvas');c.width=256;c.height=256;const x=c.getContext('2d');const g=x.createLinearGradient(0,0,0,256);g.addColorStop(0,'#bcd8f0');g.addColorStop(.7,'#eaf3fa');g.addColorStop(1,'#cfe0c8');x.fillStyle=g;x.fillRect(0,0,256,256);
+ const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace; const m=new THREE.Mesh(new THREE.PlaneGeometry(4,3),new THREE.MeshBasicMaterial({map:t})); m.position.set(-1.5,1.5,1.36); m.rotation.y=Math.PI/2; m.userData.cut=true; scene.add(m);}
+// window sill (tiled top of Vorwand) + West Vorwand box x 0..0.132, z 0..2.585, h .875
+{const vw=.132; box(vw,.875,2.585,vw/2,.875/2,2.585/2,revMat);
+ Wface(WALL_W,RD-2.585,RD,0,.875,vw+.001);
+ box(.2,.012,1.76,-.1+0,.875-.006,1.355,revMat,false);}
+// South wall z=RD
+Sface(WALL_S,0,RW,0,CH,RD);
+// SW box x 0..0.34, z 2.573..2.735 full height to CH
+box(.34,CH,.162,.17,CH/2,RD-.081,plasterMat);
+Sface(WALL_S,RW-.34,RW,0,CH,2.573-.001);
+Wface(WALL_W,0,.162,0,CH,.341);
+// S Vorwand x .34..2.75 z 2.573..2.735 h 1.175
+box(2.41,1.175,.162,(0.34+2.75)/2,1.175/2,RD-.081,revMat);
+Sface(WALL_S,1.0,RW-.34,0,1.175,2.573-.001);
+// East wall x=RW with door opening z 1.215..2.11 h 2.01
+Eface(WALL_E,0,1.215,0,CH,RW); Eface(WALL_E,2.11,RD,0,CH,RW); Eface(WALL_E,1.215,2.11,2.01,CH,RW);
+// door leaf closed (hinge south, handle north)
+box(.04,2.0,.86,RW+.03,1.0,(1.215+2.11)/2,white);
+const chrome=new THREE.MeshStandardMaterial({color:0xd0d4d8,metalness:.55,roughness:.22});
+box(.14,.02,.02,RW-.04,1.05,1.30,chrome);
+// door frame
+box(.06,2.04,.04,RW-.02,1.02,1.215,white); box(.06,2.04,.04,RW-.02,1.02,2.11,white); box(.06,.04,.94,RW-.02,2.03,1.66,white);
+// switch (double) at z 1.09 h 1.05
+box(.012,.085,.16,RW-.006,1.05,1.09,white);
+// HKV cover
+box(.01,.66,.75,RW-.005,.33,.59,new THREE.MeshStandardMaterial({color:0xf3f1ec,roughness:.6}));
+// ceiling
+const ceil=new THREE.Mesh(new THREE.PlaneGeometry(RW,RD),new THREE.MeshStandardMaterial({map:PLAIN.tex,roughness:.95,side:THREE.DoubleSide}));
+ceil.rotation.x=Math.PI/2; ceil.position.set(RW/2,CH,RD/2); scene.add(ceil);
+// ---------- partition (x 2.473..2.75, z 0..0.95, h 2.35) with niche ----------
+{
+ const X0=2.473, X1=2.75, Z1=.95, ph=TH;
+ // back part
+ const pm=plasterMat;
+ box(X1-2.585,ph,Z1,(2.585+X1)/2,ph/2,Z1/2,pm);
+ // front layer pieces around niche z .321..615 y 1.178..1.781, depth .10
+ const nz0=.321,nz1=.615,ny0=1.178,ny1=1.781,fx0=X0,fx1=2.585,fd=fx1-fx0;
+ box(fd,ny0,Z1,(fx0+fx1)/2,ny0/2,Z1/2,pm);
+ box(fd,ph-ny1,Z1,(fx0+fx1)/2,(ny1+ph)/2,Z1/2,pm);
+ box(fd,ny1-ny0,nz0,(fx0+fx1)/2,(ny0+ny1)/2,nz0/2,pm);
+ box(fd,ny1-ny0,Z1-nz1,(fx0+fx1)/2,(ny0+ny1)/2,(nz1+Z1)/2,pm);
+ box(fx1-(X0+.10),ny1-ny0,nz1-nz0,(X0+.10+fx1)/2,(ny0+ny1)/2,(nz0+nz1)/2,revMat);
+ // shower face tiles (pieces around niche)
+ const P=WALL_P;
+ Eface(P,0,Z1,0,ny0,X0-.001); Eface(P,0,Z1,ny1,ph,X0-.001); Eface(P,0,nz0,ny0,ny1,X0-.001); Eface(P,nz1,Z1,ny0,ny1,X0-.001);
+ // niche inner (generic tile)
+ const nm=revMat;
+ box(.10,.012,nz1-nz0,X0+.05,ny0+.006,(nz0+nz1)/2,nm,false); box(.10,.012,nz1-nz0,X0+.05,ny1-.006,(nz0+nz1)/2,nm,false);
+ box(.10,ny1-ny0,.012,X0+.05,(ny0+ny1)/2,nz0+.006,nm,false); box(.10,ny1-ny0,.012,X0+.05,(ny0+ny1)/2,nz1-.006,nm,false);
+ box(.10,.012,nz1-nz0,X0+.05,1.478,(nz0+nz1)/2,nm,false);
+ // WC face sockel, end face sockel
+ face(PLAIN_SOCKEL,0,Z1,0,ph,new THREE.Vector3(X1+.001,ph/2,Z1/2),Math.PI/2,new THREE.MeshStandardMaterial({map:PLAIN_SOCKEL.tex,roughness:.9}));
+ face(PLAIN_SOCKEL,0,X1-X0,0,ph,new THREE.Vector3((X0+X1)/2,ph/2,Z1+.001),0,new THREE.MeshStandardMaterial({map:PLAIN_SOCKEL.tex,roughness:.9}));
+ // glass profile
+ box(.026,ph,.03,X0-.013,ph/2,Z1-.02,chrome);
+}
+// WC Vorwand x 2.75..3.75 z 0..0.15 h 1.125
+box(1.0,1.125,.15,3.25,1.125/2,.075,plasterMat);
+face(PLAIN_SOCKEL,0,1.0,0,1.125,new THREE.Vector3(3.25,1.125/2,.151),0,new THREE.MeshStandardMaterial({map:PLAIN_SOCKEL.tex,roughness:.9}));
+// ---------- ceramics ----------
+const ceramic=new THREE.MeshPhysicalMaterial({color:0xfdfdfb,roughness:.12,clearcoat:.8,clearcoatRoughness:.08});
+// WC (wall hung)
+{const g=new THREE.SphereGeometry(.5,48,32); const m=new THREE.Mesh(g,ceramic); m.scale.set(.36,.36,.56); m.position.set(3.25,.33,.15+.27); m.castShadow=true; scene.add(m);
+ box(.36,.2,.30,3.25,.30,.30,ceramic);
+ const seat=new THREE.Mesh(new THREE.CylinderGeometry(.5,.5,.03,48),ceramic); seat.scale.set(.37,1,.52); seat.position.set(3.25,.42,.15+.29); scene.add(seat);
+ box(.24,.16,.012,3.25,1.0,.156,new THREE.MeshStandardMaterial({color:0xd0d4d8,metalness:.55,roughness:.22}));}
+// tub (freestanding, tapered)
+function hull(circles,n=96){const pts=[];for(const [cx,cz,r] of circles)for(let i=0;i<n;i++){const a=2*Math.PI*i/n;pts.push([cx+r*Math.cos(a),cz+r*Math.sin(a)]);}
+ pts.sort((a,b)=>a[0]-b[0]||a[1]-b[1]); const cr=(o,a,b)=>(a[0]-o[0])*(b[1]-o[1])-(a[1]-o[1])*(b[0]-o[0]);
+ const lo=[],up=[]; for(const p of pts){while(lo.length>=2&&cr(lo[lo.length-2],lo[lo.length-1],p)<=0)lo.pop();lo.push(p);}
+ for(const p of pts.slice().reverse()){while(up.length>=2&&cr(up[up.length-2],up[up.length-1],p)<=0)up.pop();up.push(p);} return lo.slice(0,-1).concat(up.slice(0,-1));}
+{
+ const outer=hull([[.532,.800,.30],[.582,1.870,.35]]), inner=hull([[.532,.820,.24],[.582,1.830,.29]]);
+ const sh=new THREE.Shape(outer.map(([x,z])=>new THREE.Vector2(x,-z))); const hole=new THREE.Path(inner.map(([x,z])=>new THREE.Vector2(x,-z)).reverse()); sh.holes.push(hole);
+ const g=new THREE.ExtrudeGeometry(sh,{depth:.58,bevelEnabled:true,bevelThickness:.015,bevelSize:.015,bevelSegments:4,curveSegments:48});
+ g.rotateX(-Math.PI/2); const m=new THREE.Mesh(g,ceramic); m.castShadow=true; m.receiveShadow=true; scene.add(m);
+ const ish=new THREE.Shape(inner.map(([x,z])=>new THREE.Vector2(x,-z))); const ig=new THREE.ShapeGeometry(ish,48); ig.rotateX(-Math.PI/2);
+ const im=new THREE.Mesh(ig,ceramic); im.position.y=.14; im.receiveShadow=true; scene.add(im);
+}
+// washbasin on S Vorwand, x 1.51..2.41, depth .48, top .86
+{box(.9,.14,.48,1.96,.79,2.573-.24,ceramic);
+ const e=new THREE.Mesh(new THREE.CircleGeometry(.5,48),new THREE.MeshStandardMaterial({color:0xeeeeec,roughness:.15}));
+ e.scale.set(.66,.34,1); e.rotation.x=-Math.PI/2; e.position.set(1.96,.861,2.573-.23); scene.add(e);
+ // wall faucet
+ const sp=new THREE.Mesh(new THREE.CylinderGeometry(.012,.012,.19,24),chrome); sp.rotation.x=Math.PI/2; sp.position.set(1.96,.95,2.573-.095); scene.add(sp);
+ box(.06,.06,.01,1.96,.95,2.567,chrome);}
+// mirror + light
+{const mir=new THREE.Mesh(new THREE.PlaneGeometry(.8,.7),new THREE.MeshStandardMaterial({color:0xd9e2e6,metalness:.35,roughness:.06}));
+ mir.position.set(1.96,1.60,RD-.012); mir.rotation.y=Math.PI; scene.add(mir);
+ box(.6,.03,.06,1.96,2.0,RD-.04,new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xfff3dd,emissiveIntensity:2.2}),false);}
+// sockets
+for(const [x] of [[1.31],[2.61]]) box(.08,.08,.01,x,1.328,RD-.006,white,false);
+box(.01,.08,.08,.006,2.45,.232,white,false);
+// ---------- fittings shower ----------
+{const X0=2.473;
+ // thermostat plate
+ const pl=new THREE.Mesh(new THREE.CylinderGeometry(.075,.075,.012,48),chrome); pl.rotation.z=Math.PI/2; pl.position.set(X0-.006,1.03,.468); scene.add(pl);
+ const kn=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,.05,32),chrome); kn.rotation.z=Math.PI/2; kn.position.set(X0-.03,1.03,.468); scene.add(kn);
+ // head shower arm + disc
+ const arm=new THREE.Mesh(new THREE.CylinderGeometry(.01,.01,.36,16),chrome); arm.rotation.z=Math.PI/2; arm.position.set(X0-.18,2.22,.468); scene.add(arm);
+ const disc=new THREE.Mesh(new THREE.CylinderGeometry(.125,.125,.012,64),chrome); disc.position.set(X0-.36,2.205,.468); disc.castShadow=true; scene.add(disc);
+ // hand shower holder + stick at z .77 y 1.33
+ box(.03,.05,.04,X0-.015,1.33,.77,chrome);
+ const st=new THREE.Mesh(new THREE.CylinderGeometry(.016,.016,.25,24),chrome); st.position.set(X0-.04,1.44,.77); scene.add(st);
+ // rinne
+ box(.073,.004,.9,2.4365,.002,.462,new THREE.MeshStandardMaterial({color:0x8d9196,metalness:.8,roughness:.35}),false);
+ // glass 1.20 x 2.35 z .937
+ const gm=new THREE.MeshPhysicalMaterial({color:0xe8f4f4,roughness:.02,metalness:0,transparent:true,opacity:.18,side:THREE.DoubleSide});
+ const gl=new THREE.Mesh(new THREE.BoxGeometry(1.2,2.345,.01),gm); gl.position.set(2.473-.6,.005+2.345/2,.937); scene.add(gl);
+ const edge=new THREE.LineSegments(new THREE.EdgesGeometry(gl.geometry),new THREE.LineBasicMaterial({color:0xa9c9c9})); edge.position.copy(gl.position); scene.add(edge);
+ // wedge strip under glass
+ box(1.33,.012,.03,(1.07+2.40)/2,.006,.937,chrome,false);
+ // stabilizer bar
+ const bar=new THREE.Mesh(new THREE.CylinderGeometry(.009,.009,.937,16),chrome); bar.rotation.x=Math.PI/2; bar.position.set(1.35,2.30,.937/2); scene.add(bar);
+}
+// ---------- fittings tub (on W Vorwand front x=.132) ----------
+{const X=.132;
+ const pl=new THREE.Mesh(new THREE.CylinderGeometry(.06,.06,.012,48),chrome); pl.rotation.z=Math.PI/2; pl.position.set(X+.006,.72,1.05); scene.add(pl);
+ const kn=new THREE.Mesh(new THREE.CylinderGeometry(.022,.022,.045,32),chrome); kn.rotation.z=Math.PI/2; kn.position.set(X+.03,.72,1.05); scene.add(kn);
+ // TRES 154x200 plate projecting 20cm at y .74, z 1.36
+ box(.20,.018,.154,X+.10,.745,1.36,chrome);
+ // hand shower stick at z 1.74, y .62-.85
+ box(.03,.05,.04,X+.015,.63,1.74,chrome);
+ const st=new THREE.Mesh(new THREE.CylinderGeometry(.016,.016,.23,24),chrome); st.position.set(X+.04,.735,1.74); scene.add(st);
+}
+// towel heater (optional) x .332..832 y .5..1.7 z ~.04
+{const zc=.045; for(const x of [.342,.822]){const t=new THREE.Mesh(new THREE.CylinderGeometry(.014,.014,1.2,16),chrome); t.position.set(x,1.1,zc); scene.add(t);}
+ for(let i=0;i<9;i++){const y=.56+i*.135; const r=new THREE.Mesh(new THREE.CylinderGeometry(.01,.01,.48,16),chrome); r.rotation.z=Math.PI/2; r.position.set(.582,y,zc); scene.add(r);}}
+// ceiling light
+{const l=new THREE.Mesh(new THREE.CylinderGeometry(.18,.18,.04,48),new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xfff4e0,emissiveIntensity:1.6})); l.position.set(1.875,CH-.02,1.37); l.userData.cut=true; scene.add(l);}
+// ---------- lights ----------
+scene.add(new THREE.HemisphereLight(0xffffff,0xe8e0d0,0.9)); scene.add(new THREE.AmbientLight(0xffffff,0.25));
+const pL=new THREE.PointLight(0xfff1dc,2.4,0,1.2); pL.position.set(1.875,CH-.15,1.37); pL.castShadow=true; pL.shadow.mapSize.set(2048,2048); pL.shadow.radius=6; pL.shadow.bias=-.0005; scene.add(pL);
+const sun=new THREE.DirectionalLight(0xfff6e6,1.4); sun.position.set(-4,4,1.6); sun.target.position.set(1.5,0,1.4); scene.add(sun.target); sun.castShadow=true; sun.shadow.mapSize.set(2048,2048); sun.shadow.camera.left=-4;sun.shadow.camera.right=4;sun.shadow.camera.top=4;sun.shadow.camera.bottom=-4; sun.shadow.radius=4; scene.add(sun);
+const mL=new THREE.PointLight(0xfff3dd,.6,3,1.5); mL.position.set(1.96,1.95,RD-.25); scene.add(mL);
+
+// ---------- views ----------
+const cam=new THREE.PerspectiveCamera(68,W/H,.02,50);
+const views={
+ eingang:{p:[3.55,1.62,1.62],t:[0.6,1.05,0.95],fov:72},
+ dusche:{p:[0.95,1.60,2.30],t:[2.30,1.15,0.35],fov:68},
+ wanne:{p:[2.95,1.55,1.55],t:[0.20,0.90,1.45],fov:66},
+ waschbecken:{p:[2.05,1.60,1.10],t:[1.96,1.15,2.73],fov:70},
+ oben:{p:[2.3,6.0,4.4],t:[1.88,0.2,1.3],fov:40,cut:true}
+};
+const cutHide=[];
+scene.traverse(o=>{});
+window.renderView=(name)=>{
+  const v=views[name]; cam.fov=v.fov; cam.updateProjectionMatrix(); cam.position.set(...v.p); cam.lookAt(...v.t);
+  ceil.visible=!v.cut;
+  // in cut view hide south & east wall faces (meshes whose position lies on z>=RD-0.002 plane or x>=RW-0.0)
+  scene.traverse(o=>{ if(!o.isMesh) return; if(o.userData.cut===undefined){ o.userData.cut = (o.position.z>=RD-0.0005 && Math.abs(o.rotation.y-Math.PI)<1e-3) || (o.position.x>=RW-0.0005 && Math.abs(o.rotation.y+Math.PI/2)<1e-3) || (o.position.x>RW-0.07) || (o.position.z>RD-0.05);} if(o.userData.cut) o.visible=!v.cut; });
+  renderer.render(scene,cam); return true;
+};
+window.ready=true;
+</script></body></html>
