@@ -52,3 +52,30 @@ Das Modell „MiniMax H3“ kenne ich nicht genau. Prüf deshalb zuerst, welche 
   - Wenn der Node eine Stärke hat (Denoise/Strength): mit **0,35–0,5** anfangen. Niedriger heißt, die Geometrie und die Fliesenkanten bleiben eher erhalten. Höher heißt, das Bild wird realistischer, aber die KI erfindet mehr dazu.
 - **Videomodell** (Bild zu Video, bei MiniMax z. B. Hailuo): Nimm zuerst ein gutes Foto aus Gemini oder ChatGPT als Startbild und lass daraus eine langsame Kamerafahrt machen. Ein passender Prompt dafür: *„slow smooth camera dolly forward into the bathroom, static scene, no people, natural daylight“*.
 - **Mit einem lokalen Modell** (SDXL oder Flux): Lass aus dem Render eine **Tiefen- oder Kantenkarte** erzeugen (ControlNet „Depth“ oder „Canny“), Stärke etwa 0,6–0,8. Dann bleibt die Geometrie sehr genau erhalten.
+
+---
+
+# Nano Banana – Dusch-Ansicht in drei Fliesenvarianten
+
+Lade jeweils das passende Bild hoch und füge den Prompt ein:
+
+| Bild | Variante |
+|---|---|
+| `varianten/variante1-dusche.png` | **A – aktuell:** Dusche bis Oberkante Trennwand (2,35 ab RFB), Fenster- und Waschtischwand nur bis zur Vorwand |
+| `varianten/fliesen-250-dusche.png` | **B – Fliesen bis 2,50 m ab RFB** (= 2,36 ab FFB) an den Duschwänden; Trennwand und Glas bleiben bei 2,35 ab RFB |
+| `varianten/alle-waende-235-dusche.png` | **C – alle Wände bis 2,35 m ab RFB** gefliest (auch Fenster-, Waschtisch-, WC- und Tür-Wand) |
+
+## Basis-Prompt für alle drei Varianten
+> Transform this 3D render into a photorealistic interior photograph. Keep the exact camera angle, layout, proportions and every object in its place. Do not add or remove anything, and keep exactly where the tiles end as in the reference image. Scene: a modern bathroom, view into a floor-level walk-in shower behind a frameless 10 mm clear glass panel with a slim chrome wall profile and a thin chrome stabilising bar to the back wall. On the side wall of the shower: a recessed tiled niche (30 × 60 cm, with a shelf in the middle), below it a round chrome concealed thermostat, above it a round chrome rain shower head on a wall arm, and next to the niche a slim chrome stick hand shower in a wall holder. A stainless-steel linear drain runs along the side wall at floor level. On the left a chrome towel ladder on the tiled back wall; in the bottom left corner the rim of a glossy white bathtub. Behind the partition on the right a wall-hung white WC and a white door (closed). Tiles: matte sand-coloured porcelain, 60 × 30 cm, laid horizontally in a running bond with a 30 cm offset, thin warm-beige grout, the same tiles on the floor. Plaster: smooth, softly cloudy off-white lime plaster. Glossy white ceramics, polished chrome fittings. Soft natural daylight, realistic architectural photography, 24 mm lens, high detail, no people, no text.
+
+## Variante A – aktuell (`variante1-dusche.png`)
+Basis-Prompt plus:
+> The shower walls are tiled exactly up to the top edge of the partition wall and the glass panel. Above the tiles, and on the walls around the WC and the door, there is plaster with only a low tiled skirting at the floor.
+
+## Variante B – Fliesen bis 2,50 m (`fliesen-250-dusche.png`)
+Basis-Prompt plus:
+> The tiles on the shower back wall go higher than the partition wall: they end about 15 cm above the top edge of the partition and the glass panel, which both stay lower. Above the tiles there is plaster. The walls around the WC and the door are plastered with only a low tiled skirting.
+
+## Variante C – alle Wände bis 2,35 m (`alle-waende-235-dusche.png`)
+Basis-Prompt plus:
+> Every wall in the room is tiled to the same height, the height of the top edge of the partition wall and the glass panel. This includes the walls around the WC, the side of the partition facing the WC, and the wall with the door. Only the narrow band of wall above the tiles and the ceiling are off-white plaster.

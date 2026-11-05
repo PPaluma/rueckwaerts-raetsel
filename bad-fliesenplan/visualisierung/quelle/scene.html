@@ -7,7 +7,7 @@
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
-const W=1600,H=1066; const VAR=new URLSearchParams(location.search).get('v')||'0';
+const QP=new URLSearchParams(location.search); const W=+(QP.get('w')||1600),H=+(QP.get('h')||1066); const VAR=QP.get('v')||'0';
 const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
 renderer.setSize(W,H); renderer.setPixelRatio(1);
 renderer.outputColorSpace=THREE.SRGBColorSpace;
@@ -19,8 +19,8 @@ const pmrem=new THREE.PMREMGenerator(renderer);
 scene.environment=pmrem.fromScene(new RoomEnvironment(),0.04).texture;
 
 // ---------- parameters (meters) ----------
-const RW=3.75, RD=2.735, CH=2.70, TH=2.21;
-const ROWS=[[0,.266]]; {let y=.269; while(y+.300<TH-.001){ROWS.push([y,y+.3]); y+=.303;} ROWS.push([y,TH]);}
+const RW=3.75, RD=2.735, CH=2.70, TH=2.21; const TT=(VAR==='3')?2.36:TH;
+const ROWS=[[0,.266]]; {let y=.269; while(y+.300<TT-.001){ROWS.push([y,y+.3]); y+=.303;} ROWS.push([y,TT]);}
 const PX=500, J=.003, M=.603;
 const SAND='#d6c3a2', GROUT='#ab9f88', PLASTER='#f1ede6';
 let seed=7; const rnd=()=>{seed=(seed*16807)%2147483647; return seed/2147483647;};
@@ -37,7 +37,7 @@ function plasterFill(ctx,x,y,w,h){
 }
 function tileShade(){const v=(rnd()-.5)*14; const b=[214,195,162].map(c=>Math.round(c+v)); return `rgb(${b})`;}
 // draw tiles for u-range [u0,u1], rows up to TH, anchors (joint start) xA,xB
-function drawTiles(ctx,Hc,u0in,u1in,xA,xB,yMax=TH,rr=null){
+function drawTiles(ctx,Hc,u0in,u1in,xA,xB,yMax=TT,rr=null){
   for(let i=0;i<ROWS.length;i++){
     const [a,b]=ROWS[i]; if(a>=yMax) continue; const bb=Math.min(b,yMax);
     let u0=u0in,u1=u1in; if(rr){const r=rr(i); if(!r) continue; [u0,u1]=r;}
@@ -84,15 +84,17 @@ const mm=v=>v/1000;
 // ---------- wall canvases ----------
 const stairRR=(i)=>{ if(ROWS[i][1]<=0.876) return [0,RD]; const k=ROWS.length-1-i; const tz=0.30*(k+1); const tu=RD-tz;
    const x0=(i%2==0)?mm(331):mm(29.5); const m=Math.round((tu-x0)/M); const uj=x0+m*M; return [uj+J,RD]; };
-const WALL_W=wallCanvas(RD,(ctx,Hc)=>{ if(VAR==='1') drawTiles(ctx,Hc,0,RD,mm(331),mm(29.5),0.875);
+const WALL_W=wallCanvas(RD,(ctx,Hc)=>{ if(VAR==='1'||VAR==='3') drawTiles(ctx,Hc,0,RD,mm(331),mm(29.5),0.875);
   else if(VAR==='2') drawTiles(ctx,Hc,0,RD,mm(331),mm(29.5),TH,stairRR);
   else drawTiles(ctx,Hc,0,RD,mm(331),mm(29.5)); });
-const WALL_N=wallCanvas(RW,(ctx,Hc)=>{drawTiles(ctx,Hc,0,2.485,mm(437),mm(135.5)); sockel(ctx,Hc,2.75,RW);});
-const WALL_S=wallCanvas(RW,(ctx,Hc)=>{drawTiles(ctx,Hc,1.0,RW,mm(394),mm(114),VAR==='1'?1.125:TH); sockel(ctx,Hc,0,1.0);});
-const WALL_E=wallCanvas(RD,(ctx,Hc)=>{sockel(ctx,Hc,0.15,1.215); sockel(ctx,Hc,2.11,RD);});
+const WALL_N=wallCanvas(RW,(ctx,Hc)=>{ if(VAR==='4') drawTiles(ctx,Hc,0,RW,mm(437),mm(135.5)); else {drawTiles(ctx,Hc,0,2.485,mm(437),mm(135.5)); sockel(ctx,Hc,2.75,RW);} });
+const WALL_S=wallCanvas(RW,(ctx,Hc)=>{ if(VAR==='4') drawTiles(ctx,Hc,0,RW,mm(394),mm(114)); else {drawTiles(ctx,Hc,1.0,RW,mm(394),mm(114),(VAR==='1'||VAR==='3')?1.125:TT); sockel(ctx,Hc,0,1.0);} });
+const WALL_E=wallCanvas(RD,(ctx,Hc)=>{ if(VAR==='4') drawTiles(ctx,Hc,0,RD,0.2,0.5015); else {sockel(ctx,Hc,0.15,1.215); sockel(ctx,Hc,2.11,RD);} });
 const WALL_P=wallCanvas(0.95,(ctx,Hc)=>drawTiles(ctx,Hc,0,0.95,mm(318),mm(615)));
 const PLAIN=wallCanvas(3,(ctx,Hc)=>{});
 const PLAIN_SOCKEL=wallCanvas(3,(ctx,Hc)=>sockel(ctx,Hc,0,3));
+const SOCK_T=wallCanvas(3,(ctx,Hc)=>drawTiles(ctx,Hc,0,3,0.2,0.5015));
+const SOCK=(VAR==='4')?SOCK_T:PLAIN_SOCKEL;
 const TILEGEN=wallCanvas(3,(ctx,Hc)=>drawTiles(ctx,Hc,0,3,0.2,0.5015,CH));
 const plasterMat=new THREE.MeshStandardMaterial({map:PLAIN.tex,roughness:.95});
 function topTiles(x0,x1,z0,z1,y,alongZ=false){
@@ -123,7 +125,7 @@ Wface(WALL_W,0,wu0,0,CH,0); Wface(WALL_W,wu1,RD,0,CH,0); Wface(WALL_W,wu0,wu1,0,
 // reveals (tiled generic) depth .2
 const revMat=tileMat(TILEGEN.tex);
 function box(w,h,d,x,y,z,mat,cast=true){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat); m.position.set(x,y,z); m.castShadow=cast; m.receiveShadow=true; scene.add(m); return m;}
-const revTop=(VAR==='0')?revMat:plasterMat, revN=(VAR==='1')?plasterMat:revMat, revS=(VAR==='0')?revMat:plasterMat;
+const revTop=(VAR==='0'||VAR==='4')?revMat:plasterMat, revN=(VAR==='1'||VAR==='3')?plasterMat:revMat, revS=(VAR==='0'||VAR==='4')?revMat:plasterMat;
 box(.2,.01,1.76,-.1,wv1+.005,(0.475+2.235)/2,revTop,false);
 box(.2,wv1-wv0,.01,-.1,(wv0+wv1)/2,0.475-.005,revN,false);
 box(.2,wv1-wv0,.01,-.1,(wv0+wv1)/2,2.235+.005,revS,false);
@@ -189,14 +191,14 @@ ceil.rotation.x=Math.PI/2; ceil.position.set(RW/2,CH,RD/2); scene.add(ceil);
  box(.10,ny1-ny0,.012,X0+.05,(ny0+ny1)/2,nz0+.006,nm,false); box(.10,ny1-ny0,.012,X0+.05,(ny0+ny1)/2,nz1-.006,nm,false);
  box(.10,.012,nz1-nz0,X0+.05,1.478,(nz0+nz1)/2,nm,false);
  // WC face sockel, end face sockel
- face(PLAIN_SOCKEL,0,Z1,0,ph,new THREE.Vector3(X1+.001,ph/2,Z1/2),Math.PI/2,new THREE.MeshStandardMaterial({map:PLAIN_SOCKEL.tex,roughness:.9}));
- face(PLAIN_SOCKEL,0,X1-X0,0,ph,new THREE.Vector3((X0+X1)/2,ph/2,Z1+.001),0,new THREE.MeshStandardMaterial({map:PLAIN_SOCKEL.tex,roughness:.9}));
+ face(SOCK,0,Z1,0,ph,new THREE.Vector3(X1+.001,ph/2,Z1/2),Math.PI/2,new THREE.MeshStandardMaterial({map:SOCK.tex,roughness:.9}));
+ face(SOCK,0,X1-X0,0,ph,new THREE.Vector3((X0+X1)/2,ph/2,Z1+.001),0,new THREE.MeshStandardMaterial({map:SOCK.tex,roughness:.9}));
  // glass profile
  box(.026,ph,.03,X0-.013,ph/2,Z1-.02,chrome);
 }
 // WC Vorwand x 2.75..3.75 z 0..0.15 h 1.125
 box(1.0,1.125,.15,3.25,1.125/2,.075,plasterMat);
-face(PLAIN_SOCKEL,0,1.0,0,1.125,new THREE.Vector3(3.25,1.125/2,.151),0,new THREE.MeshStandardMaterial({map:PLAIN_SOCKEL.tex,roughness:.9}));
+face(SOCK,0,1.0,0,1.125,new THREE.Vector3(3.25,1.125/2,.151),0,new THREE.MeshStandardMaterial({map:SOCK.tex,roughness:.9}));
 // ---------- ceramics ----------
 const ceramic=new THREE.MeshPhysicalMaterial({color:0xfdfdfb,roughness:.12,clearcoat:.8,clearcoatRoughness:.08});
 // WC (wall hung)
@@ -293,5 +295,8 @@ window.renderView=(name)=>{
   scene.traverse(o=>{ if(!o.isMesh) return; if(o.userData.cut===undefined){ o.userData.cut = (o.position.z>=RD-0.0005 && Math.abs(o.rotation.y-Math.PI)<1e-3) || (o.position.x>=RW-0.0005 && Math.abs(o.rotation.y+Math.PI/2)<1e-3) || (o.position.x>RW-0.07) || (o.position.z>RD-0.05);} if(o.userData.cut) o.visible=!v.cut; });
   renderer.render(scene,cam); return true;
 };
+window.renderCam=(p,t,fov)=>{cam.fov=fov; cam.updateProjectionMatrix(); cam.position.set(...p); cam.lookAt(...t); ceil.visible=true;
+  scene.traverse(o=>{ if(o.isMesh && o.userData.cut!==undefined) o.visible=true; });
+  renderer.render(scene,cam); return renderer.domElement.toDataURL('image/jpeg',0.92);};
 window.ready=true;
 </script></body></html>
