@@ -79,3 +79,14 @@ Basis-Prompt plus:
 ## Variante C – alle Wände bis 2,35 m (`alle-waende-235-dusche.png`)
 Basis-Prompt plus:
 > Every wall in the room is tiled to the same height, the height of the top edge of the partition wall and the glass panel. This includes the walls around the WC, the side of the partition facing the WC, and the wall with the door. Only the narrow band of wall above the tiles and the ceiling are off-white plaster.
+
+---
+
+# Nano Banana – Blick beim Betreten auf die Wanne (offener Dachstuhl)
+
+| Bild | Variante |
+|---|---|
+| `varianten/betreten-geplant.png` | wie geplant: Dusche bis Oberkante Trennwand, Fenster- und Waschtischwand nur bis zur Vorwand |
+| `varianten/betreten-alle-waende-235.png` | alle Wände bis 2,35 m ab RFB gefliest |
+
+Decke vereinfacht: Dachschräge (ca. 22°) von der Duschwand (2,70 m) bis ca. 3,36 m, sichtbare Holz-Sparren und Firstpfette.
