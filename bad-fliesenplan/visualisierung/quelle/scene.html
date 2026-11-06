@@ -7,7 +7,7 @@
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
-const QP=new URLSearchParams(location.search); const W=+(QP.get('w')||1600),H=+(QP.get('h')||1066); const VAR=QP.get('v')||'0';
+const QP=new URLSearchParams(location.search); const W=+(QP.get('w')||1600),H=+(QP.get('h')||1066); const VAR=QP.get('v')||'0'; const ALL=(VAR==='4'||VAR==='5');
 const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
 renderer.setSize(W,H); renderer.setPixelRatio(1);
 renderer.outputColorSpace=THREE.SRGBColorSpace;
@@ -19,7 +19,7 @@ const pmrem=new THREE.PMREMGenerator(renderer);
 scene.environment=pmrem.fromScene(new RoomEnvironment(),0.04).texture;
 
 // ---------- parameters (meters) ----------
-const RW=3.75, RD=2.735, CH=3.27, TH=2.21; const KN=2.70, ZR=RD/2, RIDGE=KN+ZR*Math.tan(22*Math.PI/180); /* offener Dachstuhl beidseitig: 22 Grad, Traufe 2,70, First in Raummitte */ const TT=(VAR==='3')?2.36:TH;
+const RW=3.75, RD=2.735, CH=3.27, TH=2.21; const KN=2.70, ZR=RD/2, RIDGE=KN+ZR*Math.tan(22*Math.PI/180); /* offener Dachstuhl beidseitig: 22 Grad, Traufe 2,70, First in Raummitte */ const TT=(VAR==='5')?CH:(VAR==='3')?2.36:TH;
 const ROWS=[[0,.266]]; {let y=.269; while(y+.300<TT-.001){ROWS.push([y,y+.3]); y+=.303;} ROWS.push([y,TT]);}
 const PX=500, J=.003, M=.603;
 const SAND='#d6c3a2', GROUT='#ab9f88', PLASTER='#f1ede6';
@@ -87,14 +87,14 @@ const stairRR=(i)=>{ if(ROWS[i][1]<=0.876) return [0,RD]; const k=ROWS.length-1-
 const WALL_W=wallCanvas(RD,(ctx,Hc)=>{ if(VAR==='1'||VAR==='3') drawTiles(ctx,Hc,0,RD,mm(331),mm(29.5),0.875);
   else if(VAR==='2') drawTiles(ctx,Hc,0,RD,mm(331),mm(29.5),TH,stairRR);
   else drawTiles(ctx,Hc,0,RD,mm(331),mm(29.5)); });
-const WALL_N=wallCanvas(RW,(ctx,Hc)=>{ if(VAR==='4') drawTiles(ctx,Hc,0,RW,mm(437),mm(135.5)); else {drawTiles(ctx,Hc,0,2.485,mm(437),mm(135.5)); sockel(ctx,Hc,2.75,RW);} });
-const WALL_S=wallCanvas(RW,(ctx,Hc)=>{ if(VAR==='4') drawTiles(ctx,Hc,0,RW,mm(394),mm(114)); else {drawTiles(ctx,Hc,1.0,RW,mm(394),mm(114),(VAR==='1'||VAR==='3')?1.125:TT); sockel(ctx,Hc,0,1.0);} });
-const WALL_E=wallCanvas(RD,(ctx,Hc)=>{ if(VAR==='4') drawTiles(ctx,Hc,0,RD,0.2,0.5015); else {sockel(ctx,Hc,0.15,1.215); sockel(ctx,Hc,2.11,RD);} });
+const WALL_N=wallCanvas(RW,(ctx,Hc)=>{ if(ALL) drawTiles(ctx,Hc,0,RW,mm(437),mm(135.5)); else {drawTiles(ctx,Hc,0,2.485,mm(437),mm(135.5)); sockel(ctx,Hc,2.75,RW);} });
+const WALL_S=wallCanvas(RW,(ctx,Hc)=>{ if(ALL) drawTiles(ctx,Hc,0,RW,mm(394),mm(114)); else {drawTiles(ctx,Hc,1.0,RW,mm(394),mm(114),(VAR==='1'||VAR==='3')?1.125:TT); sockel(ctx,Hc,0,1.0);} });
+const WALL_E=wallCanvas(RD,(ctx,Hc)=>{ if(ALL) drawTiles(ctx,Hc,0,RD,0.2,0.5015); else {sockel(ctx,Hc,0.15,1.215); sockel(ctx,Hc,2.11,RD);} });
 const WALL_P=wallCanvas(0.95,(ctx,Hc)=>drawTiles(ctx,Hc,0,0.95,mm(318),mm(615)));
 const PLAIN=wallCanvas(3,(ctx,Hc)=>{});
 const PLAIN_SOCKEL=wallCanvas(3,(ctx,Hc)=>sockel(ctx,Hc,0,3));
 const SOCK_T=wallCanvas(3,(ctx,Hc)=>drawTiles(ctx,Hc,0,3,0.2,0.5015));
-const SOCK=(VAR==='4')?SOCK_T:PLAIN_SOCKEL;
+const SOCK=(ALL)?SOCK_T:PLAIN_SOCKEL;
 const TILEGEN=wallCanvas(3,(ctx,Hc)=>drawTiles(ctx,Hc,0,3,0.2,0.5015,CH));
 const plasterMat=new THREE.MeshStandardMaterial({map:PLAIN.tex,roughness:.95});
 function topTiles(x0,x1,z0,z1,y,alongZ=false){
@@ -125,7 +125,7 @@ Wface(WALL_W,0,wu0,0,CH,0); Wface(WALL_W,wu1,RD,0,CH,0); Wface(WALL_W,wu0,wu1,0,
 // reveals (tiled generic) depth .2
 const revMat=tileMat(TILEGEN.tex);
 function box(w,h,d,x,y,z,mat,cast=true){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat); m.position.set(x,y,z); m.castShadow=cast; m.receiveShadow=true; scene.add(m); return m;}
-const revTop=(VAR==='0'||VAR==='4')?revMat:plasterMat, revN=(VAR==='1'||VAR==='3')?plasterMat:revMat, revS=(VAR==='0'||VAR==='4')?revMat:plasterMat;
+const revTop=(VAR==='0'||ALL)?revMat:plasterMat, revN=(VAR==='1'||VAR==='3')?plasterMat:revMat, revS=(VAR==='0'||ALL)?revMat:plasterMat;
 box(.2,.01,1.76,-.1,wv1+.005,(0.475+2.235)/2,revTop,false);
 box(.2,wv1-wv0,.01,-.1,(wv0+wv1)/2,0.475-.005,revN,false);
 box(.2,wv1-wv0,.01,-.1,(wv0+wv1)/2,2.235+.005,revS,false);
