@@ -98,6 +98,9 @@ def build_site():
     for name, content in files.items():
         open(os.path.join(OUT, name), "w", encoding="utf8").write(content)
     shutil.copytree(os.path.join(ROOT, "icons"), os.path.join(OUT, "icons"))
+    game = os.path.join(ROOT, "himmelsinseln")  # 3D-Flugspiel, eigene PWA unter /himmelsinseln/
+    if os.path.isdir(game):
+        shutil.copytree(game, os.path.join(OUT, "himmelsinseln"))
     return build
 
 def build_single(name, extra):
